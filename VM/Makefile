@@ -6,7 +6,7 @@
 #    By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 18:10:12 by abrichar          #+#    #+#              #
-#    Updated: 2018/03/07 00:56:22 by cboiron          ###   ########.fr        #
+#    Updated: 2018/03/07 16:50:35 by abrichar         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,7 +15,7 @@ NAME = corewar
 CFLAG = -Wall -Wextra
 CPPFLAGS = -Iincludes
 
-SRC_NAME = main.c create_arena.c
+SRC_NAME = main.c create_arena.c param.c read_champ.c load_champs.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 SRC_PATH = src

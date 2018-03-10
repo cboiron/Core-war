@@ -1,50 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_arena.c                                     :+:      :+:    :+:   */
+/*   load_champs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/05 07:28:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/08 23:56:45 by abrichar         ###   ########.fr       */
+/*   Created: 2018/03/10 05:52:11 by cboiron           #+#    #+#             */
+/*   Updated: 2018/03/10 05:52:21 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-#include "stdio.h"
 
-void	dump_arena(t_vm *vm)
+void	load_champs(t_vm *vm)
 {
-	int				i;
-	int				mem;
+	int	space_bt_champs;
+	int	num_players;
 
-	mem = 64;
-	i = 1;
-	printf("0x0000 : ");
-	while (i < MEM_SIZE + 1)
+	num_players = 1;
+	space_bt_champs = MEM_SIZE / vm->nbr_next;
+	if (vm->nbr_next == 1)
+		space_bt_champs = 0;
+	space = space_bt_champs;
+	while (vm->tab_champ[num_players])
 	{
-		printf("%02x ", vm->arena[i]);
-		if (i % 64 == 0 && i != MEM_SIZE)
-		{
-			printf("\n");
-			printf("%#06x : ", mem);
-			mem += 64;
-		}
-		i++;
+		load_champ_to(vm->tab_champ[num_players]->prog, space);
+		space += space_bt_champs;
+		num_players++;
 	}
-	printf("\n");
-}
-
-
-void	create_arena(t_vm *vm)
-{
-	int				i;
-
-	i = 0;
-	while (i < MEM_SIZE)
-	{
-		vm->arena[i] = 0;
-		i++;
-	}
-	dump_arena(vm);
 }

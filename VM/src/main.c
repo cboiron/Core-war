@@ -6,111 +6,59 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/03/07 05:25:51 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/03/09 08:20:12 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 #include <fcntl.h>
 
+/*
+** Problème au niveau du malloc de la structure ?
+** ==> Je n'arrive pas, la fatigue sans doute...
+** ==> Il suffit de mettre les différentes données dans la structure qu'on
+**					utilisera juste après
+*/
 
-void	read_champ(int fd)
+
+void		init_vm(t_vm *vm)
 {
-	char	str[PROG_NAME_LENGTH];
-	int		size;
-	int		i;
-	char	comment[COMMENT_LENGTH];
-
-	i = 0;
-	{
-		size = lseek(fd, 0, SEEK_END);
-		ft_putstr("size = ");
-		ft_putnbr(size);
-		ft_putendl("");
-		if (size - (PROG_NAME_LENGTH + COMMENT_LENGTH) > CHAMP_MAX_SIZE)
-			ft_putendl("champion trop lourd");
-		lseek(fd, 0, SEEK_SET);
-		read(fd, str, 4); // On lit le magic number
-		printf("%x", (unsigned char)str[0]);
-		printf("%x", (unsigned char)str[1]);
-		printf("%x", (unsigned char)str[2]);
-		printf("%x\n", (unsigned char)str[3]);
-		read(fd, str, PROG_NAME_LENGTH); // On lit le nom du joueur
-		ft_putendl(str);
-		read(fd, str, 4); // Octets vides
-		read(fd, str, 4); //Taille du champion en hexa
-		printf("%x", (unsigned char)str[0]);
-		printf("%x", (unsigned char)str[1]);
-		printf("%x", (unsigned char)str[2]);
-		printf("%x\n", (unsigned char)str[3]);
-		read(fd, comment, COMMENT_LENGTH);
-		ft_putendl(comment);
-		/*while (i < PROG_NAME_LENGTH)
-		{
-			printf("%x", str[i++]);
-		}
-			printf("\n");
-			*/
-	}
+	vm = ft_memalloc(sizeof(vm));
+	vm->nbr_next = 0;
+	vm->nbr_cycle = -1;
 }
 
-int		get_players(char **av)
+int			usage(void)
 {
-	int	i;
-	int	fd;
-
-	fd = 0;
-	i = 1;
-	while (av[i])
-	{
-		if ((fd = open(av[i], O_RDONLY)) >= 0)
-		{
-			read_champ(fd);
-			i++;
-		}
-	}
-	return (1);
-}
-
-int		get_flags(char **av)
-{
-	int	i;
-
-	i = 1;
-	while (av[i])
-	{
-		if (av[i][0] == '-')
-		{
-			if (ft_strcmp(av[i], "-n") == 0)
-				ft_putendl("nb player");
-			else if (ft_strcmp(av[i], "-dump") == 0)
-				ft_putendl("dump");
-		}
-		i++;
-	}
-	return (1);
-}
-
-int usage(void)
-{
-	ft_putendl("Usage");
-	/*
-	ft_printf("Rentrer ici l'usage.\n");
-	ft_printf("./corewar [joueur1] ...\n");
-	ft_printf("Maximum de joueur : 4\n");
+	ft_printf("Usage de bas du corewar:  ./corewar \
+[-dump nbr_cycles] [[-n number] champion1.cor] ...\n\
+#### Prérequis ##########################################################\n\
+- Pour l'utilisation de la vm, il vous faut un \"champion.s\".\n\
+Celui-ci doit être passé dans l'asm pour pouvoir être utilisé.\n\
+- Un minimum d'un champion est demandé sans quoi la partie de démarera pas.\n\
+#### PARAM ##########################################################\n\
+-dump nbr_cycles : Au bout de nbr_cycles cycles d’exécution, dump la mémoire \n\
+sur la sortie standard, puis quitte la partie. La mémoire doit être dumpée au \n\
+format hexadécimal, avec 32 octets par ligne.\n\
+-n number : Fixe le numéro du prochain joueur. Si absent, le joueur aura le \n\
+prochain numéro libre dans l’ordre des paramètres. Le dernier joueur aura le \n\
+premier processus dans l’ordre d’exécution.\n\
+######################################################################\n");
 	exit(EXIT_FAILURE);
-	*/
 	return (0);
 }
 
-int main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
+	t_vm	vm;
+
 	if (argc < 2)
 		usage();
-	get_players(argv);
-	//get_flags(argv);
-	//create_arena();
+	init_vm(&vm);
+	if (get_param(argv, &vm, argc) == 0)
+		usage();
+	create_arena(&vm);
 	//ft_printf("%s\n", argv[0]);
-
+	exit(EXIT_SUCCESS);
 	return (0);
 }
