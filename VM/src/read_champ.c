@@ -24,12 +24,11 @@ void		check_size(t_vm *vm, int size, int nb_player, char *str)
 	printf("%d size = \n", size - (PROG_NAME_LENGTH + COMMENT_LENGTH));
 	printf("%d atoi \n", ft_atoi(str));
 	*/
-	if ((ft_atoi(str)) == size - (PROG_NAME_LENGTH + COMMENT_LENGTH)) {
+	//if ((ft_atoi(str)) == size - (PROG_NAME_LENGTH + COMMENT_LENGTH)) {
 		vm->tab_champ[nb_player].weight = size -
 				(PROG_NAME_LENGTH + COMMENT_LENGTH);
-		ft_putendl("lololol");
 		printf("size  %d \n", vm->tab_champ[nb_player].weight);
-	}
+//	}
 	/*else
 	{
 		ft_putendl("Erreur dans le header");
@@ -44,10 +43,12 @@ void		read_champ(t_vm *vm, int nbr_player)
 	int		size;
 	char	comment[COMMENT_LENGTH];
 
+	size = 0;
 	if (nbr_player != -1)
 		nbr_player = vm->nbr_next;
 	printf("%d nb player = \n", nbr_player);
 	size = lseek(vm->fd, 0, SEEK_END);
+	//printf("%d retour de lseek\n", size);
 	lseek(vm->fd, 0, SEEK_SET);
 	read(vm->fd, str, 4); // On lit le magic number
 	//if ((ft_atoi(str) != COREWAR_EXEC_MAGIC))
@@ -64,6 +65,7 @@ void		read_champ(t_vm *vm, int nbr_player)
 	read(vm->fd, comment, vm->tab_champ[nbr_player].weight);
 	vm->tab_champ[nbr_player].prog = ft_strdup(comment);
 	printf("comment = %s\n", vm->tab_champ[nbr_player].comment);
+	printf("prog = %s\n", vm->tab_champ[nbr_player].prog);
 	vm->nbr_next++;
 
 }

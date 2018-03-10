@@ -64,7 +64,7 @@ int			main(int argc, char **argv)
 	if (get_param(argv, &vm, argc) == 0)
 		usage();
 	load_champs(&vm);
-	dump_arena(&vm);
+	//dump_arena(&vm);
 	//ft_printf("%s\n", argv[0]);
 	exit(EXIT_SUCCESS);
 	return (0);
