@@ -16,7 +16,7 @@
 typedef struct		s_champ
 {
 	int				num;
-	char			name[PROG_NAME_LENGTH];
+	char			*name;
 	char			comment[COMMENT_LENGTH];
 	int				magic_number;
 	int				weight;
@@ -28,7 +28,7 @@ typedef struct		s_vm
 {
 	int				fd;
 	int				nbr_cycle;
-	t_champ			*tab_champ[MAX_PLAYERS];
+	t_champ			tab_champ[MAX_PLAYERS];
 	int				nbr_next;
 	unsigned char	arena[MEM_SIZE];
 }					t_vm;

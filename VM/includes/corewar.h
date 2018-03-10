@@ -14,15 +14,16 @@
 # define COREWAR_H
 
 # include <stdlib.h>
-# include "../../libft/includes/libft.h"
+# include "./libft.h"
 # include "./op.h"
 # include "./struct.h"
 # include <stdio.h>
+# include <fcntl.h>
 
 /*
 ** main.c
 */
-void	read_champ(t_vm *vm, int number_player, int ac);
+void	read_champ(t_vm *vm, int number_player);
 void	init_vm(t_vm *vm);
 int		usage(void);
 int		main(int argc, char **argv);
@@ -31,7 +32,7 @@ int		main(int argc, char **argv);
 */
 int		param_n(t_vm *vm, int number_player, char **av, int *i);
 int		ft_isnumber(char *str);
-int		get_param(char **av, t_vm *vm);
+int		get_param(char **av, t_vm *vm, int ac);
 /*
 ** create_arena.c
 */

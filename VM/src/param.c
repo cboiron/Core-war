@@ -41,21 +41,21 @@ int get_param(char **av, t_vm *vm, int ac)
 {
 	int i;
 
-	i = 0;
-	while (av[++i])
+	i = 1;
+	while (av[i])
 	{
 		if ((match(av[i], "*.cor")))
 		{
 			if ((vm->fd = open(av[i], O_RDONLY)) >= 0)
 			{
-				read_champ(vm, vm->nbr_next++);
-				close(fd);
+				read_champ(vm, vm->nbr_next);
+				close(vm->fd);
 			}
 			else
 				usage();
 		}
 		else if (((ft_strcmp(av[i], "-n") == 0) ||
-				 ft_strcmp(av[i], "-dump") == 0) && argc >= i + 2)
+				 ft_strcmp(av[i], "-dump") == 0) && ac >= i + 2)
 		{
 			if (ft_isnumber(av[i + 1]) == 0)
 			{
@@ -69,6 +69,7 @@ int get_param(char **av, t_vm *vm, int ac)
 		}
 		else
 			return (0);
+		i++;
 	}
 	return (1);
 }

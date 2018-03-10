@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "corewar.h"
-#include <fcntl.h>
+#include "../includes/struct.h"
 
 /*
 ** Problème au niveau du malloc de la structure ?
@@ -23,13 +23,16 @@
 
 void		init_vm(t_vm *vm)
 {
-	vm = ft_memalloc(sizeof(vm));
+	vm = ft_memalloc(sizeof(t_vm));
 	vm->nbr_next = 0;
 	vm->nbr_cycle = -1;
+	//vm->tab_champ[0] = ft_memalloc(sizeof(t_champ));
 }
 
 int			usage(void)
 {
+	ft_putendl("usage");
+	/*
 	ft_printf("Usage de bas du corewar:  ./corewar \
 [-dump nbr_cycles] [[-n number] champion1.cor] ...\n\
 #### Prérequis ##########################################################\n\
@@ -44,6 +47,7 @@ format hexadécimal, avec 32 octets par ligne.\n\
 prochain numéro libre dans l’ordre des paramètres. Le dernier joueur aura le \n\
 premier processus dans l’ordre d’exécution.\n\
 ######################################################################\n");
+	 */
 	exit(EXIT_FAILURE);
 	return (0);
 }
@@ -57,7 +61,8 @@ int			main(int argc, char **argv)
 	init_vm(&vm);
 	if (get_param(argv, &vm, argc) == 0)
 		usage();
-	create_arena(&vm);
+
+	//create_arena(&vm);
 	//ft_printf("%s\n", argv[0]);
 	exit(EXIT_SUCCESS);
 	return (0);
