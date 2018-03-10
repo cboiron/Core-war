@@ -12,12 +12,27 @@
 
 #include "corewar.h"
 
-void load_champ_to(char *prog, int memory_index)
+void load_champ_to(t_vm *vm, t_champ champ, int memory_index)
 {
-	if (prog)
+	int	index;
+
+	index = 0;
+	ft_putnbr(memory_index);
+	ft_putendl("memory");
+	if (champ.prog)
 		ft_putendl("ok");
 	if (memory_index >= 0)
 		ft_putendl("ok ok");
+	ft_putendl("size ");
+	ft_putnbr(champ.weight);
+	ft_putendl("size ");
+	while (index < champ.weight)
+	{
+		//ft_putnbr(index);
+		//ft_putendl("");
+		vm->arena[index + memory_index] = champ.prog[index];
+		index++;
+	}
 }
 
 void	load_champs(t_vm *vm)
@@ -33,7 +48,7 @@ void	load_champs(t_vm *vm)
 	space = space_bt_champs;
 	//while (vm->tab_champ[num_players] != NULL)
 	{
-		load_champ_to(vm->tab_champ[num_players].prog, space);
+		load_champ_to(vm, vm->tab_champ[0], space);
 		space += space_bt_champs;
 		num_players++;
 	}

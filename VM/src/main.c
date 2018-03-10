@@ -26,6 +26,7 @@ void		init_vm(t_vm *vm)
 	vm = ft_memalloc(sizeof(t_vm));
 	vm->nbr_next = 0;
 	vm->nbr_cycle = -1;
+	vm->tab_champ[0].weight = 0;
 	//vm->tab_champ[0] = ft_memalloc(sizeof(t_champ));
 }
 
@@ -59,10 +60,11 @@ int			main(int argc, char **argv)
 	if (argc < 2)
 		usage();
 	init_vm(&vm);
+	create_arena(&vm);
 	if (get_param(argv, &vm, argc) == 0)
 		usage();
-
-	//create_arena(&vm);
+	load_champs(&vm);
+	dump_arena(&vm);
 	//ft_printf("%s\n", argv[0]);
 	exit(EXIT_SUCCESS);
 	return (0);

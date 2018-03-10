@@ -38,5 +38,9 @@ int		get_param(char **av, t_vm *vm, int ac);
 */
 void	dump_arena(t_vm *vm);
 void	create_arena(t_vm *vm);
+/*
+ ** load_champs.c
+ */
+void	load_champs(t_vm *vm);
 
 #endif

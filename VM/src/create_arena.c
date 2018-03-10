@@ -45,5 +45,4 @@ void	create_arena(t_vm *vm)
 		vm->arena[i] = 0;
 		i++;
 	}
-	dump_arena(vm);
 }

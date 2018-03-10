@@ -27,6 +27,7 @@ void		check_size(t_vm *vm, int size, int nb_player, char *str)
 	if ((ft_atoi(str)) == size - (PROG_NAME_LENGTH + COMMENT_LENGTH)) {
 		vm->tab_champ[nb_player].weight = size -
 				(PROG_NAME_LENGTH + COMMENT_LENGTH);
+		ft_putendl("lololol");
 		printf("size  %d \n", vm->tab_champ[nb_player].weight);
 	}
 	/*else
