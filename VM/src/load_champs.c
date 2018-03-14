@@ -27,7 +27,7 @@ void load_champ_to(t_vm *vm, t_champ champ, int memory_index)
 		//dump_arena(vm);
 		index++;
 	}
-	dump_arena(vm);
+//	dump_arena(vm);
 }
 
 void	load_champs(t_vm *vm)

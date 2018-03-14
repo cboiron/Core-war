@@ -25,15 +25,15 @@ void		check_size(t_vm *vm, int size, int nb_player, char *str)
 	printf("%d atoi \n", ft_atoi(str));
 	*/
 	//if ((ft_atoi(str)) == size - (PROG_NAME_LENGTH + COMMENT_LENGTH)) {
-		vm->tab_champ[nb_player].weight = size -
-				(PROG_NAME_LENGTH + COMMENT_LENGTH);
-		printf("size  %d \n", vm->tab_champ[nb_player].weight);
 //	}
 	/*else
 	{
 		ft_putendl("Erreur dans le header");
 		exit(EXIT_FAILURE);
 	}*/
+		vm->tab_champ[nb_player].weight = size -
+				(PROG_NAME_LENGTH + COMMENT_LENGTH);
+		printf("size  %d \n", vm->tab_champ[nb_player].weight);
 
 }
 
