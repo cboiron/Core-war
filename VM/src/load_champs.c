@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:11 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/10 05:52:21 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/03/14 17:36:34 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ void load_champ_to(t_vm *vm, t_champ champ, int memory_index)
 	int	index;
 
 	index = 0;
-	ft_putnbr(memory_index);
-	ft_putendl("memory");
+	//ft_putnbr(memory_index);
+	//ft_putendl("memory");
+	/*
+	ft_putendl("poids = ");
+	ft_putnbr(champ.weight);
+	ft_putendl("---------------------- ");
 	while (index < champ.weight)
 	{
 		//ft_putnbr(index);
@@ -27,6 +31,7 @@ void load_champ_to(t_vm *vm, t_champ champ, int memory_index)
 		//dump_arena(vm);
 		index++;
 	}
+	*/
 //	dump_arena(vm);
 }
 

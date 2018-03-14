@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/03/09 08:20:12 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/03/14 17:28:09 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void		init_vm(t_vm *vm)
 
 int			usage(void)
 {
-	ft_putendl("usage");
+	ft_putendl("usage : ./corewar [-dump nbr_cycles] [[-n number] \
+champion1.cor] ...");
 	/*
 	ft_printf("Usage de bas du corewar:  ./corewar \
 [-dump nbr_cycles] [[-n number] champion1.cor] ...\n\
@@ -66,6 +67,6 @@ int			main(int argc, char **argv)
 	load_champs(&vm);
 	//dump_arena(&vm);
 	//ft_printf("%s\n", argv[0]);
-	exit(EXIT_SUCCESS);
+	//exit(EXIT_SUCCESS);
 	return (0);
 }

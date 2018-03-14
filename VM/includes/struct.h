@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 00:38:28 by abrichar          #+#    #+#             */
-/*   Updated: 2018/03/09 08:11:47 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/03/14 16:57:10 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef struct		s_champ
 	char			comment[COMMENT_LENGTH];
 	int				magic_number;
 	int				weight;
-	char 			*prog;
+	char			*prog;
 
 }					t_champ;
 
