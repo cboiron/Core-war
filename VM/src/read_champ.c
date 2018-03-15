@@ -34,7 +34,21 @@ void		check_size(t_vm *vm, int size, int nb_player, char *str)
 		vm->tab_champ[nb_player].weight = size -
 				(PROG_NAME_LENGTH + COMMENT_LENGTH);
 		//printf("size  %d \n", vm->tab_champ[nb_player].weight);
+}
 
+void		cpy_prog(t_vm *vm, unsigned char *prog, int num_player)
+{
+	int	index;
+
+	vm->tab_champ[num_player].prog = malloc(sizeof(unsigned char) * \
+	vm->tab_champ[num_player].weight - 16);
+	index = 0;
+	while (index < vm->tab_champ[num_player].weight - 16)
+	{
+		vm->tab_champ[num_player].prog[index] = prog[index];
+		 index++;
+	}
+	ft_putendl("cpy done");
 }
 
 void		read_champ(t_vm *vm, int nbr_player)
@@ -63,22 +77,23 @@ void		read_champ(t_vm *vm, int nbr_player)
 	read(vm->fd, str, 4); //Taille du champion en hexa
 	check_size(vm, size, nbr_player, str);
 	printf("size  %d \n", vm->tab_champ[nbr_player].weight);
+	read(vm->fd, str, 4); // Octets vides
 	read(vm->fd, comment, COMMENT_LENGTH); //commentaire
 	ft_strcpy(vm->tab_champ[nbr_player].comment, comment);
-	ret = read(vm->fd, comment, vm->tab_champ[nbr_player].weight - 12);
+	ret = read(vm->fd, comment, vm->tab_champ[nbr_player].weight - 8);
 	printf("retour de read = %d \n", ret);
-	vm->tab_champ[nbr_player].prog = ft_strdup(comment);
-
+	//vm->tab_champ[nbr_player].prog = ft_strdup(comment);
+	cpy_prog(vm, comment, nbr_player);
 // La copie ne fonctionne pas.
 
 	printf("comment = %s\n", vm->tab_champ[nbr_player].comment);
-	printf("prog = %s\n", vm->tab_champ[nbr_player].prog);
-	while (i < vm->tab_champ[nbr_player].weight - 12)
+	//printf("prog = %s\n", vm->tab_champ[nbr_player].prog);
+	/*while (i < vm->tab_champ[nbr_player].weight - 16)
 	{
 		//printf("%02x ", vm->tab_champ[nbr_player].prog[i]);
 		printf("%02x ", (unsigned char)comment[i]);
 		i++;
-	}
+	}*/
 	vm->nbr_next++;
-	printf("\n\nindex a la fin : %d \n", i);
+	//printf("\n\nindex a la fin : %d \n", i);
 }
