@@ -27,6 +27,9 @@ void		init_vm(t_vm *vm)
 	vm->nbr_next = 0;
 	vm->nbr_cycle = -1;
 	vm->tab_champ[0].weight = 0;
+	vm->tab_champ[1].weight = 0;
+	vm->tab_champ[2].weight = 0;
+	vm->tab_champ[3].weight = 0;
 	//vm->tab_champ[0] = ft_memalloc(sizeof(t_champ));
 }
 

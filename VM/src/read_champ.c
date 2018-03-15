@@ -41,9 +41,9 @@ void		cpy_prog(t_vm *vm, unsigned char *prog, int num_player)
 	int	index;
 
 	vm->tab_champ[num_player].prog = malloc(sizeof(unsigned char) * \
-	vm->tab_champ[num_player].weight - 16);
+	vm->tab_champ[num_player].weight - 8);
 	index = 0;
-	while (index < vm->tab_champ[num_player].weight - 16)
+	while (index < vm->tab_champ[num_player].weight - 8)
 	{
 		vm->tab_champ[num_player].prog[index] = prog[index];
 		 index++;
