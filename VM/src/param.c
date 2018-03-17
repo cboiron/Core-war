@@ -46,7 +46,7 @@ int get_param(char **av, t_vm *vm, int ac)
 	{
 		if ((match(av[i], "*.cor")))
 		{
-			if ((vm->fd = open(av[i], O_RDONLY)) >= 0)
+			if ((vm->fd = open(av[i], O_RDONLY)) >= 0 && vm->nbr_next < 3)
 			{
 				read_champ(vm, vm->nbr_next);
 				close(vm->fd);
