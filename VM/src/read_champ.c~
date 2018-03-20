@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:33 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/20 02:15:12 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/03/20 00:00:11 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,12 @@ void		read_champ(t_vm *vm, int nbr_player)
 	cpy_prog(vm, (unsigned char*)comment, nbr_player);
 	//printf("comment = %s\n", vm->tab_champ[nbr_player].comment);
 	//printf("prog = %s\n", vm->tab_champ[nbr_player].prog);
-	/*while (i < vm->tab_champ[nbr_player].weight - 8)
+	while (i < vm->tab_champ[nbr_player].weight - 8)
 	{
 		//printf("%02x ", vm->tab_champ[nbr_player].prog[i]);
 		printf("%02x ", (unsigned char)comment[i]);
 		i++;
-		}*/
+	}
 	vm->nbr_next++;
 	//printf("\n\nindex a la fin : %d \n", i);
 }
