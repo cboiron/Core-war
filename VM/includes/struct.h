@@ -6,12 +6,19 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 00:38:28 by abrichar          #+#    #+#             */
-/*   Updated: 2018/03/14 16:57:10 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/03/20 05:32:37 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
+typedef struct		s_proc
+{
+	int				carry;
+	int				pc;
+	int				*tab;
+}
 
 typedef struct		s_champ
 {

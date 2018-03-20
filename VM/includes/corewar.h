@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:11:25 by abrichar          #+#    #+#             */
-/*   Updated: 2018/03/09 08:02:45 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/03/20 05:12:44 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ void	create_arena(t_vm *vm);
  ** load_champs.c
  */
 void	load_champs(t_vm *vm);
+
+void	play(t_vm *vm);
 
 #endif
