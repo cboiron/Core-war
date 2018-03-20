@@ -1,6 +1,7 @@
 .name       "Test"
 .comment    "Night at 42"
 
-	st      r1,42
-	st      r1,r2
+	zjmp	%42
+	zjmp	%21
+	zjmp	%11
 	
