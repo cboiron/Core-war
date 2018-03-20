@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:11 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/14 17:36:34 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/03/19 23:57:23 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void load_champ_to(t_vm *vm, t_champ champ, int memory_index)
 		//dump_arena(vm);
 		index++;
 	}
-	ft_putendl("hello");
 }
 
 void	load_champs(t_vm *vm)
@@ -41,9 +40,9 @@ void	load_champs(t_vm *vm)
 	space = 0;
 	while (num_players < vm->nbr_next)
 	{
-		ft_putendl("space_bt_champs");
-		ft_putnbr(space);
-		ft_putendl("coucou");
+		//ft_putendl("space_bt_champs");
+		//ft_putnbr(space);
+		//ft_putendl("coucou");
 		load_champ_to(vm, vm->tab_champ[num_players], space);
 		space += space_bt_champs;
 		num_players++;

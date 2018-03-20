@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:33 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/14 17:45:41 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/03/20 00:00:11 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		read_champ(t_vm *vm, int nbr_player)
 	size = 0;
 	if (nbr_player != -1)
 		nbr_player = vm->nbr_next;
-	printf("nb player = %d  \n", nbr_player);
+	//printf("nb player = %d  \n", nbr_player);
 	size = lseek(vm->fd, 0, SEEK_END);
 	//printf("%d retour de lseek\n", size);
 	lseek(vm->fd, 0, SEEK_SET);
@@ -72,28 +72,26 @@ void		read_champ(t_vm *vm, int nbr_player)
 	//	usage(); // manque/mauvais magic number
 	read(vm->fd, str, PROG_NAME_LENGTH); // On lit le nom du joueur
 	vm->tab_champ[nbr_player].name = ft_strdup(str);
-	printf("nom = %s\n", vm->tab_champ[nbr_player].name);
+	//printf("nom = %s\n", vm->tab_champ[nbr_player].name);
 	read(vm->fd, str, 4); // Octets vides
 	read(vm->fd, str, 4); //Taille du champion en hexa
 	check_size(vm, size, nbr_player, str);
-	printf("size  %d \n", vm->tab_champ[nbr_player].weight);
+	//printf("size  %d \n", vm->tab_champ[nbr_player].weight);
 	read(vm->fd, str, 4); // Octets vides
 	read(vm->fd, comment, COMMENT_LENGTH); //commentaire
 	ft_strcpy(vm->tab_champ[nbr_player].comment, comment);
 	ret = read(vm->fd, comment, vm->tab_champ[nbr_player].weight - 8);
-	printf("retour de read = %d \n", ret);
+	//printf("retour de read = %d \n", ret);
 	//vm->tab_champ[nbr_player].prog = ft_strdup(comment);
-	cpy_prog(vm, comment, nbr_player);
-// La copie ne fonctionne pas.
-
-	printf("comment = %s\n", vm->tab_champ[nbr_player].comment);
+	cpy_prog(vm, (unsigned char*)comment, nbr_player);
+	//printf("comment = %s\n", vm->tab_champ[nbr_player].comment);
 	//printf("prog = %s\n", vm->tab_champ[nbr_player].prog);
-	/*while (i < vm->tab_champ[nbr_player].weight - 16)
+	while (i < vm->tab_champ[nbr_player].weight - 8)
 	{
 		//printf("%02x ", vm->tab_champ[nbr_player].prog[i]);
 		printf("%02x ", (unsigned char)comment[i]);
 		i++;
-	}*/
+	}
 	vm->nbr_next++;
 	//printf("\n\nindex a la fin : %d \n", i);
 }
