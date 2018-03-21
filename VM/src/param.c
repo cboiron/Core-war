@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 16:32:14 by abrichar          #+#    #+#             */
-/*   Updated: 2018/03/09 08:20:17 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/03/21 04:31:55 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int get_param(char **av, t_vm *vm, int ac)
 		else if (((ft_strcmp(av[i], "-n") == 0) ||
 				 ft_strcmp(av[i], "-dump") == 0) && ac >= i + 2)
 		{
-			if (ft_isnumber(av[i + 1]) == 0)
+			if (ft_isnumber(av[++i]) == 0)
 			{
 				ft_putendl("Non présence d'un nombre après -n ou -dump");
 				usage();
@@ -65,11 +65,16 @@ int get_param(char **av, t_vm *vm, int ac)
 			else if (ft_strcmp(av[i], "-n") == 0)
 				param_n(vm, ft_atoi(av[++i]), av, &i);
 			else
-				vm->nbr_cycle = ft_atoi(av[i]);
+				vm->dump_cycle = ft_atoi(av[i]);
 		}
 		else
 			return (0);
 		i++;
+	}
+	if (vm->nbr_next == 0)
+	{
+		ft_putendl("Aucun champion .cor dans l'arene");
+		return (0);
 	}
 	return (1);
 }

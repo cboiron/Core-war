@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:33 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/20 02:15:12 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/03/21 04:41:17 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ void		cpy_prog(t_vm *vm, unsigned char *prog, int num_player)
 {
 	int	index;
 
-	vm->tab_champ[num_player].prog = malloc(sizeof(unsigned char) * \
-	vm->tab_champ[num_player].weight - 8);
+	if (!(vm->tab_champ[num_player].prog = malloc(sizeof(unsigned char) * \
+	vm->tab_champ[num_player].weight - 8)))
+		exit(EXIT_FAILURE);
 	index = 0;
 	while (index < vm->tab_champ[num_player].weight - 8)
 	{
 		vm->tab_champ[num_player].prog[index] = prog[index];
 		 index++;
 	}
-	ft_putendl("cpy done");
 }
 
 void		read_champ(t_vm *vm, int nbr_player)

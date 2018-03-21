@@ -6,19 +6,20 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 00:38:28 by abrichar          #+#    #+#             */
-/*   Updated: 2018/03/20 05:32:37 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/03/21 05:09:18 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
+# include "op.h"
 typedef struct		s_proc
 {
 	int				carry;
 	int				pc;
-	int				*tab;
-}
+	int				reg[REG_NUMBER];
+}					t_proc;
 
 typedef struct		s_champ
 {
@@ -34,10 +35,12 @@ typedef struct		s_champ
 typedef struct		s_vm
 {
 	int				fd;
-	int				nbr_cycle;
+	int				dump_cycle;
 	t_champ			tab_champ[MAX_PLAYERS];
 	int				nbr_next;
 	unsigned char	arena[MEM_SIZE];
+	int				cycle;
+	int				cycle_to_die;
 }					t_vm;
 
 #endif
