@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:26:44 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/20 03:51:45 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/03/25 08:28:04 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	get_par(int source, int *i)
 
 void	and(t_vm *vm, int *i)
 {
+	/*
 	int		source1;
 	int		source2;
 
@@ -41,6 +42,8 @@ void	and(t_vm *vm, int *i)
 	source2 = vm->arena[*i] >> 6;
 	get_par(source1, i);
 	get_par(source2, i);
+	*/
+
 	// faire un & entre les deux parametres, stocker dans le registre
 	// si res = 0, carry = 1, sinon 0
 }

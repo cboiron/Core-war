@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 02:54:45 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/20 03:06:40 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/03/25 08:26:39 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	st(t_vm *vm, int *i)
 {
+	/*
 	(*i)++;
 	// registre source
 	// si registre == 0 : carry = 1
@@ -29,4 +30,5 @@ void	st(t_vm *vm, int *i)
 		// index
 		*i += 2;
 	}
+	*/
 }

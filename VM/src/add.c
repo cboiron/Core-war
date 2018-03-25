@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:13:50 by abrichar          #+#    #+#             */
-/*   Updated: 2018/03/20 05:20:10 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/03/25 08:26:57 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	add(t_vm *vm, int *i)
 {
+	/*
 	(*i)++;
 	//registre[*i + 3] = registre[*i + 1] + registre[*i + 2]
 	(*i) += 3;
 	//si registre == 0 ? carry = 1 : carry = 0;
+	*/
 }

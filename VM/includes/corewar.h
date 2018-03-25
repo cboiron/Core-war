@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:11:25 by abrichar          #+#    #+#             */
-/*   Updated: 2018/03/25 04:51:37 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/03/25 08:59:02 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,13 @@ void	create_arena(t_vm *vm);
  */
 void	load_champs(t_vm *vm);
 
+/*
+ *instructions_param.c
+ */
+void	get_reg(t_vm *vm, int *i);
+void	get_ind(t_vm *vm, int *i);
+void	get_dir(t_vm *vm, int *i, int op_code);
+
 void	play(t_vm *vm);
 
 void	live(t_vm *vm, int *i);
@@ -50,6 +57,7 @@ void	ld(t_vm *vm, int *i);
 void	st(t_vm *vm, int *i);
 void	add(t_vm *vm, int *i);
 void	sub(t_vm *vm, int *i);
+void	and(t_vm *vm, int *i);
 void	or(t_vm *vm, int *i);
 void	xor(t_vm *vm, int *i);
 void	zjmp(t_vm *vm, int *i);
