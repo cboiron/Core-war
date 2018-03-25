@@ -6,7 +6,7 @@
 #    By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 18:10:12 by abrichar          #+#    #+#              #
-#    Updated: 2018/03/20 05:10:50 by cboiron          ###   ########.fr        #
+#    Updated: 2018/03/25 04:51:12 by cboiron          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,7 +16,8 @@ CFLAG = -Wall -Wextra
 CPPFLAGS = -Iincludes
 
 SRC_NAME = main.c create_arena.c param.c read_champ.c load_champs.c play.c \
-		   add.c and.c ld.c ldi.c live.c st.c sti.c sub.c zjmp.c
+		   add.c and.c ld.c ldi.c live.c st.c sti.c sub.c zjmp.c \
+		   fork.c lfork.c lld.c lldi.c or.c xor.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 SRC_PATH = src

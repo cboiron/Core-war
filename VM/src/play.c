@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/21 05:16:19 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/03/25 05:16:48 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,21 @@
 
 void	read_op_code(t_vm *vm, int *i)
 {
-	if (vm->arena[*i] == 1)
-		ft_putendl("live");
-	else if (vm->arena[*i] == 2)
-		ft_putendl("ld");
-	else if (vm->arena[*i] == 3)
-		ft_putendl("st");
-	else if (vm->arena[*i] == 4)
-		ft_putendl("add");
-	else if (vm->arena[*i] == 5)
-		ft_putendl("sub");
-	else if (vm->arena[*i] == 6)
-		ft_putendl("and");
-	else if (vm->arena[*i] == 7)
-		ft_putendl("or");
-	else if (vm->arena[*i] == 8)
-		ft_putendl("xor");
-	else if (vm->arena[*i] == 9)
-		ft_putendl("zjmp");
-	else if (vm->arena[*i] == 10)
-		ft_putendl("ldi");
-	else if (vm->arena[*i] == 11)
-		ft_putendl("sti");
-	else if (vm->arena[*i] == 12)
-		ft_putendl("fork");
-	else if (vm->arena[*i] == 13)
-		ft_putendl("lld");
-	else if (vm->arena[*i] == 14)
-		ft_putendl("lldi");
-	else if (vm->arena[*i] == 15)
-		ft_putendl("lfork");
-	else if (vm->arena[*i] == 16)
-		ft_putendl("aff");
-	/*{
-		printf("i = %d |", i);
-		printf("char = %x \n", vm->arena[i]);
-	}*/
+	static void (*opc[16])(t_vm *vm, int *i) = {NULL, &live, &ld, &st, &add,
+		&sub, &or, &xor, &zjmp, &ldi, &sti, &forkk, &lld, &lldi, &lfork,
+		&forkk};
+	int		j;
+
+	j = 1;
+	while (j <= 16)
+	{
+		if (vm->arena[*i] == j)
+		{
+			//printf("j = %d | \n", j);
+			opc[j](vm, i);
+		}
+		j++;
+	}
 }
 
 void	play(t_vm *vm)

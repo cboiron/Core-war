@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:11:25 by abrichar          #+#    #+#             */
-/*   Updated: 2018/03/20 05:12:44 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/03/25 04:51:37 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,21 @@ void	create_arena(t_vm *vm);
 void	load_champs(t_vm *vm);
 
 void	play(t_vm *vm);
+
+void	live(t_vm *vm, int *i);
+void	ld(t_vm *vm, int *i);
+void	st(t_vm *vm, int *i);
+void	add(t_vm *vm, int *i);
+void	sub(t_vm *vm, int *i);
+void	or(t_vm *vm, int *i);
+void	xor(t_vm *vm, int *i);
+void	zjmp(t_vm *vm, int *i);
+void	ldi(t_vm *vm, int *i);
+void	sti(t_vm *vm, int *i);
+void	forkk(t_vm *vm, int *i);
+void	lld(t_vm *vm, int *i);
+void	lldi(t_vm *vm, int *i);
+void	lfork(t_vm *vm, int *i);
+void	aff(t_vm *vm, int *i);
 
 #endif
