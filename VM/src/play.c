@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/25 09:03:32 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/03 02:08:12 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 void	get_param_type(t_vm *vm, int *i, int op_code)
 {
 	int	octet;
+	int j;
 
 	(*i)++;
 	octet = vm->arena[*i];
+	octet = octet >> 2;
 	while (octet)
 	{
-		if (octet & 1)
+		printf("\n octect = %x \n", octet);
+		if ((octet & 1) && !(octet & 2))
 			//ft_putendl("reg");
 			get_reg(vm, i);
 		else if (octet & 2)
@@ -31,6 +34,7 @@ void	get_param_type(t_vm *vm, int *i, int op_code)
 			get_ind(vm , i);
 		octet = octet >> 2;
 	}
+	(*i)++;
 }
 
 void	read_op_code(t_vm *vm, int *i)
@@ -45,7 +49,11 @@ void	read_op_code(t_vm *vm, int *i)
 	{
 		if (vm->arena[*i] == j)
 		{
-			printf("op code  = %d  \n", j);
+			printf(" i   = %d  \n", *i);
+			ft_putendl("op code");
+			ft_putnbr(j);
+			ft_putendl("-------------------");
+			//printf("op code  = %d  \n", j);
 			if (j == 2 || j == 3 || j == 4 || j == 5 || j == 6 || j == 7
 					|| j == 8 || j == 10 || j == 11 || j == 13 || j == 14 ||
 					j == 16)

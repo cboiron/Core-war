@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/03/25 09:02:59 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/03 01:20:01 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int			main(int argc, char **argv)
 		usage();
 	load_champs(&vm);
 	play(&vm);
-	//dump_arena(&vm);
+	dump_arena(&vm);
 	//dump_arena(&vm);
 	//ft_printf("%s\n", argv[0]);
 	//exit(EXIT_SUCCESS);
