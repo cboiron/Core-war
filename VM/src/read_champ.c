@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:33 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/21 04:41:17 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/07 04:12:18 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void		read_champ(t_vm *vm, int nbr_player)
 
 	i = 0;
 	size = 0;
-	if (nbr_player != -1)
-		nbr_player = vm->nbr_next;
-	//printf("nb player = %d  \n", nbr_player);
+	//if (nbr_player != -1)
+	//	nbr_player = vm->nbr_next;
+	printf("nb player = %d  \n", nbr_player);
 	size = lseek(vm->fd, 0, SEEK_END);
 	//printf("%d retour de lseek\n", size);
 	lseek(vm->fd, 0, SEEK_SET);
