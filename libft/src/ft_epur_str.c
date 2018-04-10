@@ -6,14 +6,17 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 17:40:58 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/10 18:16:42 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/04/11 00:38:51 by eliajin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char *ft_epur_str(char *str)
 {
 	char	*dest;
 	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
