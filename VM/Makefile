@@ -6,7 +6,7 @@
 #    By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 18:10:12 by abrichar          #+#    #+#              #
-#    Updated: 2018/04/07 04:03:02 by cboiron          ###   ########.fr        #
+#    Updated: 2018/04/11 06:47:52 by cboiron          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,7 +18,7 @@ CPPFLAGS = -Iincludes
 SRC_NAME = main.c create_arena.c param.c read_champ.c load_champs.c play.c \
 		   add.c and.c ld.c ldi.c live.c st.c sti.c sub.c zjmp.c \
 		   fork.c lfork.c lld.c lldi.c or.c xor.c aff.c \
-		   instructions_param.c process.c
+		   instructions_param.c process.c get_instruction.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 SRC_PATH = src

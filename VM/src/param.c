@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 16:32:14 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/11 05:32:37 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 08:57:36 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	param_n(t_vm *vm, char **av, int *i, int ac)
 {
 	int		id;
+
 	if (ac > (*i) + 1)
 	{
 		(*i)++;
@@ -64,7 +65,10 @@ void	champs(t_vm *vm, char *arg)
 			exit(1);
 		}
 		else
+		{
+			ft_putendl("lol");
 			usage();
+		}
 }
 
 int get_param(char **av, t_vm *vm, int ac)
@@ -74,16 +78,24 @@ int get_param(char **av, t_vm *vm, int ac)
 	i = 1;
 	while (i < ac)
 	{
+		printf("i = %d \n", i);
+		printf("ac = %d \n", ac);
 		ft_putendl(av[i]);
 		if (((ft_strcmp(av[i], "-n") == 0) || ft_strcmp(av[i], "-dump") == 0))
 		{
+			if (ft_strcmp(av[i], "-dump") == 0 && vm->dump_cycle == -1
+					&& ac > i + 2)
+			{
+				i++;
+				vm->dump_cycle = ft_atoi(av[i]);
+				i++;
+			}
 			if (ft_strcmp(av[i], "-n") == 0)
 				vm->tab_champ[vm->nbr_next].id = param_n(vm, av, &i, ac);
-			else if (ft_strcmp(av[i], "-dump") == 0 && vm->dump_cycle == -1)
-				vm->dump_cycle = ft_atoi(av[i]);
 			else
 				vm->tab_champ[vm->nbr_next].id = vm->nbr_next;
 		}
+		printf("i = %d \n", i);
 		champs(vm, av[i]);
 		i++;
 	}

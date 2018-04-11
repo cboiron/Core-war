@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:11:25 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/11 04:59:15 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 06:33:45 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	add_process(t_proc **list, t_proc *proc);
 void	free_process(t_proc *proc);
 
 void	play(t_vm *vm);
+
+void	get_instruction(t_vm *vm, t_proc *proc);
 
 void	live(t_vm *vm, int *i);
 void	ld(t_vm *vm, int *i);

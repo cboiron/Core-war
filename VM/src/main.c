@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/11 05:01:32 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 08:42:18 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void		init_vm(t_vm *vm)
 {
 	vm = ft_memalloc(sizeof(t_vm));
 	vm->fd = 0;
-	vm->dump_cycle = -1;
 	vm->nbr_next = 0;
 	vm->cycle = 0;
 	vm->cycle_to_die = CYCLE_TO_DIE;
@@ -31,6 +30,7 @@ void	init(t_vm *vm)
 	i = 0;
 	while (i < MAX_PLAYERS)
 	{
+	vm->dump_cycle = -1;
 	vm->tab_champ[i].weight = 0;
 	vm->tab_champ[i].id = -1;
 	i++;

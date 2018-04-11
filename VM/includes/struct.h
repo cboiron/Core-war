@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 00:38:28 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/07 04:02:39 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 06:47:18 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct		s_vm
 	int				nbr_next;
 	unsigned char	arena[MEM_SIZE];
 	int				cycle;
+	int				last_check;
 	int				cycle_to_die;
 }					t_vm;
 

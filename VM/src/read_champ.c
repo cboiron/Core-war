@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:33 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/11 04:15:54 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 08:34:25 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ void		cpy_prog(t_vm *vm, unsigned char *prog, int num_player)
 		 index++;
 	}
 }
+
+/*
+ * Verfier magic number et size du champion
+ * */
 
 void		read_champ(t_vm *vm, int nbr_player)
 {

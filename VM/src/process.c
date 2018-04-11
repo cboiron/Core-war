@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/07 02:04:46 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/11 05:16:30 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 07:04:08 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ t_proc	*new_process(t_champ champ, int num_player, t_vm *vm)
 	proc->carry = 0;
 	proc->live_period = 0;
 	proc->pc = (MEM_SIZE / vm->nbr_next) * num_player;
-	printf("num joueur : %d , pc = %d \n", num_player, proc->pc);
-	proc->cycle_to_wait = 0;
+	//printf("num joueur : %d , pc = %d \n", num_player, proc->pc);
+	proc->cycle_to_wait = -1;
 	proc->instruction = 0;
 	proc->next = NULL;
 	while (i < REG_NUMBER)
