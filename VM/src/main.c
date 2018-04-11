@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/07 04:03:29 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 09:17:33 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,25 @@
 void		init_vm(t_vm *vm)
 {
 	vm = ft_memalloc(sizeof(t_vm));
-	vm->fd = 0;
+	//vm->tab_champ[0] = ft_memalloc(sizeof(t_champ));
+}
+
+void	init(t_vm *vm)
+{
+	int		i;
+
+	i = 0;
+	while (i < MAX_PLAYERS)
+	{
 	vm->dump_cycle = -1;
-	vm->tab_champ[0].weight = 0;
-	vm->tab_champ[1].weight = 0;
-	vm->tab_champ[2].weight = 0;
-	vm->tab_champ[3].weight = 0;
+	vm->tab_champ[i].weight = 0;
+	vm->tab_champ[i].id = -1;
+	i++;
+	}
+	vm->fd = 0;
 	vm->nbr_next = 0;
 	vm->cycle = 0;
 	vm->cycle_to_die = CYCLE_TO_DIE;
-	//vm->tab_champ[0] = ft_memalloc(sizeof(t_champ));
 }
 
 int			usage(void)
@@ -43,11 +52,13 @@ int			main(int argc, char **argv)
 	if (argc < 2)
 		usage();
 	init_vm(&vm);
+	init(&vm);
 	create_arena(&vm);
 	if (get_param(argv, &vm, argc) == 0)
 		usage();
 	load_champs(&vm);
 	play(&vm);
+//	sleep(10);
 	//dump_arena(&vm);
 	//dump_arena(&vm);
 	//ft_printf("%s\n", argv[0]);

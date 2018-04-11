@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:11:25 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/07 03:59:43 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 06:33:45 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		main(int argc, char **argv);
 /*
 ** param.c
 */
-int		param_n(t_vm *vm, int number_player, char **av, int *i);
+int		param_n(t_vm *vm, char **av, int *i, int ac);
 int		ft_isnumber(char *str);
 int		get_param(char **av, t_vm *vm, int ac);
 /*
@@ -52,11 +52,13 @@ void	get_dir(t_vm *vm, int *i, int op_code);
 /*
  ** process.c
  */
-t_proc	*new_process(t_champ champ);
+t_proc	*new_process(t_champ champ, int num_player, t_vm *vm);
 void	add_process(t_proc **list, t_proc *proc);
 void	free_process(t_proc *proc);
 
 void	play(t_vm *vm);
+
+void	get_instruction(t_vm *vm, t_proc *proc);
 
 void	live(t_vm *vm, int *i);
 void	ld(t_vm *vm, int *i);

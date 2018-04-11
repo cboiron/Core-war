@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:11 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/19 23:57:23 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 08:38:52 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void load_champ_to(t_vm *vm, t_champ champ, int memory_index)
 
 	index = 0;
 	//ft_putnbr(memory_index);
-	ft_putendl("---------------------- ");
 	while (index < champ.weight - 8 && (index + memory_index) < MEM_SIZE )
 	{
 		vm->arena[index + memory_index] = (unsigned char)champ.prog[index];

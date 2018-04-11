@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 01:41:15 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/25 06:13:42 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 07:10:56 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,5 @@ void	live(t_vm *vm, int *i)
 {
 	//ft_printf("Le joueur %s est en vie", "Clement");
 	*i += 5;
+	ft_printf("live pc = %d\n", *i);
 }
