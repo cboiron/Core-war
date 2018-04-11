@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 00:17:52 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/11 00:37:20 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/04/11 23:46:12 by eliajin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int check_line(char *line, char *tmp, t_asm *env)
 			return (1);
 		}
 	}
-	if (is_header(line, COMMENT_CMD_STRING) == 1 && env->verif_name == 0)
+	if (is_header(line, COMMENT_CMD_STRING) == 1 && env->verif_com == 0)
 	{
 		if (dump_header(tmp, env, COMMENT_CMD_STRING) == 1)
 		{
@@ -51,6 +51,7 @@ void	parsing(char *file, t_asm *env)
 	int		index;
 	char	*tmp;
 
+	index = 1;
 	if (!(fd = open(file, O_RDONLY)))
 		exit(EXIT_FAILURE);
 	while (get_next_line(fd, &line) > 0)
@@ -58,8 +59,12 @@ void	parsing(char *file, t_asm *env)
 		tmp = ft_epur_str(line);
 		if (check_line(tmp, line, env) == 0)
 		{
-			free(line);
-			free(tmp);
+			ft_printf("%s\n", line);
+			ft_printf("erreur de syntaxe à la ligne %d\n", index);
+			exit(EXIT_FAILURE);
 		}
+		free(line);
+		free(tmp);
+		index++;
 	}
 }

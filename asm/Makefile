@@ -6,7 +6,7 @@
 #    By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 18:10:12 by abrichar          #+#    #+#              #
-#    Updated: 2018/04/11 00:22:42 by eliajin          ###   ########.fr        #
+#    Updated: 2018/04/11 13:17:59 by eliajin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,7 +15,7 @@ NAME = asm
 CFLAG = -Wall -Wextra -Werror
 CPPFLAGS = -Iincludes
 
-SRC_NAME = main.c line.c parsing.c utilities.c
+SRC_NAME = main.c line.c parsing.c utilities.c dump_header.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 SRC_PATH = src
