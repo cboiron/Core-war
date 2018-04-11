@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/11 08:42:18 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 09:17:33 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@
 void		init_vm(t_vm *vm)
 {
 	vm = ft_memalloc(sizeof(t_vm));
-	vm->fd = 0;
-	vm->nbr_next = 0;
-	vm->cycle = 0;
-	vm->cycle_to_die = CYCLE_TO_DIE;
 	//vm->tab_champ[0] = ft_memalloc(sizeof(t_champ));
 }
 
@@ -35,6 +31,10 @@ void	init(t_vm *vm)
 	vm->tab_champ[i].id = -1;
 	i++;
 	}
+	vm->fd = 0;
+	vm->nbr_next = 0;
+	vm->cycle = 0;
+	vm->cycle_to_die = CYCLE_TO_DIE;
 }
 
 int			usage(void)
@@ -53,8 +53,6 @@ int			main(int argc, char **argv)
 		usage();
 	init_vm(&vm);
 	init(&vm);
-	//vm.tab_champ[0].id = -5;
-	ft_putnbr(vm.tab_champ[0].id);
 	create_arena(&vm);
 	if (get_param(argv, &vm, argc) == 0)
 		usage();

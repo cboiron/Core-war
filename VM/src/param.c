@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 16:32:14 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/11 08:57:36 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 09:00:44 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int get_param(char **av, t_vm *vm, int ac)
 		if (((ft_strcmp(av[i], "-n") == 0) || ft_strcmp(av[i], "-dump") == 0))
 		{
 			if (ft_strcmp(av[i], "-dump") == 0 && vm->dump_cycle == -1
-					&& ac > i + 2)
+					&& ac > i + 2 && ft_isnumber(av[i + 1]))
 			{
 				i++;
 				vm->dump_cycle = ft_atoi(av[i]);

@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/11 07:33:26 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 09:03:18 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void	parse_list(t_proc **list, t_vm *vm)
 			get_instruction(vm, tmp);
 		printf("num instruction : %d\n", tmp->instruction);
 		printf("wait : %d\n", tmp->cycle_to_wait);
+		printf("pc = %d\n", tmp->pc);
 		/*
 		ft_putendl("id = ");
 		ft_putnbr(tmp->id);
@@ -129,7 +130,7 @@ void	play(t_vm *vm)
 	init_proc(&list, vm);
 	parse_list(&list, vm);
 	cycle = 0;
-	while (cycle < 180)
+	while (cycle < 800)
 	{
 		parse_list(&list, vm);
 		//read_op_code(vm, &cycle);
