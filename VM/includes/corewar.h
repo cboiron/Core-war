@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:11:25 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/07 03:59:43 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 04:06:21 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		main(int argc, char **argv);
 /*
 ** param.c
 */
-int		param_n(t_vm *vm, int number_player, char **av, int *i);
+int		param_n(t_vm *vm, char **av, int *i, int ac);
 int		ft_isnumber(char *str);
 int		get_param(char **av, t_vm *vm, int ac);
 /*
