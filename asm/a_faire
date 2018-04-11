@@ -1,0 +1,21 @@
+********************************************************************************
+                                                                                
+                                                          :::      ::::::::     
+     a_faire                                            :+:      :+:    :+:     
+                                                      +:+ +:+         +:+       
+     By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+          
+                                                  +#+#+#+#+#+   +#+             
+     Created: 2018/04/05 00:04:44 by eliajin           #+#    #+#               
+     Updated: 2018/04/09 23:08:07 by eliajin          ###   ########.fr         
+                                                                                
+********************************************************************************
+
+Décortiquer le champ : 
+
+1. Comprendre comment faire passer le txt en binaire --> arriver à l'afficher.
+   Faire un tableau ascii et un tableau binaire de tout ? -> trop long
+2. Comprendre comment écrire dans un fichier en binaire sans fwrite
+3. Faire le commentaire
+4. Comprendre et noter chaque opération possible
+5. Mettre en code les opérations en les testant une par une
+6. a voir
