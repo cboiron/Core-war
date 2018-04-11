@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/07 04:06:41 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 05:04:01 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,33 @@ void	init_proc(t_proc **list, t_vm *vm)
 	i = 0;
 	while (i < vm->nbr_next)
 	{
-		add_process(list, new_process(vm->tab_champ[i]));
+		add_process(list, new_process(vm->tab_champ[i], i, vm));
 		printf("processus cree avec l'id %d\n", vm->tab_champ[i].id);
+		i++;
+	}
+	//ft_putendl("nb process");
+	//ft_putnbr(i);
+	//ft_putendl("nb joueurs");
+	//ft_putnbr(vm->nbr_next);
+}
+
+void	parse_list(t_proc **list, t_vm *vm)
+{
+	t_proc	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = *list;
+	while (i < vm->nbr_next)
+	{
+		ft_putendl("id = ");
+		ft_putnbr(tmp->id);
+		ft_putendl("");
+		ft_putendl("pc = ");
+		ft_putnbr(tmp->pc);
+		ft_putendl("");
+		//ft_putnbr(tmp->cycle_to_wait);
+		tmp = tmp->next;
 		i++;
 	}
 }
@@ -83,12 +108,14 @@ void	play(t_vm *vm)
 	t_proc	*list;
 
 	init_proc(&list, vm);
+	parse_list(&list, vm);
 	cycle = 0;
+	/*
 	while (cycle < 5000)
 	{
 		read_op_code(vm, &cycle);
 		cycle++;
-	}
+	}*/
 	/*
 	 * while (1)
 	 * {

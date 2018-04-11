@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 16:32:14 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/11 03:52:55 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 05:25:50 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,18 @@ int ft_isnumber(char *str)
 
 void	champs(t_vm *vm, char *arg)
 {
-	//if ((match(arg, "*.cor")))
-	{
-		ft_putendl("coucou");
-		if ((vm->fd = open(arg, O_RDONLY)) >= 0 && vm->nbr_next < 3)
+		if ((vm->fd = open(arg, O_RDONLY)) >= 0 && vm->nbr_next <= 3)
 		{
 			read_champ(vm, vm->nbr_next);
 			close(vm->fd);
 		}
+		else if (vm->nbr_next >= 4)
+		{
+			ft_putendl("Nombre de champion trop eleve");
+			exit(1);
+		}
 		else
 			usage();
-	}
 }
 
 int get_param(char **av, t_vm *vm, int ac)

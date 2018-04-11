@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:11:25 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/11 04:06:21 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/11 04:59:15 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	get_dir(t_vm *vm, int *i, int op_code);
 /*
  ** process.c
  */
-t_proc	*new_process(t_champ champ);
+t_proc	*new_process(t_champ champ, int num_player, t_vm *vm);
 void	add_process(t_proc **list, t_proc *proc);
 void	free_process(t_proc *proc);
 
