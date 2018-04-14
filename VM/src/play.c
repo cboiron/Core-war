@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/14 16:40:22 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 16:46:39 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void	play(t_vm *vm)
 	parse_list(&list, vm);
 	cycle = 0;
 
-	while (cycle < 5000)
+	while (cycle < 4090)
 	{
 		parse_list(&list, vm);
 		//read_op_code(vm, &cycle);

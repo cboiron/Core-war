@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/14 16:36:05 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 16:53:30 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,33 @@ void	kill_process(t_proc *proc, t_proc **list)
 {
 	t_proc	*tmp;
 
-	ft_putendl("proc killed");
 	tmp = *list;
-	if (proc == *list)
+	/*if (proc == *list)
 	{
 		if ((*list)->next != NULL)
 		{
+		ft_putendl("proc killed");
+			tmp->next = proc->next;
 			proc->next = NULL;
 			free(proc);
 		}
-	}
-	else
+	}*/
+	//else
 	{
+	ft_putendl("go list");
 		while (tmp->next)
 		{
 			if (proc == tmp->next)
 			{
+				printf("id %d\n", proc->id);
+				ft_putendl("proc killed");
 				tmp->next = proc->next;
 				free(proc);
 			}
-		tmp = tmp->next;
+			if (tmp->next)
+				tmp = tmp->next;
+			else
+				break ;
 		}
 	}
 }
@@ -47,12 +54,12 @@ void	reset_process_counter(t_proc *proc)
 
 void	check_lives(t_vm *vm, t_proc **list)
 {
-	ft_putendl("coucou");
 	t_proc	*tmp;
 
 	tmp = *list;
 	while (tmp)
 	{
+		ft_putendl("coucou");
 		if (tmp->live_period == 0)
 			kill_process(tmp, list);
 		else
