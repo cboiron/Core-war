@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/11 09:17:33 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 15:43:05 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,17 @@ void	init(t_vm *vm)
 	i = 0;
 	while (i < MAX_PLAYERS)
 	{
-	vm->dump_cycle = -1;
 	vm->tab_champ[i].weight = 0;
 	vm->tab_champ[i].id = -1;
 	i++;
 	}
 	vm->fd = 0;
+	vm->dump_cycle = -1;
 	vm->nbr_next = 0;
 	vm->cycle = 0;
+	vm->last_check = 0;
 	vm->cycle_to_die = CYCLE_TO_DIE;
+	vm->cycle_before_checking = CYCLE_TO_DIE;
 }
 
 int			usage(void)

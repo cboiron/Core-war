@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:11:25 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/11 06:33:45 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 15:49:53 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,8 @@ void	create_arena(t_vm *vm);
  ** load_champs.c
  */
 void	load_champs(t_vm *vm);
-
 /*
- *instructions_param.c
+ * instructions_param.c
  */
 void	get_reg(t_vm *vm, int *i);
 void	get_ind(t_vm *vm, int *i);
@@ -55,11 +54,19 @@ void	get_dir(t_vm *vm, int *i, int op_code);
 t_proc	*new_process(t_champ champ, int num_player, t_vm *vm);
 void	add_process(t_proc **list, t_proc *proc);
 void	free_process(t_proc *proc);
-
+/*
+ ** play.c
+ */
 void	play(t_vm *vm);
 
 void	get_instruction(t_vm *vm, t_proc *proc);
-
+/*
+** check_lives.c
+*/
+void	check_lives(t_vm *vm, t_proc **list);
+/*
+ ** (Instructions).c
+ */
 void	live(t_vm *vm, int *i);
 void	ld(t_vm *vm, int *i);
 void	st(t_vm *vm, int *i);

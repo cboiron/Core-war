@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/11 09:03:18 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 15:50:01 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,10 +130,13 @@ void	play(t_vm *vm)
 	init_proc(&list, vm);
 	parse_list(&list, vm);
 	cycle = 0;
+
 	while (cycle < 800)
 	{
 		parse_list(&list, vm);
 		//read_op_code(vm, &cycle);
+		if (vm->cycle_before_checking == 0)
+			check_lives(vm, &list);
 		cycle++;
 	}
 }

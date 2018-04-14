@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 00:38:28 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/11 06:47:18 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 16:04:06 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct		s_vm
 	int				cycle;
 	int				last_check;
 	int				cycle_to_die;
+	int				cycle_before_checking;
+	int				total_lives_period;
 }					t_vm;
 
 #endif
