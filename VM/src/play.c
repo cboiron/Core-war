@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/14 17:10:55 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 21:28:39 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	get_param_type(t_vm *vm, int *i, int op_code)
 	int j;
 
 	(*i)++;
+	printf(" i   = %d  \n", *i);
+	//printf(" op code   = %d  \n", op_code);
 	octet = vm->arena[*i];
 	octet = octet >> 2;
 	while (octet)
@@ -58,9 +60,10 @@ void	read_op_code(t_vm *vm, t_proc *proc, int instruction)
 					|| j == 8 || j == 10 || j == 11 || j == 13 || j == 14 ||
 					j == 16)
 				get_param_type(vm, (&(proc->pc)), j);
-			//printf(" i avant   = %d  \n", *i);
+			printf(" i avant   = %d  \n", proc->pc);
+			printf(" op code   = %d  \n", vm->arena[proc->pc]);
 			opc[j](vm, proc);
-			//printf(" i apres  = %d  \n", *i);
+			printf(" i apres  = %d  \n", proc->pc);
 		}
 		j++;
 	}
@@ -140,4 +143,5 @@ void	play(t_vm *vm)
 		vm->cycle_before_checking--;
 		cycle++;
 	}
+	dump_arena(vm);
 }
