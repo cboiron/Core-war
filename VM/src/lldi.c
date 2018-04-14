@@ -6,13 +6,13 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 04:45:35 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/25 04:48:39 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 17:04:57 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	lldi(t_vm *vm, int *i)
+void	lldi(t_vm *vm, t_proc *proc)
 {
 
 }

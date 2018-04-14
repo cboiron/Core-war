@@ -6,13 +6,13 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:13:50 by abrichar          #+#    #+#             */
-/*   Updated: 2018/03/25 08:27:16 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 17:05:45 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	sub(t_vm *vm, int *i)
+void	sub(t_vm *vm, t_proc *proc)
 {
 	/*
 	(*i)++;

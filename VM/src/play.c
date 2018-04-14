@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/14 16:46:39 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 17:10:55 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	get_param_type(t_vm *vm, int *i, int op_code)
 	(*i)++;
 }
 
-void	read_op_code(t_vm *vm, int *i, int instruction)
+void	read_op_code(t_vm *vm, t_proc *proc, int instruction)
 {
-	static void (*opc[17])(t_vm *vm, int *i) = {NULL, &live, &ld, &st, &add,
+	static void (*opc[17])(t_vm *vm, t_proc *proc) = {NULL, &live, &ld, &st, &add,
 		&sub, &and, &or, &xor, &zjmp, &ldi, &sti, &forkk, &lld, &lldi, &lfork,
 		&aff};
 	int		j;
@@ -57,9 +57,9 @@ void	read_op_code(t_vm *vm, int *i, int instruction)
 			if (j == 2 || j == 3 || j == 4 || j == 5 || j == 6 || j == 7
 					|| j == 8 || j == 10 || j == 11 || j == 13 || j == 14 ||
 					j == 16)
-				get_param_type(vm, i, j);
+				get_param_type(vm, (&(proc->pc)), j);
 			//printf(" i avant   = %d  \n", *i);
-			opc[j](vm, i);
+			opc[j](vm, proc);
 			//printf(" i apres  = %d  \n", *i);
 		}
 		j++;
@@ -95,7 +95,7 @@ void	parse_list(t_proc **list, t_vm *vm)
 		//printf("pc debut de la liste de process =  %d\n", tmp->pc);
 		if (tmp->cycle_to_wait == 0)
 		{
-			read_op_code(vm, &(tmp->pc), tmp->instruction);
+			read_op_code(vm, tmp, tmp->instruction);
 		//printf("pc sortie de la liste de read_op_code =  %d\n", tmp->pc);
 			tmp->instruction = 0;
 			tmp->cycle_to_wait = -1;

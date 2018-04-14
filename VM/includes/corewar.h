@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:11:25 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/14 15:49:53 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 17:09:00 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,21 @@ void	check_lives(t_vm *vm, t_proc **list);
 /*
  ** (Instructions).c
  */
-void	live(t_vm *vm, int *i);
-void	ld(t_vm *vm, int *i);
-void	st(t_vm *vm, int *i);
-void	add(t_vm *vm, int *i);
-void	sub(t_vm *vm, int *i);
-void	and(t_vm *vm, int *i);
-void	or(t_vm *vm, int *i);
-void	xor(t_vm *vm, int *i);
-void	zjmp(t_vm *vm, int *i);
-void	ldi(t_vm *vm, int *i);
-void	sti(t_vm *vm, int *i);
-void	forkk(t_vm *vm, int *i);
-void	lld(t_vm *vm, int *i);
-void	lldi(t_vm *vm, int *i);
-void	lfork(t_vm *vm, int *i);
-void	aff(t_vm *vm, int *i);
+void	live(t_vm *vm, t_proc *proc);
+void	ld(t_vm *vm, t_proc *proc);
+void	st(t_vm *vm, t_proc *proc);
+void	add(t_vm *vm, t_proc *proc);
+void	sub(t_vm *vm, t_proc *proc);
+void	and(t_vm *vm, t_proc *proc);
+void	or(t_vm *vm, t_proc *proc);
+void	xor(t_vm *vm, t_proc *proc);
+void	zjmp(t_vm *vm, t_proc *proc);
+void	ldi(t_vm *vm, t_proc *proc);
+void	sti(t_vm *vm, t_proc *proc);
+void	forkk(t_vm *vm, t_proc *proc);
+void	lld(t_vm *vm, t_proc *proc);
+void	lldi(t_vm *vm, t_proc *proc);
+void	lfork(t_vm *vm, t_proc *proc);
+void	aff(t_vm *vm, t_proc *proc);
 
 #endif

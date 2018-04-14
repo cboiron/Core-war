@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/14 16:53:30 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 17:51:24 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,27 @@
 void	kill_process(t_proc *proc, t_proc **list)
 {
 	t_proc	*tmp;
+	t_proc	*next;
 
 	tmp = *list;
-	/*if (proc == *list)
+	if (proc == *list)
 	{
 		if ((*list)->next != NULL)
 		{
-		ft_putendl("proc killed");
-			tmp->next = proc->next;
-			proc->next = NULL;
-			free(proc);
+			printf("id %d\n", proc->id);
+			ft_putendl("proc killed");
+			tmp = *list;
+			*list = (*list)->next;
+			ft_memdel((void**)&tmp);
 		}
-	}*/
-	//else
+		else
+		{
+			printf("id %d\n", proc->id);
+			ft_putendl("proc killed");
+			ft_memdel((void**)list);
+		}
+	}
+	else
 	{
 	ft_putendl("go list");
 		while (tmp->next)
@@ -47,11 +55,6 @@ void	kill_process(t_proc *proc, t_proc **list)
 	}
 }
 
-void	reset_process_counter(t_proc *proc)
-{
-	proc->live_period = 0;
-}
-
 void	check_lives(t_vm *vm, t_proc **list)
 {
 	t_proc	*tmp;
@@ -63,7 +66,8 @@ void	check_lives(t_vm *vm, t_proc **list)
 		if (tmp->live_period == 0)
 			kill_process(tmp, list);
 		else
-			reset_process_counter(tmp);
+			tmp->live_period = 0;
+			//reset_process_counter(tmp);
 		tmp = tmp->next;
 	}
 	if (vm->total_lives_period > NBR_LIVE ||
@@ -74,4 +78,5 @@ void	check_lives(t_vm *vm, t_proc **list)
 	}
 	else
 		vm->last_check++;
+	vm->cycle_before_checking = vm->cycle_to_die;
 }

@@ -6,13 +6,13 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:36:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/03/20 05:09:44 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 17:00:12 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	ldi(t_vm *vm, int *i)
+void	ldi(t_vm *vm, t_proc *proc)
 {/*
 	(*i)++;
 	if ((*i) == 1)

@@ -6,13 +6,13 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:55:45 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/25 09:02:41 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 17:05:37 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	sti(t_vm *vm, int *i)
+void	sti(t_vm *vm, t_proc *proc)
 {
 //	(*i)++;
 

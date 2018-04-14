@@ -6,13 +6,13 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 04:45:35 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/25 04:49:36 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 17:05:09 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	or(t_vm *vm, int *i)
+void	or(t_vm *vm, t_proc *proc)
 {
 
 }

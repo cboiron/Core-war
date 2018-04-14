@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:26:44 by cboiron           #+#    #+#             */
-/*   Updated: 2018/03/25 08:28:04 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 16:59:26 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	get_par(int source, int *i)
 	}
 }
 
-void	and(t_vm *vm, int *i)
+void	and(t_vm *vm, t_proc *proc)
 {
 	/*
 	int		source1;
