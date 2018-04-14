@@ -6,15 +6,38 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/14 16:04:03 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 16:36:05 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	kill_process(t_proc *proc)
+void	kill_process(t_proc *proc, t_proc **list)
 {
+	t_proc	*tmp;
 
+	ft_putendl("proc killed");
+	tmp = *list;
+	if (proc == *list)
+	{
+		if ((*list)->next != NULL)
+		{
+			proc->next = NULL;
+			free(proc);
+		}
+	}
+	else
+	{
+		while (tmp->next)
+		{
+			if (proc == tmp->next)
+			{
+				tmp->next = proc->next;
+				free(proc);
+			}
+		tmp = tmp->next;
+		}
+	}
 }
 
 void	reset_process_counter(t_proc *proc)
@@ -24,13 +47,14 @@ void	reset_process_counter(t_proc *proc)
 
 void	check_lives(t_vm *vm, t_proc **list)
 {
+	ft_putendl("coucou");
 	t_proc	*tmp;
 
 	tmp = *list;
 	while (tmp)
 	{
 		if (tmp->live_period == 0)
-			kill_process(tmp);
+			kill_process(tmp, list);
 		else
 			reset_process_counter(tmp);
 		tmp = tmp->next;
