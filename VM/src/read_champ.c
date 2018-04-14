@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:33 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/11 08:34:25 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 22:19:32 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void		read_champ(t_vm *vm, int nbr_player)
 	read(vm->fd, str, 4); // Octets vides
 	read(vm->fd, comment, COMMENT_LENGTH); //commentaire
 	ft_strcpy(vm->tab_champ[nbr_player].comment, comment);
+	ft_bzero(comment, COMMENT_LENGTH);
 	ret = read(vm->fd, comment, vm->tab_champ[nbr_player].weight - 8);
 	cpy_prog(vm, (unsigned char*)comment, nbr_player);
 	if (vm->tab_champ[nbr_player].id == -1)

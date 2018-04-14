@@ -1,4 +1,4 @@
 .name	"10"
-.comment	"just indirect load"
+.comment	"qwertyuiop"
 
 	ldi r1,%0,r3

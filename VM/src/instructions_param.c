@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 07:43:36 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/14 21:30:06 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/14 22:07:47 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	get_dir(t_vm *vm, int *i, int op_code)
 	{
 		while (j < 4)
 		{
-			dir += vm->arena[j + (*i)];
+			dir += vm->arena[(j + (*i)) % MEM_SIZE];
 	//		ft_printf("dir = %d\n", dir);
 			if (j != 3)
 				dir <<= 8;
