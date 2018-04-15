@@ -6,11 +6,28 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 19:42:16 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/11 23:38:34 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/04/12 00:28:01 by eliajin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+/*
+** Supprime les commentaires
+*/
+char	*rm_comment(char *line)
+{
+	int		i;
+	char	*ret;
+	char	*tmp;
+
+	i = search_char(line, '#');
+	if (i < 0)
+		return(line);
+	tmp = ft_strsub(line, 0, i);
+	ret = ft_epur_str(tmp);
+	free(tmp);
+	return (ret);
+}
 /*
 ** fonction servant à supprimer les commentaires dans le header
 */

@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 12:48:10 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/11 13:15:41 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/04/12 00:50:46 by eliajin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 static int check_size2(char *line, char *macro)
 {
 	if (ft_strcmp(macro, NAME_CMD_STRING) == 0)
-		if (ft_strlen(line) <= 128)
+		if (ft_strlen(line) <= PROG_NAME_LENGTH)
 			return (1);
 	if (ft_strcmp(macro, COMMENT_CMD_STRING) == 0)
-		if (ft_strlen(line) <= 2048)
+		if (ft_strlen(line) <= COMMENT_LENGTH)
 			return (1);
 	return (0);
 }

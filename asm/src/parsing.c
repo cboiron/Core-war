@@ -6,16 +6,41 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 00:17:52 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/11 23:46:12 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/04/15 16:19:30 by eliajin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
+static int	checking_op(char *line, t_asm *env)
+{
+	char *tmp;
+
+	if (env->verif_name == 0 && env->verif_com == 0)
+		return (0);
+	tmp = rm_comment(line);
+	if (is_label_only(tmp) == 1)
+	{
+		add_label(tmp, &env->buff);
+		return (1);
+	}
+	if (check_instruction(tmp) == 1)
+	{
+		add_instru(tmp, &env->buff);
+		return (1);
+	}
+	if (check_lab_and_instru(tmp) == 1)
+	{
+		add_lab_and_instru(tmp, &env->buff);
+		return (1);
+	}
+	return (0);
+}
+
 /*
 ** Fonction pour checker ligne par ligne
 */
-static int check_line(char *line, char *tmp, t_asm *env)
+static int	check_line(char *line, char *tmp, t_asm *env)
 {
 	if (ft_strcmp(line, "") == 0)
 		return (1);
@@ -37,6 +62,8 @@ static int check_line(char *line, char *tmp, t_asm *env)
 			return (1);
 		}
 	}
+	if (checking_op(line, env) == 1)
+		return (1);
 	return (0);
 }
 
@@ -44,7 +71,7 @@ static int check_line(char *line, char *tmp, t_asm *env)
 ** fonction de départ du parsing du fichier
 */
 
-void	parsing(char *file, t_asm *env)
+void		parsing(char *file, t_asm *env)
 {
 	int		fd;
 	char	*line;
@@ -67,4 +94,6 @@ void	parsing(char *file, t_asm *env)
 		free(tmp);
 		index++;
 	}
+	if ((fd = close(fd)) == -1)
+		exit(EXIT_FAILURE);
 }
