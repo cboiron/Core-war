@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 12:48:10 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/12 00:50:46 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/04/18 20:42:36 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int check_size(char *line, t_asm *env, char *macro)
 	{
 		if (check_size2(line, macro) == 1)
 		{
-			env->name = ft_strdup(line);
+			ft_strcpy(env->header->prog_name, line);
 			free(line);
 			return (1);
 		}
@@ -42,7 +42,7 @@ static int check_size(char *line, t_asm *env, char *macro)
 	{
 		if (check_size2(line, macro) == 1)
 		{
-			env->comment = ft_strdup(line);
+			ft_strcpy(env->header->prog_name , line);
 			free(line);
 			return (1);
 		}

@@ -6,27 +6,33 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 22:25:42 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/17 14:55:55 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/04/18 20:53:00 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-/*static void	write_body(int fd, t_asm *env)
+/*static void	    write_file(int fd, t_asm *env)
 {
-
+	write(fd, &env->magic, sizeof(env->magic));
+	while(env->buff_write->next)
+	{
+		ft_putstr("je passe la\n");
+		env->buff_write = env->buff_write->next;
+		write(fd, env->buff_write->content, sizeof(env->buff_write->content));
+		}
 }*/
 
-void		ft_write_out(t_asm *env)
+void			ft_write_out(t_asm *env)
 {
-	int fd;
+	int			fd;
 
-	ft_printf("test");
 	fd = open(env->champ_name, O_CREAT | O_RDWR | O_TRUNC, 0644);
-	write(fd, &env->magic, sizeof(env->magic));
-//	write(fd, env->name, ft_strlen(env->name));
-//	write(fd, &env->length, sizeof(env->length));
-//	write(fd, env->comment, ft_strlen(env->comment));
+//	write_file(fd, env);
+	write(fd, &env->header->magic, sizeof(env->header->magic));
+	write(fd, &env->header->prog_name, sizeof(env->header->prog_name));
+	write(fd, &env->header->prog_size, sizeof(env->header->prog_size));
+	write(fd, &env->header->comment, sizeof(env->header->comment));
 //	write_body(fd, env);
 	close(fd);
 }

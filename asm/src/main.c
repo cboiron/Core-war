@@ -7,7 +7,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:58:03 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/17 13:10:47 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/04/18 20:46:46 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_init(t_asm *env)
 	env->buff = NULL;
 	env->verif_name = 0;
 	env->verif_com = 0;
-	env->magic = COREWAR_EXEC_MAGIC;
+	env->header->magic = reverse_bits(COREWAR_EXEC_MAGIC) << 8;
 }
 
 /*
@@ -43,8 +43,9 @@ static int	detect_errors(int argc, char *champ, t_asm *env)
 	env->champ_name = ft_strjoin(tmp, ".cor");
 	if (!(fd = open(champ, O_RDONLY)))
 		exit(EXIT_FAILURE);
-	env->length = lseek(fd, 0, SEEK_END);
-	if (env->length > CHAMP_MAX_SIZE)
+	env->header = (t_header*)malloc(sizeof(t_header));
+	env->header->prog_size = reverse_bits(lseek(fd, 0, SEEK_END));
+	if (env->header->prog_size > CHAMP_MAX_SIZE)
 		exit(EXIT_FAILURE);
 	if (close(fd) == -1)
 		exit(EXIT_FAILURE);

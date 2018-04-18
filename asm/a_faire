@@ -6,7 +6,7 @@
      By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+          
                                                   +#+#+#+#+#+   +#+             
      Created: 2018/04/05 00:04:44 by eliajin           #+#    #+#               
-     Updated: 2018/04/18 03:07:06 by eliajin          ###   ########.fr         
+     Updated: 2018/04/18 17:56:24 by abrichar         ###   ########.fr         
                                                                                 
 ********************************************************************************
 
@@ -22,4 +22,9 @@ dans fonction pour avancer et écrire il faut des tmp :
 - 1 deuxieme pour rechercher les labels qui sont dans les instructions pour faire l calcul de position relative
 - 1 comme to_write pour avancer et écrire dedans 
 
---> Pour chaque env->buff, j'écris en binaire dans to_write comme ça, plus qu'a fair un boucle qui écris to_writ
+--> Pour chaque env->buff, j'écris en binaire dans to_write comme ça, plus qu'a fair un boucle qui écris to_write
+
+a voir :
+
+dans add_instruction -> 
+Si il y a un label dans l'instruction, la séparée déjà dès le début 

@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 16:24:50 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/15 16:26:40 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/04/18 19:06:15 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,18 @@ int	tab_len(char **tab)
 	i = -1;
 	while (tab[++i]);
 	return (i);
+}
+
+uint64_t	reverse_bits(uint64_t val)
+{
+	uint64_t	res;
+
+	res = 0;
+	while (val)
+	{
+		res <<= 8;
+		res |= val & 0xff;
+		val >>= 8;
+	}
+	return (res);
 }

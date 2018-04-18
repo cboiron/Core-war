@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/17 10:57:18 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/04/18 19:52:13 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include "op.h"
 # include "../../libft/includes/libft.h"
+# include <stdint.h>
 
 # define OUTPUT_EXT "cor"
 # define INPUT_EXT 's'
@@ -26,6 +27,13 @@
 ** format : 2 -> only instruction
 ** format : 3 -> both
 */
+
+typedef struct			s_towrite
+{
+	unsigned char		*content;
+	struct s_towrite	*next;
+}						t_towrite;
+
 typedef struct			s_parsing
 {
 	char				*content;
@@ -36,13 +44,11 @@ typedef struct			s_parsing
 typedef struct			s_asm
 {
 	char				*champ_name;
-	char				*name;
-	char				*comment;
 	t_parsing  			*buff;
+	t_towrite			*buff_write;
+	t_header			*header;
 	int					verif_name;
 	int					verif_com;
-	int					magic;
-	int					length;
 }						t_asm;
 
 /*
@@ -102,6 +108,7 @@ int						ft_aff(char *line);
 ** utilities2.c
 */
 int						tab_len(char **tab);
+uint64_t				reverse_bits(uint64_t val);
 /*
 ** writend.c
 */

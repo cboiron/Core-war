@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 16:10:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/17 13:34:43 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/04/18 18:29:26 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	add_label(char *line, t_parsing **buff)
 
 	if ((tmp = (t_parsing*)malloc(sizeof(t_parsing) * 1)))
 		{
-			ft_putstr("addlabel\n");
 			tmp->content = ft_strdup(line);
 			tmp->format = 1;
 			tmp->next = NULL;
@@ -84,7 +83,6 @@ void	add_lab_and_instru(char *line, t_parsing **buff)
 				tmp2 = *buff;
 				while (tmp2->next)
 					tmp2 = tmp2->next;
-				ft_putstr("rofl\n");
 				tmp2->next = tmp;
 			}
 			else
