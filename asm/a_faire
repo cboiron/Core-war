@@ -6,7 +6,7 @@
      By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+          
                                                   +#+#+#+#+#+   +#+             
      Created: 2018/04/05 00:04:44 by eliajin           #+#    #+#               
-     Updated: 2018/04/14 17:42:41 by eliajin          ###   ########.fr         
+     Updated: 2018/04/18 03:07:06 by eliajin          ###   ########.fr         
                                                                                 
 ********************************************************************************
 
@@ -14,3 +14,12 @@
 ---> repasser dans la liste chainée pour mettre en hexa
 ---> OU mettre directement en hexa ?
 ----> écrire 
+
+--> faire une nouvelle structure comme env->buff mais env->to_write
+avec un content en int, 
+dans fonction pour avancer et écrire il faut des tmp : 
+- 1 comme buff pour avancer dans buff
+- 1 deuxieme pour rechercher les labels qui sont dans les instructions pour faire l calcul de position relative
+- 1 comme to_write pour avancer et écrire dedans 
+
+--> Pour chaque env->buff, j'écris en binaire dans to_write comme ça, plus qu'a fair un boucle qui écris to_writ

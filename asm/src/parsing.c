@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 00:17:52 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/15 16:19:30 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/04/17 13:34:15 by eliajin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,24 @@ static int	checking_op(char *line, t_asm *env)
 {
 	char *tmp;
 
-	if (env->verif_name == 0 && env->verif_com == 0)
+	if (env->verif_name == 0 || env->verif_com == 0)
 		return (0);
 	tmp = rm_comment(line);
 	if (is_label_only(tmp) == 1)
 	{
+		ft_putstr("t1\n");
 		add_label(tmp, &env->buff);
 		return (1);
 	}
 	if (check_instruction(tmp) == 1)
 	{
+		ft_putstr("t2\n");
 		add_instru(tmp, &env->buff);
 		return (1);
 	}
 	if (check_lab_and_instru(tmp) == 1)
 	{
+		ft_putstr("t3\n");
 		add_lab_and_instru(tmp, &env->buff);
 		return (1);
 	}
@@ -94,6 +97,6 @@ void		parsing(char *file, t_asm *env)
 		free(tmp);
 		index++;
 	}
-	if ((fd = close(fd)) == -1)
+	if (close(fd) == -1)
 		exit(EXIT_FAILURE);
 }

@@ -7,7 +7,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:58:03 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/12 00:19:21 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/04/17 13:10:47 by eliajin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	ft_init(t_asm *env)
 	env->buff = NULL;
 	env->verif_name = 0;
 	env->verif_com = 0;
+	env->magic = COREWAR_EXEC_MAGIC;
 }
 
 /*
@@ -31,6 +32,7 @@ static int	detect_errors(int argc, char *champ, t_asm *env)
 {
 	int		x;
 	char	*tmp;
+	int		fd;
 
 	if (argc != 2)
 		return (-1);
@@ -39,6 +41,13 @@ static int	detect_errors(int argc, char *champ, t_asm *env)
 		return (-1);
 	tmp = ft_strsub(champ, 0, x - 1);
 	env->champ_name = ft_strjoin(tmp, ".cor");
+	if (!(fd = open(champ, O_RDONLY)))
+		exit(EXIT_FAILURE);
+	env->length = lseek(fd, 0, SEEK_END);
+	if (env->length > CHAMP_MAX_SIZE)
+		exit(EXIT_FAILURE);
+	if (close(fd) == -1)
+		exit(EXIT_FAILURE);
 	return (1);
 }
 
@@ -50,8 +59,7 @@ int			main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	ft_init(&env);
 	parsing(argv[argc - 1], &env);
-//	reverse_parse(&env.buff);
-//	ft_output(&env);
+	ft_write_out(&env);
 	ft_printf("Writing output program to %s\n", env.champ_name);
 	return(0);
 }
