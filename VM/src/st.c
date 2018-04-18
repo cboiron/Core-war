@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 02:54:45 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/14 17:05:26 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 01:51:06 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	st(t_vm *vm, t_proc *proc)
 {
+	ft_putendl("je fais un st");
 	/*
 	(*i)++;
 	// registre source

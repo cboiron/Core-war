@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 16:32:14 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/11 09:00:44 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/18 06:28:27 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,6 @@ int get_param(char **av, t_vm *vm, int ac)
 	i = 1;
 	while (i < ac)
 	{
-		printf("i = %d \n", i);
-		printf("ac = %d \n", ac);
-		ft_putendl(av[i]);
 		if (((ft_strcmp(av[i], "-n") == 0) || ft_strcmp(av[i], "-dump") == 0))
 		{
 			if (ft_strcmp(av[i], "-dump") == 0 && vm->dump_cycle == -1
@@ -95,7 +92,6 @@ int get_param(char **av, t_vm *vm, int ac)
 			else
 				vm->tab_champ[vm->nbr_next].id = vm->nbr_next;
 		}
-		printf("i = %d \n", i);
 		champs(vm, av[i]);
 		i++;
 	}

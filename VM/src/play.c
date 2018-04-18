@@ -6,19 +6,21 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/14 22:11:00 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 01:56:31 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	get_param_type(t_vm *vm, int *i, int op_code)
+void	get_param_type(t_vm *vm, int *i, int op_code, t_proc *proc)
 {
 	int	octet;
-	int j;
+	int	j;
+	int	index_param;
 
 	(*i)++;
-	printf(" i   = %d  \n", (*i) % MEM_SIZE);
+	index_param = 0;
+	//printf(" i   = %d  \n", (*i) % MEM_SIZE);
 	//printf(" op code   = %d  \n", op_code);
 	octet = vm->arena[(*i) % MEM_SIZE];
 	octet = octet >> 2;
@@ -26,14 +28,32 @@ void	get_param_type(t_vm *vm, int *i, int op_code)
 	{
 		//printf("\n octect = %x \n", octet);
 		if ((octet & 1) && !(octet & 2))
+		{
+			proc->parametres_types[index_param] = REG;
+			(*i)++;
+		}
 			//ft_putendl("reg");
-			get_reg(vm, i);
+			//get_reg(vm, i);
 		else if (octet & 2)
+		{
+			proc->parametres_types[index_param] = DIRECT;
+			if (op_code  == 9 || op_code == 10 || op_code == 11 ||
+					op_code == 11 || op_code == 12 || op_code == 14 ||
+					op_code == 15)
+				(*i) += 2;
+			else
+				(*i) += 4;
+		}
 			//ft_putendl("direct");
-			get_dir(vm, i, op_code);
+			//get_dir(vm, i, op_code);
 		else if (octet & 3)
+		{
+			proc->parametres_types[index_param] = INDIRECT;
+			(*i) += 2;
+		}
 			//ft_putendl("index");
-			get_ind(vm , i);
+			//get_ind(vm , i);
+		index_param++;
 		octet = octet >> 2;
 	}
 	(*i)++;
@@ -54,16 +74,16 @@ void	read_op_code(t_vm *vm, t_proc *proc, int instruction)
 		//	printf(" i   = %d  \n", *i);
 		//	ft_putendl("op code");
 		//	ft_putnbr(j);
-		//	ft_putendl("-------------------");
+		//	ft_putendl("-------------------")
 			//printf("op code  = %d  \n", j);
 			if (j == 2 || j == 3 || j == 4 || j == 5 || j == 6 || j == 7
 					|| j == 8 || j == 10 || j == 11 || j == 13 || j == 14 ||
 					j == 16)
-				get_param_type(vm, (&(proc->pc)), j);
-			printf(" i avant   = %d  \n", proc->pc % MEM_SIZE);
-			printf(" op code   = %d  \n", vm->arena[proc->pc % MEM_SIZE]);
+				get_param_type(vm, (&(proc->pc)), j, proc);
+			//printf(" i avant   = %d  \n", proc->pc);
+			//printf(" op code   = %d  \n", vm->arena[proc->pc]);
 			opc[j](vm, proc);
-			printf(" i apres  = %d  \n", proc->pc % MEM_SIZE);
+			//printf(" i apres  = %d  \n", proc->pc);
 		}
 		j++;
 	}
@@ -134,14 +154,15 @@ void	play(t_vm *vm)
 	parse_list(&list, vm);
 	cycle = 0;
 
-	while (cycle < 4090)
+	while (cycle < 5000)
 	{
 		parse_list(&list, vm);
 		//read_op_code(vm, &cycle);
 		if (vm->cycle_before_checking == 0)
 			check_lives(vm, &list);
 		vm->cycle_before_checking--;
+		//printf("c'est le %d eme cycle\n", cycle);
 		cycle++;
 	}
-	dump_arena(vm);
+	//dump_arena(vm);
 }

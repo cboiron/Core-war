@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:33 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/18 05:40:49 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/18 06:26:58 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@ void			check_size(t_vm *vm, int size, int nb_player, char *str)
 	size_bit |= str[2];
 	size_bit <<= 8;
 	size_bit |= str[3];
-	printf("size %d\n", real_size);
 	vm->tab_champ[nb_player].weight = real_size;
-	printf("size  %d \n", vm->tab_champ[nb_player].weight);
 }
 
 void		cpy_prog(t_vm *vm, unsigned char *prog, int num_player)
@@ -77,9 +75,6 @@ void		read_champ(t_vm *vm, int nbr_player)
 	int		ret;
 
 	size = 0;
-	//if (nbr_player != -1)
-	//	nbr_player = vm->nbr_next;
-	printf("nb player = %d  \n", nbr_player);
 	size = lseek(vm->fd, 0, SEEK_END);
 	lseek(vm->fd, 0, SEEK_SET);
 	ft_bzero(str, 4);
@@ -95,7 +90,6 @@ void		read_champ(t_vm *vm, int nbr_player)
 	ft_strcpy(vm->tab_champ[nbr_player].comment, comment);
 	ft_bzero(comment, COMMENT_LENGTH);
 	ret = read(vm->fd, comment, vm->tab_champ[nbr_player].weight);
-	printf("ret = %d \n", ret);
 	cpy_prog(vm, (unsigned char*)comment, nbr_player);
 	if (vm->tab_champ[nbr_player].id == -1)
 		vm->tab_champ[nbr_player].id = vm->nbr_next + 1;

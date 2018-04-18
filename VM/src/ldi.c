@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:36:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/14 17:00:12 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 01:49:58 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ void	ldi(t_vm *vm, t_proc *proc)
 	//registre = premi param récup + deuxi param récup
 	//registre ? 0 => carry = 1 : carry = 0
 	*/
+	ft_putendl("je fais un ldi");
 }
