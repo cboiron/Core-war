@@ -6,17 +6,32 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:33 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/14 22:19:32 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/18 02:19:58 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
+void	check_magic(const char *str)
+{
+	int	magic[4];
+
+	magic[0] = str[3];
+	magic[1] = str[2];
+	magic[2] = str[1];
+	magic[3] = str[0];
+	if (magic[0] != -13 || magic[1] != -125 || magic[2] != -22 || magic[3] != 0)
+	{
+		ft_putendl("Le numero magique d'un joueur est incorrect.");
+		exit(1);
+	}
+}
+
 void		check_size(t_vm *vm, int size, int nb_player, char *str)
 {
 	if (size - (PROG_NAME_LENGTH + COMMENT_LENGTH) > CHAMP_MAX_SIZE)
 	{
-		ft_putendl("champion trop lourd");
+		ft_putendl("Champion trop lourd");
 		exit(EXIT_FAILURE);
 	}
 	/*
@@ -68,7 +83,9 @@ void		read_champ(t_vm *vm, int nbr_player)
 	printf("nb player = %d  \n", nbr_player);
 	size = lseek(vm->fd, 0, SEEK_END);
 	lseek(vm->fd, 0, SEEK_SET);
+	ft_bzero(str, 4);
 	read(vm->fd, str, 4); // On lit le magic number
+	check_magic(str);
 	read(vm->fd, str, PROG_NAME_LENGTH); // On lit le nom du joueur
 	vm->tab_champ[nbr_player].name = ft_strdup(str);
 	read(vm->fd, str, 4); // Octets vides
