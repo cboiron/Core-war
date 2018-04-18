@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/14 22:11:00 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/18 04:33:54 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	get_param_type(t_vm *vm, int *i, int op_code)
 
 	(*i)++;
 	printf(" i   = %d  \n", (*i) % MEM_SIZE);
-	//printf(" op code   = %d  \n", op_code);
+	printf(" op code   = %d  \n", op_code);
 	octet = vm->arena[(*i) % MEM_SIZE];
 	octet = octet >> 2;
 	while (octet)
@@ -95,11 +95,11 @@ void	parse_list(t_proc **list, t_vm *vm)
 	tmp = *list;
 	while (tmp)
 	{
-		//printf("pc debut de la liste de process =  %d\n", tmp->pc);
+		printf("pc debut de la liste de process =  %d\n", tmp->pc);
 		if (tmp->cycle_to_wait == 0)
 		{
 			read_op_code(vm, tmp, tmp->instruction);
-		//printf("pc sortie de la liste de read_op_code =  %d\n", tmp->pc);
+			printf("pc sortie de la liste de read_op_code =  %d\n", tmp->pc);
 			tmp->instruction = 0;
 			tmp->cycle_to_wait = -1;
 		}

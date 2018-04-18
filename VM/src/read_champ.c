@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:33 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/18 04:28:22 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/18 04:40:15 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void		check_size(t_vm *vm, int size, int nb_player, char *str)
 	size_bit <<= 8;
 	size_bit |= str[3];
 	real_size = size - (PROG_NAME_LENGTH + COMMENT_LENGTH + 16);
-	printf("size %d\n", real_size);
 	if (real_size > CHAMP_MAX_SIZE)
 	{
 		ft_putendl("Champion trop lourd");
@@ -84,7 +83,7 @@ void		read_champ(t_vm *vm, int nbr_player)
 	size = 0;
 	//if (nbr_player != -1)
 	//	nbr_player = vm->nbr_next;
-	printf("nb player = %d  \n", nbr_player);
+	//printf("nb player = %d  \n", nbr_player);
 	size = lseek(vm->fd, 0, SEEK_END);
 	lseek(vm->fd, 0, SEEK_SET);
 	ft_bzero(str, 4);

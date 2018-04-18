@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:11 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/11 08:38:52 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/18 04:39:53 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,5 @@ void	load_champs(t_vm *vm)
 		space += space_bt_champs;
 		num_players++;
 	}
+	printf("size \n");
 }
