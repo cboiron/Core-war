@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:33 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/18 02:19:58 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/18 04:28:22 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,33 +22,37 @@ void	check_magic(const char *str)
 	magic[3] = str[0];
 	if (magic[0] != -13 || magic[1] != -125 || magic[2] != -22 || magic[3] != 0)
 	{
-		ft_putendl("Le numero magique d'un joueur est incorrect.");
+		ft_putendl("Le header d'un joueur est incorrect.");
 		exit(1);
 	}
 }
 
 void		check_size(t_vm *vm, int size, int nb_player, char *str)
 {
-	if (size - (PROG_NAME_LENGTH + COMMENT_LENGTH) > CHAMP_MAX_SIZE)
+	unsigned int size_bit;
+	int			real_size;
+
+	size_bit = str[0];
+	size_bit <<= 8;
+	size_bit |= str[1];
+	size_bit <<= 8;
+	size_bit |= str[2];
+	size_bit <<= 8;
+	size_bit |= str[3];
+	real_size = size - (PROG_NAME_LENGTH + COMMENT_LENGTH + 16);
+	printf("size %d\n", real_size);
+	if (real_size > CHAMP_MAX_SIZE)
 	{
 		ft_putendl("Champion trop lourd");
 		exit(EXIT_FAILURE);
 	}
-	/*
-	 * Besoin de atoi base
-	printf("%d size = \n", size - (PROG_NAME_LENGTH + COMMENT_LENGTH));
-	printf("%d atoi \n", ft_atoi(str));
-	*/
-	//if ((ft_atoi(str)) == size - (PROG_NAME_LENGTH + COMMENT_LENGTH)) {
-//	}
-	/*else
+	if (real_size != size_bit)
 	{
-		ft_putendl("Erreur dans le header");
+		printf("size dans header%d\n", size_bit);
+		vm->tab_champ[nb_player].weight = real_size;
+		printf("Probleme de taille dans le header\n");
 		exit(EXIT_FAILURE);
-	}*/
-		vm->tab_champ[nb_player].weight = size -
-				(PROG_NAME_LENGTH + COMMENT_LENGTH);
-		//printf("size  %d \n", vm->tab_champ[nb_player].weight);
+	}
 }
 
 void		cpy_prog(t_vm *vm, unsigned char *prog, int num_player)
