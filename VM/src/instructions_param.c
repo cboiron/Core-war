@@ -6,24 +6,36 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 07:43:36 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/14 22:07:47 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 03:48:28 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	get_reg(t_vm *vm, int *i)
+int	get_reg(t_vm *vm, int *i)
 {
+	int	reg;
+
+	reg = 0;
+	reg = vm->arena[(*i)];
 	(*i)++;
+	return (reg);
 	//ft_putendl(" + 1");
 }
 
-void	get_ind(t_vm *vm, int *i)
+int	get_ind(t_vm *vm, int *i)
 {
+	int	ind;
+
+	ind = 0;
+	ind += vm->arena[(*i)];
+	ind <<= 8;
+	ind += vm->arena[(*i) + 1];
 	{
-	(*i) += 2;
-//	ft_putendl(" + 2");
+		(*i) += 2;
+		//	ft_putendl(" + 2");
 	}
+	return (ind);
 }
 
 int	get_dir(t_vm *vm, int *i, int op_code)

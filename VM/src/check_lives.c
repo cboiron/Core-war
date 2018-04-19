@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/19 02:07:37 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 03:50:15 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ void	check_lives(t_vm *vm, t_proc **list)
 	if (!(*list))
 	{
 		ft_putendl("Tous les joueurs sont morts");
-		//print winner
-		dump_arena(vm);
 		//sleep(20);
 		exit(1);
 	}

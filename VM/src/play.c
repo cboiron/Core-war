@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/19 02:04:37 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 03:51:34 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,26 @@ void	get_param_type(t_vm *vm, int *i, int op_code, t_proc *proc)
 		if ((octet & 1) && !(octet & 2))
 		{
 			proc->parametres_types[index_param] = REG;
-			(*i)++;
+			//(*i)++;
 		}
 			//ft_putendl("reg");
 			//get_reg(vm, i);
 		else if (octet & 2)
 		{
 			proc->parametres_types[index_param] = DIRECT;
-			if (op_code  == 9 || op_code == 10 || op_code == 11 ||
+			/*if (op_code  == 9 || op_code == 10 || op_code == 11 ||
 					op_code == 11 || op_code == 12 || op_code == 14 ||
-					op_code == 15)
-				(*i) += 2;
-			else
-				(*i) += 4;
+					op_code == 15)*/
+				//(*i) += 2;
+			//else
+				//(*i) += 4;
 		}
 			//ft_putendl("direct");
 			//get_dir(vm, i, op_code);
 		else if (octet & 3)
 		{
 			proc->parametres_types[index_param] = INDIRECT;
-			(*i) += 2;
+			//(*i) += 2;
 		}
 			//ft_putendl("index");
 			//get_ind(vm , i);

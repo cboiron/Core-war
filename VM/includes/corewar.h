@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:11:25 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/14 20:40:25 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 03:28:10 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	load_champs(t_vm *vm);
 /*
  * instructions_param.c
  */
-void	get_reg(t_vm *vm, int *i);
-void	get_ind(t_vm *vm, int *i);
+int		get_reg(t_vm *vm, int *i);
+int		get_ind(t_vm *vm, int *i);
 int		get_dir(t_vm *vm, int *i, int op_code);
 /*
  ** process.c
