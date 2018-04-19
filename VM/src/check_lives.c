@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/14 22:23:36 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 02:07:37 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ void	kill_process(t_proc *proc, t_proc **list)
 		}
 		else
 		{
-			printf("id %d\n", proc->id);
-			ft_putendl("proc killed");
+			printf("le vainqueur est le joueur numero : %d\n", proc->id);
 			ft_memdel((void**)list);
 		}
 	}

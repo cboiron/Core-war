@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/19 01:56:31 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 02:04:37 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ void	read_op_code(t_vm *vm, t_proc *proc, int instruction)
 		&aff};
 	int		j;
 
+	proc->parametres_types[0] = 0;
+	proc->parametres_types[1] = 0;
+	proc->parametres_types[2] = 0;
 	j = 1;
 	while (j <= 16)
 	{
@@ -154,13 +157,18 @@ void	play(t_vm *vm)
 	parse_list(&list, vm);
 	cycle = 0;
 
-	while (cycle < 5000)
+	while (42)
 	{
 		parse_list(&list, vm);
 		//read_op_code(vm, &cycle);
 		if (vm->cycle_before_checking == 0)
 			check_lives(vm, &list);
 		vm->cycle_before_checking--;
+		if (cycle == vm->dump_cycle)
+		{
+			dump_arena(vm);
+			break ;
+		}
 		//printf("c'est le %d eme cycle\n", cycle);
 		cycle++;
 	}
