@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/07 02:04:46 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/11 07:04:08 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 01:38:56 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ t_proc	*new_process(t_champ champ, int num_player, t_vm *vm)
 	proc->cycle_to_wait = -1;
 	proc->instruction = 0;
 	proc->next = NULL;
+	proc->parametres_types[0] = 0;
+	proc->parametres_types[1] = 0;
+	proc->parametres_types[2] = 0;
 	while (i < REG_NUMBER)
 	{
 		proc->reg[i] = 0;

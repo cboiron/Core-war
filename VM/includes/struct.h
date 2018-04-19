@@ -6,12 +6,15 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 00:38:28 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/14 16:04:06 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 01:31:46 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+# define REG 1
+# define DIRECT 2
+# define INDIRECT 3
 
 # include "op.h"
 typedef struct		s_proc
@@ -23,6 +26,7 @@ typedef struct		s_proc
 	int				cycle_to_wait;
 	int				live_period;
 	int				id;
+	int				parametres_types[3];
 	struct s_proc	*next;
 }					t_proc;
 

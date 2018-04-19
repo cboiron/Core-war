@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:26:44 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/14 16:59:26 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 01:49:22 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	get_par(int source, int *i)
 
 void	and(t_vm *vm, t_proc *proc)
 {
+	ft_putendl("je fais un and");
 	/*
 	int		source1;
 	int		source2;

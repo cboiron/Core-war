@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:27:37 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/14 21:10:21 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 01:51:56 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	zjmp(t_vm *vm, t_proc *proc)
 {
 	int	dir;
 
+	ft_putendl("je fais un zjmp");
 	proc->pc++;
 	dir = get_dir(vm, &(proc->pc), 9);
 	//si carry == 1

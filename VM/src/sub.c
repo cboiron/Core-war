@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:13:50 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/14 17:05:45 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 01:51:35 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	sub(t_vm *vm, t_proc *proc)
 {
+	ft_putendl("je fais un sub");
 	/*
 	(*i)++;
 	//registre[*i + 3] = registre[*i + 1] - registre[*i + 2]
