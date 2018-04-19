@@ -6,14 +6,9 @@
      By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+          
                                                   +#+#+#+#+#+   +#+             
      Created: 2018/04/05 00:04:44 by eliajin           #+#    #+#               
-     Updated: 2018/04/19 15:21:28 by abrichar         ###   ########.fr         
+     Updated: 2018/04/19 23:35:45 by abrichar         ###   ########.fr         
                                                                                 
 ********************************************************************************
-
---> Tout mettre dans une liste chainée
----> repasser dans la liste chainée pour mettre en hexa
----> OU mettre directement en hexa ?
-----> écrire 
 
 --> faire une nouvelle structure comme env->buff mais env->to_write
 avec un content en int, 
@@ -24,16 +19,16 @@ dans fonction pour avancer et écrire il faut des tmp :
 
 --> Pour chaque env->buff, j'écris en binaire dans to_write comme ça, plus qu'a fair un boucle qui écris to_write
 
-a voir :
+a gérer : 
+- name ou comment de plusieurs lignes !
 
-dans add_instruction -> 
-Si il y a un label dans l'instruction, la séparée déjà dès le début 
+================================================================================================================
+opcode octetdecodage param01 param02 param03
+	   				 		 param01 param02
+							 		 paran01
 
-a gérer : name ou comment de plusieurs lignes !
 
-modifier le parsing : 
-on va trouver automatiquement le nom en premier puis le commentaire puis le reste 
-sans compter les commentaires obviously 
-.name et sur la meme ligne le début du name , même chose pour commentaire
+live => 01 00 00 00 xx
 
-LONGUEUR fichier max : calculer pendant le parsing -> exit si pas bon avant d'écrire
+
+ballec des vérifications -> Elles sont faites dans le parsing logiquement !
