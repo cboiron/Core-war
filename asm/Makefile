@@ -6,7 +6,7 @@
 #    By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 18:10:12 by abrichar          #+#    #+#              #
-#    Updated: 2018/04/19 14:42:15 by abrichar         ###   ########.fr        #
+#    Updated: 2018/04/19 21:43:58 by abrichar         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -47,7 +47,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -f $(LIBFT)
+	@rm -f $(LIB)
 
 re: fclean all
 

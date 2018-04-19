@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 14:36:46 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/19 17:21:17 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/19 19:20:34 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@ static void	size_line(char *line, t_asm *env)
 	int		j;
 
 	op_tab = get_ops();
-	i = search_char(line, ':');
-	if (i != -1)
-	i = -1;
+	i = 0;
 	separate = ft_strsplit(line, ' ');
 	while (op_tab[++i].name)
 		if (ft_strcmp(op_tab[i].name, separate[0]) == 0)
 			break;
-	env->header->prog_size++;
+	env->header->prog_size = 1;
 	if (op_tab[i].carry)
 		env->header->prog_size++;
 	j = 0;
@@ -51,6 +49,7 @@ void		verif_size(char *line, t_asm *env)
 	{
 		line = ft_strsub(line, i + 1, ft_strlen(line));
 	}
+	line = ft_epur_str(line);
 	size_line(line, env);
 	free(line);
 }

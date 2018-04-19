@@ -7,7 +7,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:58:03 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/19 17:24:08 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/19 19:48:09 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ static void	ft_init(t_asm *env)
 	env->buff = NULL;
 	env->verif_name = 0;
 	env->verif_com = 0;
-	env->header->magic = reverse_bits(COREWAR_EXEC_MAGIC) << 8;
 	env->header = (t_header*)malloc((sizeof(unsigned int) * 2) +
 									sizeof(char) *
 									(PROG_NAME_LENGTH +
 									 COMMENT_LENGTH + 2));
+	env->header->magic = reverse_bits(COREWAR_EXEC_MAGIC) << 8;
+
 }
 
 /*
