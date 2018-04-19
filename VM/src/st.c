@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 02:54:45 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/19 04:44:00 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 05:04:46 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	st(t_vm *vm, t_proc *proc)
 		proc->reg[arg2] = proc->reg[arg1];
 	else
 	{
-		
+		//ecrire dans la memoire
 	}
 	/*
 	(*i)++;

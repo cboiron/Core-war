@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 07:43:36 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/19 03:48:28 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 05:12:51 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	get_reg(t_vm *vm, int *i)
 	int	reg;
 
 	reg = 0;
-	reg = vm->arena[(*i)];
+	reg = vm->arena[(*i) % MEM_SIZE];
 	(*i)++;
 	return (reg);
 	//ft_putendl(" + 1");
@@ -28,9 +28,9 @@ int	get_ind(t_vm *vm, int *i)
 	int	ind;
 
 	ind = 0;
-	ind += vm->arena[(*i)];
+	ind += vm->arena[(*i) % MEM_SIZE];
 	ind <<= 8;
-	ind += vm->arena[(*i) + 1];
+	ind += vm->arena[((*i) + 1) % MEM_SIZE];
 	{
 		(*i) += 2;
 		//	ft_putendl(" + 2");
@@ -48,9 +48,9 @@ int	get_dir(t_vm *vm, int *i, int op_code)
 	if (op_code == 9 || op_code == 10 || op_code == 11 || op_code == 12 ||
 			op_code == 14 || op_code == 15)
 	{
-		dir += vm->arena[(*i)];
+		dir += vm->arena[(*i) % MEM_SIZE];
 		dir <<= 8;
-		dir += vm->arena[(*i) + 1];
+		dir += vm->arena[((*i) + 1) % MEM_SIZE];
 		(*i) += 2;
 //		ft_putendl(" + 2");
 	}
