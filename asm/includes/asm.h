@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/18 19:52:13 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/19 01:47:17 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@
 # define OUTPUT_EXT "cor"
 # define INPUT_EXT 's'
 # define REG_DIGIT "0123456"
+# define USAGE "usage: ./asm <fichier_source.s> \n"
+# define ERR_OPEN "Erreur 01 : Erreur à l'ouverture du fichier."
+# define ERR_CLOSE "Erreur 02 : Erreur à la fermeture du fichier."
+# define ERR_SYNTAX "Erreur 03 - Ligne non conforme."
+# define ERR_NAME "Erreur 04 : Erreur au nom."
+# define ERR_COM "Erreur 05 : Erreur au commentaire."
+# define ERR_SIZE "Erreur 06 : champion trop grand."
+# define ERR_ARG "Erreur 07 : Argument non valide."
+# define ERR_NBR_ARG "Erreur 08 : Pas assez d'argument."
+
 
 /*
 ** format : 1 -> only label
@@ -49,8 +59,14 @@ typedef struct			s_asm
 	t_header			*header;
 	int					verif_name;
 	int					verif_com;
+	int					fd;
 }						t_asm;
 
+/*
+** main.c
+*/
+void					msg_error(char *msg, int index);
+void					verif_size(t_asm *env);
 /*
 ** line.c
 */
@@ -72,13 +88,13 @@ int						isindir(char *line);
 /*
 ** dump_header.c
 */
-int						dump_header(char *line, t_asm *env, char *macro);
+void					dump_header(char *line, t_asm *env, char *macro, int index);
 /*
 ** check_op.c
 */
 int						is_label_only(char *line);
-int						check_instruction(char *line);
-int						check_lab_and_instru(char *line);
+int						check_instruction(char *line, int index);
+int						check_lab_and_instru(char *line, int index);
 /*
 ** add_op.c
 */
@@ -88,22 +104,22 @@ void					add_lab_and_instru(char *line, t_parsing **buff);
 /*
 ** de op1.c à op4.c
 */
-int						ft_live(char *line);
-int						ft_ld(char *line);
-int						ft_st(char *line);
-int						ft_add(char *line);
-int						ft_sub(char *line);
-int						ft_and(char *line);
-int						ft_or(char *line);
-int						ft_xor(char *line);
-int						ft_zjmp(char *line);
-int						ft_ldi(char *line);
-int						ft_sti(char *line);
-int						ft_fork(char *line);
-int						ft_lld(char *line);
-int						ft_lldi(char *line);
-int						ft_lfork(char *line);
-int						ft_aff(char *line);
+int						ft_live(char *line, int index);
+int						ft_ld(char *line, int index);
+int						ft_st(char *line, int index);
+int						ft_add(char *line, int index);
+int						ft_sub(char *line, int index);
+int						ft_and(char *line, int index);
+int						ft_or(char *line, int index);
+int						ft_xor(char *line, int index);
+int						ft_zjmp(char *line, int index);
+int						ft_ldi(char *line, int index);
+int						ft_sti(char *line, int index);
+int						ft_fork(char *line, int index);
+int						ft_lld(char *line, int index);
+int						ft_lldi(char *line, int index);
+int						ft_lfork(char *line, int index);
+int						ft_aff(char *line, int index);
 /*
 ** utilities2.c
 */
