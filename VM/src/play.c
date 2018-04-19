@@ -6,11 +6,21 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/19 03:51:34 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 04:10:19 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+void	reverse_params(t_proc *proc)
+{
+	int	tmp1;
+
+	tmp1 = proc->parametres_types[2];
+	proc->parametres_types[2] = proc->parametres_types[0];
+	//proc->parametres_types[1] = proc->parametres_types[];
+	proc->parametres_types[0] = tmp1;
+}
 
 void	get_param_type(t_vm *vm, int *i, int op_code, t_proc *proc)
 {
@@ -56,6 +66,7 @@ void	get_param_type(t_vm *vm, int *i, int op_code, t_proc *proc)
 		index_param++;
 		octet = octet >> 2;
 	}
+	reverse_params(proc);
 	(*i)++;
 }
 

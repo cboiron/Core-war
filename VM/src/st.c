@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 02:54:45 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/19 01:51:06 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/19 04:44:00 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,25 @@
 void	st(t_vm *vm, t_proc *proc)
 {
 	ft_putendl("je fais un st");
+	printf("type du param : %d  .\n", proc->parametres_types[0]);
+	printf("type du param : %d  .\n", proc->parametres_types[1]);
+	printf("type du param : %d  .\n", proc->parametres_types[2]);
+	int	arg1;
+	int	arg2;
+
+	arg1 = get_reg(vm, &(proc->pc));
+	if (proc->parametres_types[1] == REG)
+		arg2 = get_reg(vm, &(proc->pc));
+	else
+		arg2 = get_ind(vm, &(proc->pc));
+	if (!is_reg(arg1) || (proc->parametres_types[1] == REG && !is_reg(arg2)))
+		return ;
+	if (proc->parametres_types[1] == REG)
+		proc->reg[arg2] = proc->reg[arg1];
+	else
+	{
+		
+	}
 	/*
 	(*i)++;
 	// registre source
