@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 16:10:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/18 18:29:26 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/19 12:31:04 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ void	add_instru(char *line, t_parsing **buff)
 		{
 			tmp->content = ft_strdup(line);
 			tmp->format = 2;
+			tmp->next = NULL;
 			if (*buff)
 			{
 				tmp2 = *buff;
 				while (tmp2->next)
 					tmp2 = tmp2->next;
 				tmp2->next = tmp;
-				*buff = tmp;
 			}
 			else
 			{

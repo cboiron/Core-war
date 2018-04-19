@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 22:25:42 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/18 23:29:41 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/19 17:06:43 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void			ft_write_out(t_asm *env)
 
 	fd = open(env->champ_name, O_CREAT | O_RDWR | O_TRUNC, 0644);
 //	write_file(fd, env);
+	ft_printf("size : %d\n",env->header->prog_size);
 	write(fd, &env->header->magic, sizeof(env->header->magic));
 	write(fd, &env->header->prog_name, sizeof(env->header->prog_name));
 	write(fd, &env->header->prog_size, sizeof(env->header->prog_size));

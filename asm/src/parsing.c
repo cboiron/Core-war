@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 00:17:52 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/19 01:58:06 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/19 17:20:59 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,12 @@ static void	checking_op(char *line, t_asm *env, int index)
 		msg_error(ERR_COM, index);
 	tmp = rm_comment(line);
 	if (is_label_only(tmp) == 1)
-	{
 		add_label(tmp, &env->buff);
-		return ;
-	}
-	if (check_instruction(tmp, index) == 1)
-	{
+	else if (check_instruction(tmp, index) == 1)
 		add_instru(tmp, &env->buff);
-		return ;
-	}
-	if (check_lab_and_instru(tmp, index) == 1)
-	{
+	else if (check_lab_and_instru(tmp, index) == 1)
 		add_lab_and_instru(tmp, &env->buff);
-		return ;
-	}
-	msg_error("", index);
+	else msg_error("", index);
 }
 
 /*
@@ -60,10 +51,11 @@ static void	check_line(char *line, char *tmp, t_asm *env, int index)
 		{
 			dump_header(tmp, env, COMMENT_CMD_STRING, index);
 			env->verif_com = 1;
-			verif_size(env);
 			return ;
 		}
+
 	checking_op(line, env, index);
+	verif_size(line, env);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/19 01:47:17 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/19 17:20:19 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "../../libft/includes/libft.h"
 # include <stdint.h>
 
+# define OP_COUNT 17
 # define OUTPUT_EXT "cor"
 # define INPUT_EXT 's'
 # define REG_DIGIT "0123456"
@@ -66,7 +67,10 @@ typedef struct			s_asm
 ** main.c
 */
 void					msg_error(char *msg, int index);
-void					verif_size(t_asm *env);
+/*
+** prog_size.c
+*/
+void					verif_size(char *line, t_asm *env);
 /*
 ** line.c
 */
@@ -101,6 +105,11 @@ int						check_lab_and_instru(char *line, int index);
 void					add_label(char *line, t_parsing **buff);
 void					add_instru(char *line, t_parsing **buff);
 void					add_lab_and_instru(char *line, t_parsing **buff);
+/*
+** op.c
+*/
+t_op					*get_ops();
+t_op					*get_op(int opcode);
 /*
 ** de op1.c à op4.c
 */

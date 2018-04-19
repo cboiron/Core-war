@@ -7,7 +7,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:58:03 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/19 01:53:00 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/19 17:24:08 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,6 @@ void		msg_error(char *msg, int index)
 	exit(EXIT_FAILURE);
 }
 /*
-** gestion de l'erreur de size
-*/
-void		verif_size(t_asm *env)
-{
-	env->header->prog_size -= lseek(env->fd, 0, SEEK_CUR);
-	ft_printf("seek_cur : %d\n", lseek(env->fd, 0, SEEK_CUR));
-	if (env->header->prog_size > CHAMP_MAX_SIZE)
-		msg_error(ERR_SIZE, 0);
-}
-/*
 ** fonction d'initialisation des la structure
 */
 static void	ft_init(t_asm *env)
@@ -43,6 +33,10 @@ static void	ft_init(t_asm *env)
 	env->verif_name = 0;
 	env->verif_com = 0;
 	env->header->magic = reverse_bits(COREWAR_EXEC_MAGIC) << 8;
+	env->header = (t_header*)malloc((sizeof(unsigned int) * 2) +
+									sizeof(char) *
+									(PROG_NAME_LENGTH +
+									 COMMENT_LENGTH + 2));
 }
 
 /*
@@ -51,9 +45,9 @@ static void	ft_init(t_asm *env)
 
 static int	detect_errors(int argc, char *champ, t_asm *env)
 {
+	int		fd;
 	int		x;
 	char	*tmp;
-	int		fd;
 
 	if (argc != 2)
 		msg_error(USAGE, 0);
@@ -64,11 +58,6 @@ static int	detect_errors(int argc, char *champ, t_asm *env)
 	env->champ_name = ft_strjoin(tmp, ".cor");
 	if (!(fd = open(champ, O_RDONLY)))
 		msg_error(ERR_OPEN, 0);
-	env->header = (t_header*)malloc((sizeof(unsigned int) * 2) +
-									sizeof(char) *
-									(PROG_NAME_LENGTH +
-									 COMMENT_LENGTH + 2));
-	env->header->prog_size = lseek(fd, 0, SEEK_END);
 	if (close(fd) == -1)
 		msg_error(ERR_CLOSE, 0);
 	return (1);

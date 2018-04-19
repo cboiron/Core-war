@@ -6,7 +6,7 @@
 #    By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 18:10:12 by abrichar          #+#    #+#              #
-#    Updated: 2018/04/17 10:56:32 by eliajin          ###   ########.fr        #
+#    Updated: 2018/04/19 14:42:15 by abrichar         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -17,7 +17,7 @@ CPPFLAGS = -Iincludes
 
 SRC_NAME = main.c line.c parsing.c utilities.c dump_header.c \
 			add_op.c check_op.c op1.c op2.c op3.c op4.c utilities2.c \
-			writend.c
+			writend.c op.c prog_size.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 SRC_PATH = src
