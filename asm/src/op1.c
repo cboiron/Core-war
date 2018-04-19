@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 12:05:29 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/15 13:46:10 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/04/19 01:36:02 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** Vérification que chaque op possède les bons arguments
 */
-int	ft_live(char *line)
+int	ft_live(char *line, int index)
 {
 	char *tmp;
 
@@ -24,11 +24,11 @@ int	ft_live(char *line)
 		return (0);
 	tmp = ft_strsub(line, 4, ft_strlen(line));
 	if (isdir(tmp) == 0)
-		return (0);
+		msg_error(ERR_ARG, index);
 	return (1);
 }
 
-int	ft_ld(char *line)
+int	ft_ld(char *line, int index)
 {
 	char *tmp;
 	char **sp;
@@ -39,15 +39,15 @@ int	ft_ld(char *line)
 	tmp = ft_strsub(line, 2, ft_strlen(line));
 	sp = ft_strsplit(tmp, SEPARATOR_CHAR);
 	if (tab_len(sp) != 2)
-		return (0);
+		msg_error(ERR_ARG, index);
 	if (isdir(sp[0]) == 0 && isindir(sp[0]) == 0)
-		return (0);
+		msg_error(ERR_ARG, index);
 	if (isreg(sp[1]) == 0)
-		return (0);
+		msg_error(ERR_ARG, index);
 	return (1);
 }
 
-int	ft_st(char *line)
+int	ft_st(char *line, int index)
 {
 	char *tmp;
 	char **sp;
@@ -58,15 +58,15 @@ int	ft_st(char *line)
 	tmp = ft_strsub(line, 2, ft_strlen(line));
 	sp = ft_strsplit(tmp, SEPARATOR_CHAR);
 	if (tab_len(sp) != 2)
-		return (0);
+		msg_error(ERR_NBR_ARG, index);
 	if (isreg(sp[0]) == 0)
-		return (0);
+		msg_error(ERR_ARG, index);
 	if (isreg(sp[1]) == 0 && isindir(sp[1]) == 0)
-		return (0);
+		msg_error(ERR_ARG, index);
 	return (1);
 }
 
-int ft_add(char *line)
+int ft_add(char *line, int index)
 {
 	char *tmp;
 	char **sp;
@@ -77,13 +77,13 @@ int ft_add(char *line)
 	tmp = ft_strsub(line, 3, ft_strlen(line));
 	sp = ft_strsplit(tmp, SEPARATOR_CHAR);
 	if (tab_len(sp) != 3)
-		return (0);
+		msg_error(ERR_NBR_ARG, index);
 	if (isreg(sp[0]) == 0 && isreg(sp[1]) == 0 && isreg(sp[2]) == 0)
-		return (0);
+		msg_error(ERR_ARG, index);
 	return (1);
 }
 
-int	ft_sub(char *line)
+int	ft_sub(char *line, int index)
 {
 	char *tmp;
 	char **sp;
@@ -94,8 +94,8 @@ int	ft_sub(char *line)
 	tmp = ft_strsub(line, 3, ft_strlen(line));
 	sp = ft_strsplit(tmp, SEPARATOR_CHAR);
 	if (tab_len(sp) != 3)
-		return (0);
+		msg_error(ERR_NBR_ARG, index);
 	if (isreg(sp[0]) == 0 && isreg(sp[1]) == 0 && isreg(sp[2]) == 0)
-		return (0);
+		msg_error(ERR_ARG, index);
 	return (1);
 }

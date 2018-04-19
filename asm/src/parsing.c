@@ -6,65 +6,64 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 00:17:52 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/18 18:29:45 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/19 01:58:06 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static int	checking_op(char *line, t_asm *env)
+static void	checking_op(char *line, t_asm *env, int index)
 {
 	char *tmp;
 
-	if (env->verif_name == 0 || env->verif_com == 0)
-		return (0);
+	if (env->verif_name == 0)
+		msg_error(ERR_NAME, index);
+	if (env->verif_com == 0)
+		msg_error(ERR_COM, index);
 	tmp = rm_comment(line);
 	if (is_label_only(tmp) == 1)
 	{
 		add_label(tmp, &env->buff);
-		return (1);
+		return ;
 	}
-	if (check_instruction(tmp) == 1)
+	if (check_instruction(tmp, index) == 1)
 	{
 		add_instru(tmp, &env->buff);
-		return (1);
+		return ;
 	}
-	if (check_lab_and_instru(tmp) == 1)
+	if (check_lab_and_instru(tmp, index) == 1)
 	{
 		add_lab_and_instru(tmp, &env->buff);
-		return (1);
+		return ;
 	}
-	return (0);
+	msg_error("", index);
 }
 
 /*
 ** Fonction pour checker ligne par ligne
 */
-static int	check_line(char *line, char *tmp, t_asm *env)
+static void	check_line(char *line, char *tmp, t_asm *env, int index)
 {
 	if (ft_strcmp(line, "") == 0)
-		return (1);
+		return ;
 	if (line[0] == '#')
-		return (1);
-	if (is_header(line, NAME_CMD_STRING) == 1 && env->verif_name == 0)
-	{
-		if (dump_header(tmp, env, NAME_CMD_STRING) == 1)
+		return ;
+	if (env->verif_name == 0)
+		if (is_header(tmp, NAME_CMD_STRING) == 1)
 		{
+			dump_header(tmp, env, NAME_CMD_STRING, index);
 			env->verif_name = 1;
-			return (1);
+			return ;
 		}
-	}
-	if (is_header(line, COMMENT_CMD_STRING) == 1 && env->verif_com == 0)
-	{
-		if (dump_header(tmp, env, COMMENT_CMD_STRING) == 1)
+	if (env->verif_com == 0 && env->verif_name)
+		if (is_header(tmp, COMMENT_CMD_STRING) == 1)
 		{
+			dump_header(tmp, env, COMMENT_CMD_STRING, index);
 			env->verif_com = 1;
-			return (1);
+			verif_size(env);
+			return ;
 		}
-	}
-	if (checking_op(line, env) == 1)
-		return (1);
-	return (0);
+	checking_op(line, env, index);
 }
 
 /*
@@ -73,27 +72,21 @@ static int	check_line(char *line, char *tmp, t_asm *env)
 
 void		parsing(char *file, t_asm *env)
 {
-	int		fd;
 	char	*line;
 	int		index;
 	char	*tmp;
 
 	index = 1;
-	if (!(fd = open(file, O_RDONLY)))
-		exit(EXIT_FAILURE);
-	while (get_next_line(fd, &line) > 0)
+	if (!(env->fd = open(file, O_RDONLY)))
+		msg_error(ERR_OPEN, 0);
+	while (get_next_line(env->fd, &line) > 0)
 	{
 		tmp = ft_epur_str(line);
-		if (check_line(tmp, line, env) == 0)
-		{
-			ft_printf("%s\n", line);
-			ft_printf("erreur de syntaxe à la ligne %d\n", index);
-			exit(EXIT_FAILURE);
-		}
+		check_line(tmp, line, env, index);
 		free(line);
 		free(tmp);
 		index++;
 	}
-	if (close(fd) == -1)
+	if (close(env->fd) == -1)
 		exit(EXIT_FAILURE);
 }

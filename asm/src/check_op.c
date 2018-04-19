@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:23:15 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/17 13:21:41 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/04/19 01:47:28 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** initialise le tableau
 */
-static void	get_in_tab(int (*tab[16])(char *))
+static void	get_in_tab(int (*tab[16])(char *, int))
 {
 	if(tab)
 	{
@@ -61,25 +61,23 @@ int			is_label_only(char *line)
 /*
 ** Regarde si que instruction
 */
-int			check_instruction(char *line)
+int			check_instruction(char *line, int index)
 {
-	int (*tab[16])(char*);
+	int (*tab[16])(char*, int);
 	int i;
 
 	i = -1;
 	get_in_tab(tab);
 	while (++i < 16)
-	{
-		if (tab[i](line) == 1)
+		if (tab[i](line, index) == 1)
 			return (1);
-	}
 	return (0);
 }
 
 /*
 ** Regarde si les deux
 */
-int			check_lab_and_instru(char *line)
+int			check_lab_and_instru(char *line, int index)
 {
 	int		i;
 	char	*sub;
@@ -95,7 +93,7 @@ int			check_lab_and_instru(char *line)
 	sub = ft_strsub(line, i + 1, (ft_strlen(line) - i));
 	clean = ft_epur_str(sub);
 	free (sub);
-	if (check_instruction(clean) == 0)
+	if (check_instruction(clean, index) == 0)
 		return (0);
 	free(clean);
 	return (1);
