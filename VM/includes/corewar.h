@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:11:25 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/19 04:33:11 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/21 00:25:18 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,7 @@ void	lfork(t_vm *vm, t_proc *proc);
 void	aff(t_vm *vm, t_proc *proc);
 
 int		is_reg(int value);
+
+void	write_in_memory(t_vm *vm, int value, int adress, int pc);
 
 #endif

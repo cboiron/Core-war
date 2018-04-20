@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 02:54:45 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/19 05:04:46 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/21 01:06:47 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 void	st(t_vm *vm, t_proc *proc)
 {
 	ft_putendl("je fais un st");
+	/*
 	printf("type du param : %d  .\n", proc->parametres_types[0]);
 	printf("type du param : %d  .\n", proc->parametres_types[1]);
 	printf("type du param : %d  .\n", proc->parametres_types[2]);
+	*/
 	int	arg1;
 	int	arg2;
 
@@ -32,23 +34,7 @@ void	st(t_vm *vm, t_proc *proc)
 		proc->reg[arg2] = proc->reg[arg1];
 	else
 	{
+		write_in_memory(vm, proc->reg[arg1 - 1], arg2, proc->pc);
 		//ecrire dans la memoire
 	}
-	/*
-	(*i)++;
-	// registre source
-	// si registre == 0 : carry = 1
-	// sinon carry = 0
-	*i += 1;
-	if (vm->arena[*i] == 112)
-	{
-		// registre
-		*i += 1;
-	}
-	else if (vm->arena[*i] == 80)
-	{
-		// index
-		*i += 2;
-	}
-	*/
 }
