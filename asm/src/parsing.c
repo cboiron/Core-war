@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 00:17:52 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/19 17:20:59 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/20 17:54:29 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,5 @@ void		parsing(char *file, t_asm *env)
 		index++;
 	}
 	if (close(env->fd) == -1)
-		exit(EXIT_FAILURE);
+		msg_error(ERR_CLOSE, 0);
 }

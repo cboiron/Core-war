@@ -6,11 +6,22 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 16:24:50 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/18 23:19:30 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/20 15:27:10 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+int	check_param(char *param)
+{
+	if (isreg(param))
+		return (1);
+	if (isdir(param))
+		return (2);
+	if (isindir(param))
+		return (3);
+	return (0);
+}
 
 int	tab_len(char **tab)
 {

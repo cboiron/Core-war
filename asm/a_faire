@@ -6,7 +6,7 @@
      By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+          
                                                   +#+#+#+#+#+   +#+             
      Created: 2018/04/05 00:04:44 by eliajin           #+#    #+#               
-     Updated: 2018/04/19 23:35:45 by abrichar         ###   ########.fr         
+     Updated: 2018/04/20 14:33:35 by abrichar         ###   ########.fr         
                                                                                 
 ********************************************************************************
 
@@ -32,3 +32,12 @@ live => 01 00 00 00 xx
 
 
 ballec des vérifications -> Elles sont faites dans le parsing logiquement !
+
+ld, st, add, sub, and, or, xor, ldi, lld, lldi, aff
+
+octet de codage 
+
+01 : Registre 
+10 : Direct
+11 : index
+
