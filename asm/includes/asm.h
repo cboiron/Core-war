@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/19 17:20:19 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/20 17:38:06 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,10 +132,12 @@ int						ft_aff(char *line, int index);
 /*
 ** utilities2.c
 */
+int						check_param(char *param);
 int						tab_len(char **tab);
 uint64_t				reverse_bits(uint64_t val);
 /*
-** writend.c
+** writend.c & write_params.c
 */
-void					ft_write_out(t_asm *env);
+void					write_out(t_asm *env);
+void					write_params(int fd, char *split);
 #endif

@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 12:05:29 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/19 01:36:02 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/20 18:18:51 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_live(char *line, int index)
 {
 	char *tmp;
 
-	tmp = ft_strsub(line, 0, 4);
+	tmp = ft_strsub(line, 0, search_char(line, ' '));
 	if (ft_strcmp(tmp, "live") != 0)
 		return (0);
 	tmp = ft_strsub(line, 4, ft_strlen(line));
@@ -33,7 +33,7 @@ int	ft_ld(char *line, int index)
 	char *tmp;
 	char **sp;
 
-	tmp = ft_strsub(line, 0, 2);
+	tmp = ft_strsub(line, 0, search_char(line, ' '));
 	if (ft_strcmp(tmp, "ld") != 0)
 		return (0);
 	tmp = ft_strsub(line, 2, ft_strlen(line));
@@ -52,7 +52,7 @@ int	ft_st(char *line, int index)
 	char *tmp;
 	char **sp;
 
-	tmp = ft_strsub(line, 0, 2);
+	tmp = ft_strsub(line, 0, search_char(line, ' '));
 	if (ft_strcmp(tmp, "st") != 0)
 		return (0);
 	tmp = ft_strsub(line, 2, ft_strlen(line));
@@ -71,7 +71,7 @@ int ft_add(char *line, int index)
 	char *tmp;
 	char **sp;
 
-	tmp = ft_strsub(line, 0, 3);
+	tmp = ft_strsub(line, 0, search_char(line, ' '));
 	if (ft_strcmp(tmp, "add") != 0)
 		return (0);
 	tmp = ft_strsub(line, 3, ft_strlen(line));
@@ -88,7 +88,7 @@ int	ft_sub(char *line, int index)
 	char *tmp;
 	char **sp;
 
-	tmp = ft_strsub(line, 0, 3);
+	tmp = ft_strsub(line, 0, search_char(line, ' '));
 	if (ft_strcmp(tmp, "sub") != 0)
 		return (0);
 	tmp = ft_strsub(line, 3, ft_strlen(line));

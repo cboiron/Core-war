@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:23:15 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/19 13:22:33 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/20 23:35:58 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,16 @@ static void	get_in_tab(int (*tab[16])(char *, int))
 */
 int			is_label_only(char *line)
 {
-	char	*ptr;
+	int		ptr;
 	size_t	i;
 	size_t	length;
 
 	i = -1;
 	length = ft_strlen(line) - 1;
-	ptr = NULL;
 	if (line[length] != LABEL_CHAR)
 		return (0);
 	while (++i < length - 1)
-		if (!(ptr = ft_strchr(LABEL_CHARS, line[i])))
+		if ((ptr = search_char(LABEL_CHARS, line[i])) == -1)
 			return (0);
 	return (1);
 }
