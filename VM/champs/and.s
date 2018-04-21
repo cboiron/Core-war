@@ -1,4 +1,4 @@
 .name	"6"
 .comment	"just and"
 
-	and r2,r2,r2 # selection vers les modules
+	and 10,10,r2 # selection vers les modules
