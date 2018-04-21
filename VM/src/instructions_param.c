@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 07:43:36 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/19 05:12:51 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/21 04:52:13 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ int	get_dir(t_vm *vm, int *i, int op_code)
 		}
 		(*i) += 4;
 	}
-	ft_printf("dir final = %d\n", dir);
+	//ft_printf("dir final = %d\n", dir);
 	return (dir);
 }
