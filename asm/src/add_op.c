@@ -6,12 +6,19 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 16:10:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/19 12:31:04 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/21 23:27:48 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
+/*
+** Calcule et stocke la taille des buff->content dans buff->size
+*/
+unsigned int	size_to_add()
+{
+
+}
 /*
 ** On ajoute à buff un element label
 */
@@ -23,7 +30,6 @@ void	add_label(char *line, t_parsing **buff)
 	if ((tmp = (t_parsing*)malloc(sizeof(t_parsing) * 1)))
 		{
 			tmp->content = ft_strdup(line);
-			tmp->format = 1;
 			tmp->next = NULL;
 			if (*buff)
 			{
@@ -48,7 +54,6 @@ void	add_instru(char *line, t_parsing **buff)
 	if ((tmp = (t_parsing*)malloc(sizeof(t_parsing) * 1)))
 		{
 			tmp->content = ft_strdup(line);
-			tmp->format = 2;
 			tmp->next = NULL;
 			if (*buff)
 			{
@@ -76,7 +81,6 @@ void	add_lab_and_instru(char *line, t_parsing **buff)
 	if ((tmp = (t_parsing*)malloc(sizeof(t_parsing) * 1)))
 		{
 			tmp->content = ft_strdup(line);
-			tmp->format = 3;
 			tmp->next = NULL;
 			if (*buff)
 			{

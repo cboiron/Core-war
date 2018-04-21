@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/21 17:44:50 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/21 23:29:10 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct			s_towrite
 typedef struct			s_parsing
 {
 	char				*content;
-	int					format;
+	unsigned int		size;
 	struct s_parsing	*next;
 }						t_parsing;
 
@@ -105,6 +105,7 @@ int						check_lab_and_instru(char *line, int index);
 void					add_label(char *line, t_parsing **buff);
 void					add_instru(char *line, t_parsing **buff);
 void					add_lab_and_instru(char *line, t_parsing **buff);
+unsigned int			size_to_add()
 /*
 ** op.c
 */

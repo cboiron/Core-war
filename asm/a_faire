@@ -6,7 +6,7 @@
      By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+          
                                                   +#+#+#+#+#+   +#+             
      Created: 2018/04/05 00:04:44 by eliajin           #+#    #+#               
-     Updated: 2018/04/21 18:02:08 by abrichar         ###   ########.fr         
+     Updated: 2018/04/21 18:11:01 by abrichar         ###   ########.fr         
                                                                                 
 ********************************************************************************
 
@@ -21,19 +21,6 @@ dans fonction pour avancer et écrire il faut des tmp :
 
 a gérer : 
 - name ou comment de plusieurs lignes !
-
-================================================================================================================
-opcode octetdecodage param01 param02 param03
-	   				 		 param01 param02
-							 		 paran01
-
-
-live => 01 00 00 00 xx
-
-
-ballec des vérifications -> Elles sont faites dans le parsing logiquement !
-
-ld, st, add, sub, and, or, xor, ldi, lld, lldi, aff
 
 octet de codage 
 
