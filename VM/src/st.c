@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 02:54:45 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/21 02:57:39 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/21 03:04:25 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	st(t_vm *vm, t_proc *proc)
 	int	pc_debut;
 
 	pc_debut = proc->pc;
-	printf("pc avant  = %d \n", proc->pc);
 	arg1 = get_reg(vm, &(proc->pc));
 	if (proc->parametres_types[1] == REG)
 		arg2 = get_reg(vm, &(proc->pc));
@@ -37,8 +36,6 @@ void	st(t_vm *vm, t_proc *proc)
 		proc->reg[arg2] = proc->reg[arg1];
 	else
 	{
-		printf("reg %d\n",proc->reg[arg1 - 1]);
 		write_in_memory(vm, proc->reg[arg1 - 1], (pc_debut - 2) + (arg2 % IDX_MOD));
 	}
-	printf("pc apres  = %d \n", proc->pc);
 }
