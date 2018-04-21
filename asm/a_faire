@@ -6,7 +6,7 @@
      By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+          
                                                   +#+#+#+#+#+   +#+             
      Created: 2018/04/05 00:04:44 by eliajin           #+#    #+#               
-     Updated: 2018/04/20 14:33:35 by abrichar         ###   ########.fr         
+     Updated: 2018/04/21 18:02:08 by abrichar         ###   ########.fr         
                                                                                 
 ********************************************************************************
 
@@ -41,3 +41,15 @@ octet de codage
 10 : Direct
 11 : index
 
+============================
+
+--- Verif d'écriture à faire
+- label
+
+
+-- prog_size : 
+possible probleme ?
+-- attention aux espaces ! ça fait segfault
+
+-- label :
+Je peux utiliser format parce que je sépare les instructions et les label. Vu que je n'utilise par format (ou je mets une autre variable) je peux calculer combien fait le buff->content et calculer par rapport à ca ? 
