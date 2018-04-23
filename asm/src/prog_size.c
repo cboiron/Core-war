@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 14:36:46 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/19 19:20:34 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/23 20:45:48 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void	size_line(char *line, t_asm *env)
 	op_tab = get_ops();
 	i = 0;
 	separate = ft_strsplit(line, ' ');
+	if (tab_len(separate) < 1)
+		return ;
 	while (op_tab[++i].name)
 		if (ft_strcmp(op_tab[i].name, separate[0]) == 0)
 			break;
@@ -37,7 +39,7 @@ static void	size_line(char *line, t_asm *env)
 		else if (isindir(separate[j]))
 			env->header->prog_size += IND_SIZE;
 }
-//inutilisée pour l'instant !
+
 void		verif_size(char *line, t_asm *env)
 {
 	int		verif;

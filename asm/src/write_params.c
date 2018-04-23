@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 16:46:23 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/21 18:00:35 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/23 19:30:40 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ void	write_params(int fd, char *split, t_op actual)
 	while (++i < tab_len(splited))
 	{
 		to_write = 0;
-		if (check_param(splited[i]) == 1)
+		if (check_param(splited[i]) == REG_CODE)
 		{
 			ft_printf("reg : %s\n", splited[i]);
 			to_write = (unsigned int)ft_atoi(ft_strsub(splited[i], 1,
 										 ft_strlen(splited[i])));
 			write(fd, &to_write, 1);
 		}
-		else if (check_param(splited[i]) == 3)
+		else if (check_param(splited[i]) == IND_CODE)
 		{
 			ft_printf("ind : %s\n", splited[i]);
 			to_write = ft_atoi(ft_strsub(splited[i], 0,

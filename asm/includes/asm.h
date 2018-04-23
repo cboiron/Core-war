@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/21 23:29:10 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/23 20:26:36 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,17 @@
 ** format : 3 -> both
 */
 
-typedef struct			s_towrite
+/*typedef struct			s_towrite
 {
 	unsigned char		*content;
 	struct s_towrite	*next;
-}						t_towrite;
+	} 					t_towrite;*/
 
 typedef struct			s_parsing
 {
 	char				*content;
 	unsigned int		size;
+	int					label;
 	struct s_parsing	*next;
 }						t_parsing;
 
@@ -56,7 +57,7 @@ typedef struct			s_asm
 {
 	char				*champ_name;
 	t_parsing  			*buff;
-	t_towrite			*buff_write;
+//	t_towrite			*buff_write;
 	t_header			*header;
 	int					verif_name;
 	int					verif_com;
@@ -105,7 +106,7 @@ int						check_lab_and_instru(char *line, int index);
 void					add_label(char *line, t_parsing **buff);
 void					add_instru(char *line, t_parsing **buff);
 void					add_lab_and_instru(char *line, t_parsing **buff);
-unsigned int			size_to_add()
+unsigned int			size_instru(t_parsing *tmp);
 /*
 ** op.c
 */
@@ -133,12 +134,14 @@ int						ft_aff(char *line, int index);
 /*
 ** utilities2.c
 */
+void					clear_split(char **splited);
 int						check_param(char *param);
 int						tab_len(char **tab);
 uint64_t				reverse_bits(uint64_t val);
 /*
 ** writend.c & write_params.c
 */
+t_op					find_opcode(char *name);
 void					write_out(t_asm *env);
 void					write_params(int fd, char *split, t_op actual);
 #endif

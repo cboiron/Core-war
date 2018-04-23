@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 22:25:42 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/21 17:55:46 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/23 20:33:52 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static unsigned int	write_octetcodage(t_op actual, char *arg)
 	param2 = 0;
 	param3 = 0;
 	splited = ft_strsplit(arg, SEPARATOR_CHAR);
+	clear_split(splited);
 	if (actual.opcode != 1 && actual.opcode != 9 && actual.opcode != 12
 		&& actual.opcode != 15)
 	{
@@ -36,7 +37,7 @@ static unsigned int	write_octetcodage(t_op actual, char *arg)
     return(param1 + param2 + param3);
 }
 
-static t_op		write_opcode(char *name, t_asm *env)
+t_op		find_opcode(char *name)
 {
 	t_op *tab_op;
 	int i;
@@ -44,7 +45,6 @@ static t_op		write_opcode(char *name, t_asm *env)
 	i = -1;
 	tab_op = get_ops();
 	while (ft_strcmp(tab_op[++i].name, name) != 0);
-	write(env->fd, &tab_op[i].opcode, sizeof(int) / 4);
 	return (tab_op[i]);
 }
 
@@ -57,11 +57,19 @@ static void	    write_body(t_asm *env)
 
 	while (env->buff)
 	{
+		if (env->buff->label == 1)
+			env->buff = env->buff->next;
 		i = 0;
 		split = ft_strsplit(env->buff->content, ' ');
+		clear_split(split);
+		ft_printf("%s\n", env->buff->content);
 		if (split[i][ft_strlen(split[i]) - 1] == LABEL_CHAR)
 			i++;
-		actual = write_opcode(split[i++], env);
+		ft_printf("cctwoa\n");
+		ft_printf("%s\n", split[i]);
+		actual = find_opcode(split[i++]);
+		ft_printf("byetwoa\n");
+		write(env->fd, &actual.opcode, sizeof(int) / 4);
 		to_write = write_octetcodage(actual, split[i]);
 		if (to_write != 0)
 			write(env->fd, &to_write, sizeof(int) / 4);
