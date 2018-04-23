@@ -6,37 +6,13 @@
      By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+          
                                                   +#+#+#+#+#+   +#+             
      Created: 2018/04/05 00:04:44 by eliajin           #+#    #+#               
-     Updated: 2018/04/21 18:11:01 by abrichar         ###   ########.fr         
+     Updated: 2018/04/24 00:56:02 by abrichar         ###   ########.fr         
                                                                                 
 ********************************************************************************
-
---> faire une nouvelle structure comme env->buff mais env->to_write
-avec un content en int, 
-dans fonction pour avancer et écrire il faut des tmp : 
-- 1 comme buff pour avancer dans buff
-- 1 deuxieme pour rechercher les labels qui sont dans les instructions pour faire l calcul de position relative
-- 1 comme to_write pour avancer et écrire dedans 
-
---> Pour chaque env->buff, j'écris en binaire dans to_write comme ça, plus qu'a fair un boucle qui écris to_write
-
-a gérer : 
-- name ou comment de plusieurs lignes !
-
-octet de codage 
-
-01 : Registre 
-10 : Direct
-11 : index
-
-============================
 
 --- Verif d'écriture à faire
 - label
 
 
--- prog_size : 
-possible probleme ?
 -- attention aux espaces ! ça fait segfault
-
--- label :
-Je peux utiliser format parce que je sépare les instructions et les label. Vu que je n'utilise par format (ou je mets une autre variable) je peux calculer combien fait le buff->content et calculer par rapport à ca ? 
+-- name ou comment de pls lignes 
