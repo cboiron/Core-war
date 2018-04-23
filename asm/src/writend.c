@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 22:25:42 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/23 21:12:26 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/24 01:05:53 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	    write_body(t_asm *env)
 			to_write = write_octetcodage(actual, split[i]);
 			if (to_write != 0)
 				write(env->fd, &to_write, sizeof(int) / 4);
-			write_params(env->fd, split[i], actual);
+			write_params(env, split[i], actual);
 		}
 		env->buff = env->buff->next;
 	}

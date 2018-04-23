@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 14:36:46 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/23 23:36:54 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/24 01:04:57 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void		verif_size(t_asm *env)
 	{
 		tmp = tmp->next;
 	    size_total += tmp->size;
-		ft_printf("tmp : %s ==> %d\n", tmp->content, tmp->size);
 	}
 	env->header->prog_size = size_total;
 }

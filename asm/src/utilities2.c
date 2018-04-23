@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 16:24:50 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/23 19:32:41 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/24 01:14:04 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		clear_split(char **splited)
 
 	i = -1;
 	while (++i < tab_len(splited))
-		splited[i] = ft_strtrim(splited[i]);
+		splited[i] = ft_epur_str(splited[i]);
 }
 
 int	check_param(char *param)

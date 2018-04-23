@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/23 23:31:45 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/24 00:50:31 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,5 @@ uint64_t				reverse_bits(uint64_t val);
 */
 t_op					find_opcode(char *name);
 void					write_out(t_asm *env);
-void					write_params(int fd, char *split, t_op actual);
+void					write_params(t_asm *env, char *split, t_op actual);
 #endif
