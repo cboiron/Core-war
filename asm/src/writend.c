@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 22:25:42 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/23 21:08:42 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/23 21:12:26 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	    write_body(t_asm *env)
 
 	while (env->buff)
 	{
-		if (env->buff->label == 1)
+		while (env->buff->label == 1 && env->buff->next)
 			env->buff = env->buff->next;
 		i = 0;
 		split = ft_strsplit(env->buff->content, ' ');
