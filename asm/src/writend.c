@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 22:25:42 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/23 20:33:52 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/23 21:08:42 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,17 @@ static void	    write_body(t_asm *env)
 		i = 0;
 		split = ft_strsplit(env->buff->content, ' ');
 		clear_split(split);
-		ft_printf("%s\n", env->buff->content);
 		if (split[i][ft_strlen(split[i]) - 1] == LABEL_CHAR)
 			i++;
-		ft_printf("cctwoa\n");
-		ft_printf("%s\n", split[i]);
-		actual = find_opcode(split[i++]);
-		ft_printf("byetwoa\n");
-		write(env->fd, &actual.opcode, sizeof(int) / 4);
-		to_write = write_octetcodage(actual, split[i]);
-		if (to_write != 0)
-			write(env->fd, &to_write, sizeof(int) / 4);
-		write_params(env->fd, split[i], actual);
+		if (split[i])
+		{
+			actual = find_opcode(split[i++]);
+			write(env->fd, &actual.opcode, sizeof(int) / 4);
+			to_write = write_octetcodage(actual, split[i]);
+			if (to_write != 0)
+				write(env->fd, &to_write, sizeof(int) / 4);
+			write_params(env->fd, split[i], actual);
+		}
 		env->buff = env->buff->next;
 	}
 }

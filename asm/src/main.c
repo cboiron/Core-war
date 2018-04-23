@@ -7,7 +7,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:58:03 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/23 20:40:35 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/23 21:10:36 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		msg_error(char *msg, int index)
 	if (!index)
 		ft_printf("%s\n", msg);
 	else
-		ft_printf("erreur de syntax à la ligne : %d|%s\n", index, msg);
+		ft_printf("erreur de syntax à la ligne : %d| --> %s\n", index, msg);
 	exit(EXIT_FAILURE);
 }
 /*
