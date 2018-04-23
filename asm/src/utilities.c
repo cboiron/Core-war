@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 00:17:45 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/15 16:08:12 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/04/24 00:30:20 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,16 @@ int	ft_is_number(char *line, int begin)
 int isreg(char *line)
 {
 	char *tmp;
+	int i;
 
 	tmp = ft_epur_str(line);
 	if (tmp[0] != 'r' || ft_strlen(tmp) > 3)
 		return (0);
 	if (ft_strlen(tmp) == 3)
 	{
-		if (search_char(REG_DIGIT, tmp[2]) == -1 || tmp[1] != '1')
+		ft_printf("test\n");
+		i = ft_atoi(ft_strsub(tmp, 1, 2));
+		if (i > 99)
 			return (0);
 	}
 	if (ft_strlen(tmp) == 2)

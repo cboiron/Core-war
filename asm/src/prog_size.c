@@ -6,52 +6,27 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 14:36:46 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/23 20:45:48 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/23 23:36:54 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static void	size_line(char *line, t_asm *env)
+void		verif_size(t_asm *env)
 {
-	char	**separate;
-	t_op	*op_tab;
-	int		i;
-	int		j;
+	unsigned int size_total;
+	t_parsing *tmp;
 
-	op_tab = get_ops();
-	i = 0;
-	separate = ft_strsplit(line, ' ');
-	if (tab_len(separate) < 1)
-		return ;
-	while (op_tab[++i].name)
-		if (ft_strcmp(op_tab[i].name, separate[0]) == 0)
-			break;
-	env->header->prog_size = 1;
-	if (op_tab[i].carry)
-		env->header->prog_size++;
-	j = 0;
-	while (separate[++j])
-		if (isreg(separate[j]))
-			env->header->prog_size += REG_SIZE;
-		else if (isdir(separate[j]))
-			env->header->prog_size += DIR_SIZE;
-		else if (isindir(separate[j]))
-			env->header->prog_size += IND_SIZE;
-}
-
-void		verif_size(char *line, t_asm *env)
-{
-	int		verif;
-	int		i;
-
-	verif = 0;
-	line = ft_epur_str(line);
-	if ((i = search_char(line, ':')) > 0)
+	env->header->prog_size = 0;
+	size_total = 0;
+	tmp = env->buff;
+	if (!env->buff)
+		size_total = tmp->size;
+	while (tmp->next)
 	{
-		line = ft_strsub(line, i + 1, ft_strlen(line));
+		tmp = tmp->next;
+	    size_total += tmp->size;
+		ft_printf("tmp : %s ==> %d\n", tmp->content, tmp->size);
 	}
-	line = ft_epur_str(line);
-	size_line(line, env);
-	free(line);
+	env->header->prog_size = size_total;
 }

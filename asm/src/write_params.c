@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 16:46:23 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/23 19:30:40 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/24 00:20:18 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	write_dir(char *dir, int fd, t_op actual)
 		to_write = ft_atoi(ft_strsub(dir, 1,
 									 ft_strlen(dir)));
 		if (actual.opcode == 9 || actual.opcode == 12 || actual.opcode == 15 ||
-			actual.opcode == 14)
+			actual.opcode == 14 || actual.opcode == 10 || actual.opcode == 11)
 			ft_putshort_fd(to_write, fd);
 		else
 			ft_putint_fd(to_write, fd);

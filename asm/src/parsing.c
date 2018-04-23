@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 00:17:52 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/23 20:45:51 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/23 23:32:00 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	check_line(char *line, char *tmp, t_asm *env, int index)
 			return ;
 		}
 	checking_op(line, env, index);
-	verif_size(line, env);
+//	verif_size(line, env);
 }
 
 /*

@@ -7,7 +7,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:58:03 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/23 21:10:36 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/23 23:32:13 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int			main(int argc, char **argv)
 	detect_errors(argc, argv[1], &env);
 	ft_init(&env);
 	parsing(argv[argc - 1], &env);
+	verif_size(&env);
 	write_out(&env);
 	ft_printf("Writing output program to %s\n", env.champ_name);
 	return(0);

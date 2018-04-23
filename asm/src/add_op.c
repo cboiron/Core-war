@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 16:10:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/23 20:34:50 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/24 00:20:27 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,24 @@ unsigned int	size_instru(t_parsing *tmp)
 	splited = ft_strsplit(tmp->content, ' ');
 	size += 1;
 	actual = find_opcode(splited[0]);
+	if (actual.opcode != 1 && actual.opcode != 9 && actual.opcode != 12 && actual.opcode != 15)
+		size += 1;
 	splited = ft_strsplit(splited[1], ',');
 	clear_split(splited);
+	ft_printf("content : %s| tab_len : %d\n", tmp->content, tab_len(splited));
 	while (++i < tab_len(splited))
 	{
+		ft_printf("splited[i] => %s\n", splited[i]);
 		if (check_param(splited[i]) == REG_CODE)
 			size++;
-		else if (check_param (splited[i]) == IND_CODE)
+		else if (check_param(splited[i]) == DIR_CODE)
 		{
-			if ((actual.opcode == 1 || actual.opcode == 2 || actual.opcode >= 6
-				|| actual.opcode <= 8 || actual.opcode == 13) && splited[i][1]
-				== ':')
-				size += 4;
-			else
+			if (actual.opcode == 9 || actual.opcode == 12 ||
+				actual.opcode == 15 || actual.opcode == 14 ||
+				actual.opcode == 10 || actual.opcode == 11)
 				size += 2;
+			else
+				size += 4;
 		}
 		else
 			size += 2;
@@ -58,7 +62,8 @@ void	add_label(char *line, t_parsing **buff)
 	if ((tmp = (t_parsing*)malloc(sizeof(t_parsing) * 1)))
 		{
 			tmp->content = ft_strdup(line);
-			tmp->size = 1;
+			ft_printf("label : %s\n", tmp->content);
+			tmp->size = 0;
 			tmp->label = 1;
 			tmp->next = NULL;
 			if (*buff)

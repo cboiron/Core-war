@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/23 20:26:36 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/23 23:31:45 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void					msg_error(char *msg, int index);
 /*
 ** prog_size.c
 */
-void					verif_size(char *line, t_asm *env);
+void					verif_size(t_asm *env);
 /*
 ** line.c
 */
