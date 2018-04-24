@@ -6,17 +6,9 @@
      By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+          
                                                   +#+#+#+#+#+   +#+             
      Created: 2018/04/05 00:04:44 by eliajin           #+#    #+#               
-     Updated: 2018/04/24 01:12:51 by abrichar         ###   ########.fr         
+     Updated: 2018/04/24 13:17:52 by abrichar         ###   ########.fr         
                                                                                 
 ********************************************************************************
 
 --- Verif d'écriture à faire
 - label
-
-
--- attention aux espaces ! ça fait segfault
--- name ou comment de pls lignes 
-
--- faire un clear_split(splited) après chaque ft_strsplit 
-   --> fonctionne pas assez bien 
-   	   --> autre solution ?

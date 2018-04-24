@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 16:10:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/24 00:20:27 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/24 13:16:28 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,17 @@ unsigned int	size_instru(t_parsing *tmp)
 	t_op	actual;
 
 	size = 0;
-	i = -1;
-	splited = ft_strsplit(tmp->content, ' ');
+	i = search_char(tmp->content, ' ');
 	size += 1;
-	actual = find_opcode(splited[0]);
-	if (actual.opcode != 1 && actual.opcode != 9 && actual.opcode != 12 && actual.opcode != 15)
+	actual = find_opcode(ft_strsub(tmp->content, 0, i));
+	if (actual.opcode != 1 && actual.opcode != 9 &&
+		actual.opcode != 12 && actual.opcode != 15)
 		size += 1;
-	splited = ft_strsplit(splited[1], ',');
+	splited = ft_strsplit(ft_strsub(tmp->content, i + 1, ft_strlen(tmp->content)), ',');
 	clear_split(splited);
-	ft_printf("content : %s| tab_len : %d\n", tmp->content, tab_len(splited));
+	i = -1;
 	while (++i < tab_len(splited))
 	{
-		ft_printf("splited[i] => %s\n", splited[i]);
 		if (check_param(splited[i]) == REG_CODE)
 			size++;
 		else if (check_param(splited[i]) == DIR_CODE)
@@ -62,7 +61,6 @@ void	add_label(char *line, t_parsing **buff)
 	if ((tmp = (t_parsing*)malloc(sizeof(t_parsing) * 1)))
 		{
 			tmp->content = ft_strdup(line);
-			ft_printf("label : %s\n", tmp->content);
 			tmp->size = 0;
 			tmp->label = 1;
 			tmp->next = NULL;
@@ -77,6 +75,28 @@ void	add_label(char *line, t_parsing **buff)
 				*buff = tmp;
 		}
 }
+/*
+** Réécris le format correct de l'instruction
+*/
+char	*re_write(char *instru)
+{
+	unsigned int i;
+	unsigned int j;
+	char *format;
+
+	i = search_char(instru, ' ');
+	format = ft_strsub(instru, 0, i + 1);
+	j = i + 1;
+	while (++i < ft_strlen(instru))
+	{
+		while (instru[i] == ' ')
+			i++;
+		format[j] = instru[i];
+		j++;
+	}
+	ft_printf("%s|%s|\n", instru, format);
+	return (format);
+}
 
 /*
 ** On ajoute à buff un élément instruction
@@ -90,7 +110,7 @@ void	add_instru(char *line, t_parsing **buff)
 
 	if ((tmp = (t_parsing*)malloc(sizeof(t_parsing) * 1)))
 		{
-			tmp->content = ft_epur_str(ft_strdup(line));
+			tmp->content = re_write(ft_epur_str(ft_strdup(line)));
 			name = ft_strsub(tmp->content, 0, search_char(tmp->content, ' '));
 			actual = find_opcode(name);
 			tmp->size = size_instru(tmp);

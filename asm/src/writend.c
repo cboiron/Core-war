@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 22:25:42 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/24 01:05:53 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/24 12:56:20 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static unsigned int	write_octetcodage(t_op actual, char *arg)
 			param2 = check_param(splited[1]) << 4;
 		if (actual.nb_arg == 3)
 			param3 = check_param(splited[2]) << 2;
+		ft_printf("testing\n");
 	}
     return(param1 + param2 + param3);
 }
@@ -47,12 +48,11 @@ t_op		find_opcode(char *name)
 	while (ft_strcmp(tab_op[++i].name, name) != 0);
 	return (tab_op[i]);
 }
-
-static void	    write_body(t_asm *env)
+static void    write_body(t_asm *env)
 {
-	char		**split;
-	int			i;
-	t_op		actual;
+	char	**split;
+	int		i;
+	t_op	actual;
 	unsigned int to_write;
 
 	while (env->buff)
