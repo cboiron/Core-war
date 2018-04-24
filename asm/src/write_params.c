@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 16:46:23 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/24 01:05:35 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/24 19:23:30 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,34 @@ static void	ft_putshort_fd(short n, int fd)
 	ft_putchar_fd(n & 0xff, fd);
 }
 
-static void	write_label(char *dir, int fd, t_asm *env)
+static void	write_label(char *dir, int fd, t_asm *env, unsigned int size_to_here)
 {
 	unsigned int pos;
+	t_parsing *tmp;
+	unsigned int pos_label;
+
 	if (fd && env)
 		ft_printf("label : %s\n", dir);
 	pos = 0;
-	if (0)
+	tmp = env->buff;
+	while (tmp)
 	{
+		while (tmp->label != 1 && tmp)
+			tmp = tmp->next;
+		if (ft_strcmp(tmp->content, dir) == 0)
+				break;
+		tmp = tmp->next;
+	}
+	pos_label = tmp->size_to_here;
+	pos = pos_label - size_to_here;
+	ft_putint_fd(pos, fd);
 //récupérer la position actuelle
 //chercher à partir du début du buff le label que l'on cherche
 //quand trouver, faire une addition en considérant que ma position est negative
 //finito
-	}
 }
 
-static void	write_dir(char *dir, t_asm *env, t_op actual)
+static void	write_dir(char *dir, t_asm *env, t_op actual, unsigned int size_to_here)
 {
 	unsigned int to_write;
 
@@ -56,10 +68,10 @@ static void	write_dir(char *dir, t_asm *env, t_op actual)
 			ft_putint_fd(to_write, env->fd);
 	}
 	else
-		write_label(dir, env->fd, env);
+		write_label(dir, env->fd, env, size_to_here);
 }
 
-void	write_params(t_asm *env, char *split, t_op actual)
+void	write_params(t_asm *env, char *split, t_op actual, unsigned int size_to_here)
 {
 	char **splited;
 	int i;
@@ -84,6 +96,6 @@ void	write_params(t_asm *env, char *split, t_op actual)
 			ft_putshort_fd(to_write, env->fd);
 		}
 		else
-			write_dir(splited[i], env, actual);
+			write_dir(splited[i], env, actual, size_to_here);
 	}
 }

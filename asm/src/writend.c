@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 22:25:42 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/24 12:56:20 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/24 19:23:01 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,15 @@ static void    write_body(t_asm *env)
 	int		i;
 	t_op	actual;
 	unsigned int to_write;
+	t_parsing *tmp;
 
-	while (env->buff)
+	tmp = env->buff;
+	while (tmp)
 	{
-		while (env->buff->label == 1 && env->buff->next)
-			env->buff = env->buff->next;
+		while (tmp->label == 1 && tmp->next)
+			tmp = tmp->next;
 		i = 0;
-		split = ft_strsplit(env->buff->content, ' ');
+		split = ft_strsplit(tmp->content, ' ');
 		clear_split(split);
 		if (split[i][ft_strlen(split[i]) - 1] == LABEL_CHAR)
 			i++;
@@ -71,9 +73,9 @@ static void    write_body(t_asm *env)
 			to_write = write_octetcodage(actual, split[i]);
 			if (to_write != 0)
 				write(env->fd, &to_write, sizeof(int) / 4);
-			write_params(env, split[i], actual);
+			write_params(env, split[i], actual, tmp->size_to_here);
 		}
-		env->buff = env->buff->next;
+		tmp = tmp->next;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/24 12:35:47 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/24 19:18:20 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct			s_parsing
 {
 	char				*content;
 	unsigned int		size;
+	unsigned int		size_to_here;
 	int					label;
 	struct s_parsing	*next;
 }						t_parsing;
@@ -142,5 +143,5 @@ uint64_t				reverse_bits(uint64_t val);
 */
 t_op					find_opcode(char *name);
 void					write_out(t_asm *env);
-void					write_params(t_asm *env, char *split, t_op actual);
+void					write_params(t_asm *env, char *split, t_op actual, unsigned int size_to_here);
 #endif

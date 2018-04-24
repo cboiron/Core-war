@@ -7,11 +7,29 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:58:03 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/23 23:32:13 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/24 19:07:48 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+/*
+** mets size_to_here dans chaque buff
+*/
+static void	size_all(t_asm *env)
+{
+	t_parsing *tmp;
+	unsigned int size_max;
+
+	tmp = env->buff;
+	size_max = 0;
+	while (tmp)
+	{
+		size_max += tmp->size;
+		tmp->size_to_here = size_max;
+		tmp = tmp->next;
+	}
+}
 
 /*
 ** permets de quitter le programme après avoir affiché l'erreur
@@ -71,6 +89,7 @@ int			main(int argc, char **argv)
 	ft_init(&env);
 	parsing(argv[argc - 1], &env);
 	verif_size(&env);
+	size_all(&env);
 	write_out(&env);
 	ft_printf("Writing output program to %s\n", env.champ_name);
 	return(0);
