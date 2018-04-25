@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/25 03:35:25 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/25 04:39:51 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	get_param_type(t_vm *vm, int *i, t_proc *proc)
 void	read_op_code(t_vm *vm, t_proc *proc, int instruction, t_proc **list)
 {
 	static void (*opc[17])(t_vm *vm, t_proc *proc) = {NULL, &live, &ld, &st, &add,
-		&sub, &and, &or, &xor, &zjmp, &ldi, &sti, NULL, &lld, &lldi, NULL,
+		&sub, &and, &or, &xor, &zjmp, &ldi, &sti, NULL, &lld, &ldi, NULL,
 		&aff};
 	int		j;
 

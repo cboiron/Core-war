@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 01:57:02 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/21 05:43:23 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/25 04:54:43 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,4 @@ void	ld(t_vm *vm, t_proc *proc)
 			proc->carry = 0;
 	}
 	ft_putendl("je fais un ld");
-
-	//(*i)++;
-	/*
-	if (vm->arena[*i] == 144)
-	{
-		*i += 4;
-		//lire les 4 octets, on a le direct
-	}
-	else if (vm->arena[*i] == 208)
-	{
-		*i += 2;
-		//lire les 2 octets, on a l'index
-	}
-	*i += 1;
-	*/
-	//lire l'octet suivant, on a le registre
-	//copier premier param dans registre
-	//si premier param = 0 alors carry = 1
-	
 }
