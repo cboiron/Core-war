@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:36:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/25 05:21:17 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/25 05:24:24 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	check_reg(t_proc *proc, int arg1, int arg2)
 	}
 	else if (proc->instruction == 14)
 	{
-		ft_putendl("lol");
 		ft_putendl("je fait un lldi");
 	}
 	return (arg1 + arg2 % MEM_SIZE);
@@ -53,8 +52,8 @@ void	ldi(t_vm *vm, t_proc *proc)
 	int	arg3;
 	int	pc_debut;
 
-	printf("case avant  = %d\n", vm->arena[proc->pc]);
-	printf("pc before = %d\n", proc->pc);
+//	printf("case avant  = %d\n", vm->arena[proc->pc]);
+//	printf("pc before = %d\n", proc->pc);
 	pc_debut = proc->pc;
 	if (proc->parametres_types[0] == REG)
 		arg1 = get_reg(vm, &(proc->pc));
@@ -62,15 +61,15 @@ void	ldi(t_vm *vm, t_proc *proc)
 		arg1 = get_ind(vm, &(proc->pc));
 	else if (proc->parametres_types[0] == DIRECT)
 		arg1 = get_ind(vm, &(proc->pc));
-	printf("pc arg1  = %d\n", proc->pc);
-	printf("case apres  = %d\n", vm->arena[proc->pc]);
+//	printf("pc arg1  = %d\n", proc->pc);
+//	printf("case apres  = %d\n", vm->arena[proc->pc]);
 	if (proc->parametres_types[1] == REG)
 		arg2 = get_reg(vm, &(proc->pc));
 	else if (proc->parametres_types[1] == DIRECT)
 		arg2 = get_ind(vm, &(proc->pc));
-	printf("pc arg2  = %d\n", proc->pc);
+//	printf("pc arg2  = %d\n", proc->pc);
 	arg3 = get_reg(vm, &(proc->pc));
-	printf("pc arg3  = %d\n", proc->pc);
+//	printf("pc arg3  = %d\n", proc->pc);
 	if ((proc->parametres_types[0] == REG && !is_reg(arg1)) ||
 			(proc->parametres_types[1] == REG && !is_reg(arg2)) ||
 			(proc->parametres_types[2] == REG && !is_reg(arg3)))
@@ -81,7 +80,7 @@ void	ldi(t_vm *vm, t_proc *proc)
 	else
 		proc->carry = 0;
 	proc->pc++;
-	printf("case apres  = %d\n", vm->arena[proc->pc]);
-	printf("case apres + 1 = %d\n", vm->arena[proc->pc + 1]);
-	printf("pc after  = %d\n", proc->pc);
+	//printf("case apres  = %d\n", vm->arena[proc->pc]);
+	//printf("case apres + 1 = %d\n", vm->arena[proc->pc + 1]);
+//	printf("pc after  = %d\n", proc->pc);
 }
