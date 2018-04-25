@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/25 03:35:25 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/25 02:46:59 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ void	reverse_params(t_proc *proc)
 
 	tmp1 = proc->parametres_types[2];
 	proc->parametres_types[2] = proc->parametres_types[0];
+	//proc->parametres_types[1] = proc->parametres_types[];
 	proc->parametres_types[0] = tmp1;
 }
 
-void	get_param_type(t_vm *vm, int *i, t_proc *proc)
+void	get_param_type(t_vm *vm, int *i, int op_code, t_proc *proc)
 {
 	int	octet;
+	int	j;
 	int	index_param;
 
 	(*i)++;
@@ -71,7 +73,7 @@ void	get_param_type(t_vm *vm, int *i, t_proc *proc)
 void	read_op_code(t_vm *vm, t_proc *proc, int instruction, t_proc **list)
 {
 	static void (*opc[17])(t_vm *vm, t_proc *proc) = {NULL, &live, &ld, &st, &add,
-		&sub, &and, &or, &xor, &zjmp, &ldi, &sti, NULL, &lld, &lldi, NULL,
+		&sub, &and, &or, &xor, &zjmp, &ldi, &sti, &forkk, &lld, &lldi, &lfork,
 		&aff};
 	int		j;
 
@@ -89,14 +91,11 @@ void	read_op_code(t_vm *vm, t_proc *proc, int instruction, t_proc **list)
 		//	ft_putendl("-------------------")
 			//printf("op code  = %d  \n", j);
 			if (j == 12 || j == 15)
-			{
 				forkk(vm, proc, list);
-				return ;
-			}
 			if (j == 2 || j == 3 || j == 4 || j == 5 || j == 6 || j == 7
 					|| j == 8 || j == 10 || j == 11 || j == 13 || j == 14 ||
 					j == 16)
-				get_param_type(vm, (&(proc->pc)), proc);
+				get_param_type(vm, (&(proc->pc)), j, proc);
 			//printf(" i avant   = %d  \n", proc->pc);
 			//printf(" op code   = %d  \n", vm->arena[proc->pc]);
 			opc[j](vm, proc);
@@ -114,9 +113,13 @@ void	init_proc(t_proc **list, t_vm *vm)
 	while (i < vm->nbr_next)
 	{
 		add_process(list, new_process(vm->tab_champ[i], i, vm));
-		//printf("processus cree avec l'id %d\n", vm->tab_champ[i].id);
+		printf("processus cree avec l'id %d\n", vm->tab_champ[i].id);
 		i++;
 	}
+	//ft_putendl("nb process");
+	//ft_putnbr(i);
+	//ft_putendl("nb joueurs");
+	//ft_putnbr(vm->nbr_next);
 }
 
 void	parse_list(t_proc **list, t_vm *vm)
@@ -131,7 +134,7 @@ void	parse_list(t_proc **list, t_vm *vm)
 		//printf("pc debut de la liste de process =  %d\n", tmp->pc);
 		if (tmp->cycle_to_wait == 0)
 		{
-			read_op_code(vm, tmp, tmp->instruction, list);
+			read_op_code(vm, tmp, tmp->instruction);
 		//printf("pc sortie de la liste de read_op_code =  %d\n", tmp->pc);
 			tmp->instruction = 0;
 			tmp->cycle_to_wait = -1;

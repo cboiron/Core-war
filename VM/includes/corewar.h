@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:11:25 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/21 04:07:03 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/25 02:46:56 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	xor(t_vm *vm, t_proc *proc);
 void	zjmp(t_vm *vm, t_proc *proc);
 void	ldi(t_vm *vm, t_proc *proc);
 void	sti(t_vm *vm, t_proc *proc);
-void	forkk(t_vm *vm, t_proc *proc);
+void	forkk(t_vm *vm, t_proc *proc, t_proc **list);
 void	lld(t_vm *vm, t_proc *proc);
 void	lldi(t_vm *vm, t_proc *proc);
 void	lfork(t_vm *vm, t_proc *proc);
