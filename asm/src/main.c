@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:58:03 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/25 01:55:54 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/26 01:51:00 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void			ft_init(t_asm *env)
 									sizeof(char) *
 									(PROG_NAME_LENGTH +
 									COMMENT_LENGTH + 2));
-	env->header->magic = reverse_bits(COREWAR_EXEC_MAGIC) << 8;
+	env->header->magic = COREWAR_EXEC_MAGIC;
 }
 
 /*
@@ -77,7 +77,7 @@ static int			detect_errors(int argc, char *champ, t_asm *env)
 		msg_error(USAGE, 0);
 	tmp = ft_strsub(champ, 0, x - 1);
 	env->champ_name = ft_strjoin(tmp, ".cor");
-	if (!(fd = open(champ, O_RDONLY)))
+	if ((fd = open(champ, O_RDONLY)) == -1)
 		msg_error(ERR_OPEN, 0);
 	if (close(fd) == -1)
 		msg_error(ERR_CLOSE, 0);
@@ -95,5 +95,6 @@ int					main(int argc, char **argv)
 	size_all(&env);
 	write_out(&env);
 	ft_printf("Writing output program to %s\n", env.champ_name);
+	exit(EXIT_SUCCESS);
 	return (0);
 }

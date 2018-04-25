@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 16:46:23 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/25 02:42:19 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/26 01:51:14 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void				write_label(char *dir, t_op actual, t_asm *env,
 	unsigned int	max;
 
 	max = -1;
-	to_search = ft_strsub(dir, 2, ft_strlen(dir));
+	to_search = ft_strsub(dir, 2, ft_strlen(dir) - 2);
 	tmp = env->buff;
 	pos = write_label2(tmp, to_search, size_to_here, env);
 	if (pos == max)
@@ -63,7 +63,7 @@ static void				write_label(char *dir, t_op actual, t_asm *env,
 static void				write_dir(char *dir, t_asm *env, t_op actual,
 						unsigned int size_to_here)
 {
-	unsigned int	to_write;
+	int	to_write;
 
 	if ((search_char(dir, LABEL_CHAR)) == -1)
 	{
@@ -83,7 +83,7 @@ void					write_params(t_asm *env, char *split, t_op actual,
 {
 	char			**splited;
 	int				i;
-	unsigned int	to_write;
+	int				to_write;
 
 	splited = ft_strsplit(split, SEPARATOR_CHAR);
 	clear_split(splited);
@@ -93,7 +93,7 @@ void					write_params(t_asm *env, char *split, t_op actual,
 		to_write = 0;
 		if (check_param(splited[i]) == REG_CODE)
 		{
-			to_write = (unsigned int)ft_atoi(ft_strsub(splited[i], 1,
+			to_write = ft_atoi(ft_strsub(splited[i], 1,
 										ft_strlen(splited[i])));
 			write(env->fd, &to_write, 1);
 		}

@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 22:25:42 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/25 03:17:37 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/26 01:50:15 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,10 @@ static void				write_body(t_asm *env)
 void					write_out(t_asm *env)
 {
 	env->fd = open(env->champ_name, O_CREAT | O_RDWR | O_TRUNC, 0644);
-	ft_printf("progsize : %d\n", env->header->prog_size);
-	env->header->prog_size = reverse_bits(env->header->prog_size) << 16;
-	write(env->fd, env->header, sizeof(t_header));
+	ft_putint_fd(env->header->magic, env->fd);
+	write(env->fd, env->header->prog_name, PROG_NAME_LENGTH + 4);
+	ft_putint_fd(env->header->prog_size, env->fd);
+	write(env->fd, env->header->comment, COMMENT_LENGTH + 4);
 	write_body(env);
 	close(env->fd);
 }

@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 14:36:46 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/25 03:12:08 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/26 01:49:44 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ unsigned int	size_instru(t_parsing *tmp)
 	{
 		size_instru2(splited[i], &size, actual);
 	}
-	ft_printf("size : %d\n", size);
 	return (size);
 }
 

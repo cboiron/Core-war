@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 16:10:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/25 01:49:16 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/26 01:49:36 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char				*re_write(char *instru)
 	char			*format;
 
 	i = search_char(instru, ' ');
-	format = ft_strsub(instru, 0, i + 1);
+	format = ft_strsub(instru, 0, ft_strlen(instru));
 	j = i + 1;
 	while (++i < ft_strlen(instru))
 	{
@@ -59,6 +59,7 @@ char				*re_write(char *instru)
 		format[j] = instru[i];
 		j++;
 	}
+	format[j] = '\0';
 	return (format);
 }
 
@@ -75,7 +76,7 @@ void				add_instru(char *line, t_parsing **buff)
 	if ((tmp = (t_parsing*)malloc(sizeof(t_parsing) * 1)))
 	{
 		tmp->content = re_write(ft_epur_str(ft_strdup(line)));
-		name = ft_strsub(tmp->content, 0, search_char(tmp->content, ' '));
+		name = ft_strsub(tmp->content, 0, search_char(tmp->content, ' ') + 1);
 		tmp->size = size_instru(tmp);
 		tmp->label = 0;
 		tmp->next = NULL;

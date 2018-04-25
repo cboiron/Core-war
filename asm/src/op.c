@@ -6,22 +6,11 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 15:43:08 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/25 01:57:37 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/25 13:54:34 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
-/*
-** 1) Nom pour l'assembleur
-** 2) nombre de registres
-** 3) Type de paramètre
-** 4) index de l'opération
-** 5) nombre de cycles
-** 6) description
-** 7) 1 ou 0 : instruction suivie ou pas d'octet pour décrire parametre
-** 8) 1 ou 0 : prend index ou pas
-*/
 
 static t_op	g_op_tab[OP_COUNT] =
 {
