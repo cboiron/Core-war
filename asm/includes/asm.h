@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/24 19:18:20 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/25 01:48:08 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,6 @@
 # define ERR_ARG "Erreur 07 : Argument non valide."
 # define ERR_NBR_ARG "Erreur 08 : Pas assez d'argument."
 
-/*
-** format : 1 -> only label
-** format : 2 -> only instruction
-** format : 3 -> both
-*/
-
-/*typedef struct			s_towrite
-{
-	unsigned char		*content;
-	struct s_towrite	*next;
-	} 					t_towrite;*/
-
 typedef struct			s_parsing
 {
 	char				*content;
@@ -57,7 +45,6 @@ typedef struct			s_asm
 {
 	char				*champ_name;
 	t_parsing  			*buff;
-//	t_towrite			*buff_write;
 	t_header			*header;
 	int					verif_name;
 	int					verif_com;
@@ -72,6 +59,7 @@ void					msg_error(char *msg, int index);
 ** prog_size.c
 */
 void					verif_size(t_asm *env);
+unsigned int			size_instru(t_parsing *tmp);
 /*
 ** line.c
 */
@@ -106,7 +94,6 @@ int						check_lab_and_instru(char *line, int index);
 void					add_label(char *line, t_parsing **buff);
 void					add_instru(char *line, t_parsing **buff);
 void					add_lab_and_instru(char *line, t_parsing **buff);
-unsigned int			size_instru(t_parsing *tmp);
 /*
 ** op.c
 */
@@ -144,4 +131,6 @@ uint64_t				reverse_bits(uint64_t val);
 t_op					find_opcode(char *name);
 void					write_out(t_asm *env);
 void					write_params(t_asm *env, char *split, t_op actual, unsigned int size_to_here);
+void					ft_putint_fd(int n, int fd);
+void					ft_putshort_fd(short n, int fd);
 #endif

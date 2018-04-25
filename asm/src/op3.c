@@ -6,13 +6,13 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 14:29:30 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/24 01:04:31 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/25 01:59:35 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int ft_sti(char *line, int index)
+int	ft_sti(char *line, int index)
 {
 	char *tmp;
 	char **splited;
@@ -47,7 +47,7 @@ int	ft_fork(char *line, int index)
 	return (1);
 }
 
-int ft_lld(char *line, int index)
+int	ft_lld(char *line, int index)
 {
 	char *tmp;
 	char **splited;
@@ -66,7 +66,7 @@ int ft_lld(char *line, int index)
 	return (1);
 }
 
-int ft_lldi(char *line, int index)
+int	ft_lldi(char *line, int index)
 {
 	char *tmp;
 	char **splited;
@@ -88,7 +88,7 @@ int ft_lldi(char *line, int index)
 	return (1);
 }
 
-int ft_lfork(char *line, int index)
+int	ft_lfork(char *line, int index)
 {
 	char *tmp;
 

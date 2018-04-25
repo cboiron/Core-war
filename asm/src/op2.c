@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 13:37:29 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/24 01:12:57 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/25 01:58:55 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	ft_zjmp(char *line, int index)
 	return (1);
 }
 
-int ft_ldi(char *line, int index)
+int	ft_ldi(char *line, int index)
 {
 	char *tmp;
 	char **splited;

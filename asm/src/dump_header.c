@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 12:48:10 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/19 01:45:23 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/25 02:09:17 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 ** Ces fonctions servent à vérifier la longueur du nom et du com
 ** ainsi que de les stocker dans la variable env
 */
-static void check_size2(char *line, char *macro, int index)
+
+static void		check_size2(char *line, char *macro, int index)
 {
 	if (ft_strcmp(macro, NAME_CMD_STRING) == 0)
 	{
@@ -29,7 +30,7 @@ static void check_size2(char *line, char *macro, int index)
 	msg_error("", index);
 }
 
-static void check_size(char *line, t_asm *env, char *macro, int index)
+static void		check_size(char *line, t_asm *env, char *macro, int index)
 {
 	if (ft_strcmp(macro, NAME_CMD_STRING) == 0)
 	{
@@ -41,22 +42,24 @@ static void check_size(char *line, t_asm *env, char *macro, int index)
 	if (ft_strcmp(macro, COMMENT_CMD_STRING) == 0)
 	{
 		check_size2(line, macro, index);
-		ft_strcpy(env->header->comment , line);
+		ft_strcpy(env->header->comment, line);
 		free(line);
 		return ;
 	}
 }
+
 /*
 ** Récupère le name ou le comment
 ** faire boucle tant que pas trouvé le deuxieme '"', continue a gnl
 ** et stocker dans une variable
 */
-void		dump_header(char *line, t_asm *env, char *macro, int index)
+
+void			dump_header(char *line, t_asm *env, char *macro, int index)
 {
-	int		i;
-	int		j;
-	char	*tmp;
-	char	*sub;
+	int			i;
+	int			j;
+	char		*tmp;
+	char		*sub;
 
 	i = search_char(line, '"') + 1;
 	tmp = ft_strsub(line, i, ft_strlen(line));

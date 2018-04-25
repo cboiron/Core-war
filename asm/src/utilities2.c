@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 16:24:50 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/24 12:13:28 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/25 02:12:00 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,24 @@ void		clear_split(char **splited)
 		splited[i] = ft_epur_str(splited[i]);
 }
 
-int	check_param(char *param)
+int			is_label(char *param)
+{
+	char	*tmp;
+	int		i;
+
+	i = 1;
+	tmp = ft_epur_str(param);
+	if (tmp[0] != DIRECT_CHAR)
+		return (0);
+	if (tmp[1] != LABEL_CHAR)
+		return (0);
+	while (tmp[++i])
+		if (!(ft_strchr(LABEL_CHARS, tmp[i])))
+			return (0);
+	return (1);
+}
+
+int			check_param(char *param)
 {
 	if (isreg(param))
 		return (REG_CODE);
@@ -32,12 +49,13 @@ int	check_param(char *param)
 	return (0);
 }
 
-int	tab_len(char **tab)
+int			tab_len(char **tab)
 {
 	int i;
 
 	i = -1;
-	while (tab[++i]);
+	while (tab[++i])
+		;
 	return (i);
 }
 

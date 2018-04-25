@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 00:17:45 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/24 00:30:20 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/25 02:10:52 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** le caractère que tu cherches, trouver tu dois
 */
+
 int	search_char(char *line, char c)
 {
 	int i;
@@ -46,19 +47,18 @@ int	ft_is_number(char *line, int begin)
 	return (1);
 }
 
-int isreg(char *line)
+int	isreg(char *line)
 {
-	char *tmp;
-	int i;
+	char	*tmp;
+	int		i;
 
 	tmp = ft_epur_str(line);
 	if (tmp[0] != 'r' || ft_strlen(tmp) > 3)
 		return (0);
 	if (ft_strlen(tmp) == 3)
 	{
-		ft_printf("test\n");
 		i = ft_atoi(ft_strsub(tmp, 1, 2));
-		if (i > 99)
+		if (i > REG_NUMBER)
 			return (0);
 	}
 	if (ft_strlen(tmp) == 2)
@@ -72,9 +72,9 @@ int isreg(char *line)
 
 int	isdir(char *line)
 {
-	int i;
-	char *ptr;
-	char *tmp;
+	int		i;
+	char	*ptr;
+	char	*tmp;
 
 	i = 2;
 	tmp = ft_epur_str(line);
@@ -96,11 +96,11 @@ int	isdir(char *line)
 	return (1);
 }
 
-int isindir(char *line)
+int	isindir(char *line)
 {
-	char *tmp;
-	int i;
-	char *ptr;
+	char	*tmp;
+	int		i;
+	char	*ptr;
 
 	i = 1;
 	tmp = ft_epur_str(line);

@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 00:17:52 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/24 12:15:11 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/25 02:01:55 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@ static void	checking_op(char *line, t_asm *env, int index)
 		add_instru(tmp, &env->buff);
 	else if (check_lab_and_instru(tmp, index) == 1)
 		add_lab_and_instru(tmp, &env->buff);
-	else msg_error("", index);
+	else
+		msg_error("", index);
 }
 
 /*
 ** Fonction pour checker ligne par ligne
 */
+
 static void	check_line(char *line, char *tmp, t_asm *env, int index)
 {
 	if (ft_strcmp(line, "") == 0)

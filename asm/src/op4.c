@@ -6,13 +6,13 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 15:00:24 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/20 18:17:14 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/25 02:00:43 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int ft_aff(char *line, int index)
+int	ft_aff(char *line, int index)
 {
 	char *tmp;
 

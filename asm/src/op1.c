@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 12:05:29 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/24 01:00:46 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/25 01:58:15 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** Vérification que chaque op possède les bons arguments
 */
+
 int	ft_live(char *line, int index)
 {
 	char *tmp;
@@ -68,7 +69,7 @@ int	ft_st(char *line, int index)
 	return (1);
 }
 
-int ft_add(char *line, int index)
+int	ft_add(char *line, int index)
 {
 	char *tmp;
 	char **splited;

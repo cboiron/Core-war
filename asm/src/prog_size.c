@@ -6,26 +6,65 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 14:36:46 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/24 01:04:57 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/25 03:02:15 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void		verif_size(t_asm *env)
+static void		size_instru2(char *param, unsigned int *size, t_op actual)
 {
-	unsigned int size_total;
-	t_parsing *tmp;
+	if (check_param(param) == REG_CODE)
+		(*size)++;
+	else if (check_param(param) == DIR_CODE)
+	{
+		if (actual.opcode >= 9 && actual.opcode <= 15 &&
+			actual.opcode != 13)
+			*size += 2;
+		else
+			*size += 4;
+	}
+	else
+		*size += 2;
+}
+
+/*
+** Calcule et stocke la taille des buff->content dans buff->size
+*/
+
+unsigned int	size_instru(t_parsing *tmp)
+{
+	char			**splited;
+	unsigned int	size;
+	int				i;
+	t_op			actual;
+
+	size = 0;
+	i = search_char(tmp->content, ' ');
+	size += 1;
+	actual = find_opcode(ft_strsub(tmp->content, 0, i));
+	if (actual.opcode != 1 && actual.opcode != 9 &&
+		actual.opcode != 12 && actual.opcode != 15)
+		size += 1;
+	splited = ft_strsplit(ft_strsub(tmp->content, i + 1,
+									ft_strlen(tmp->content)), ',');
+	clear_split(splited);
+	i = -1;
+	while (++i < tab_len(splited))
+	{
+		size_instru2(splited[i], &size, actual);
+	}
+	ft_printf("size : %d\n", size);
+	return (size);
+}
+
+void			verif_size(t_asm *env)
+{
+	t_parsing		*tmp;
 
 	env->header->prog_size = 0;
-	size_total = 0;
 	tmp = env->buff;
-	if (!env->buff)
-		size_total = tmp->size;
 	while (tmp->next)
-	{
 		tmp = tmp->next;
-	    size_total += tmp->size;
-	}
-	env->header->prog_size = size_total;
+	env->header->prog_size = tmp->size_to_here;
 }

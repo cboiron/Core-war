@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -7,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:58:03 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/24 19:07:48 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/25 01:55:54 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +15,11 @@
 /*
 ** mets size_to_here dans chaque buff
 */
-static void	size_all(t_asm *env)
+
+static void			size_all(t_asm *env)
 {
-	t_parsing *tmp;
-	unsigned int size_max;
+	t_parsing		*tmp;
+	unsigned int	size_max;
 
 	tmp = env->buff;
 	size_max = 0;
@@ -34,7 +34,8 @@ static void	size_all(t_asm *env)
 /*
 ** permets de quitter le programme après avoir affiché l'erreur
 */
-void		msg_error(char *msg, int index)
+
+void				msg_error(char *msg, int index)
 {
 	if (!index)
 		ft_printf("%s\n", msg);
@@ -42,10 +43,12 @@ void		msg_error(char *msg, int index)
 		ft_printf("erreur de syntax à la ligne : %d| --> %s\n", index, msg);
 	exit(EXIT_FAILURE);
 }
+
 /*
 ** fonction d'initialisation des la structure
 */
-static void	ft_init(t_asm *env)
+
+static void			ft_init(t_asm *env)
 {
 	env->buff = NULL;
 	env->verif_name = 0;
@@ -53,7 +56,7 @@ static void	ft_init(t_asm *env)
 	env->header = (t_header*)malloc((sizeof(unsigned int) * 2) +
 									sizeof(char) *
 									(PROG_NAME_LENGTH +
-									 COMMENT_LENGTH + 2));
+									COMMENT_LENGTH + 2));
 	env->header->magic = reverse_bits(COREWAR_EXEC_MAGIC) << 8;
 }
 
@@ -61,11 +64,11 @@ static void	ft_init(t_asm *env)
 ** fonction servant à détecter les erreurs :captainobvious:
 */
 
-static int	detect_errors(int argc, char *champ, t_asm *env)
+static int			detect_errors(int argc, char *champ, t_asm *env)
 {
-	int		fd;
-	int		x;
-	char	*tmp;
+	int				fd;
+	int				x;
+	char			*tmp;
 
 	if (argc != 2)
 		msg_error(USAGE, 0);
@@ -81,9 +84,9 @@ static int	detect_errors(int argc, char *champ, t_asm *env)
 	return (1);
 }
 
-int			main(int argc, char **argv)
+int					main(int argc, char **argv)
 {
-	t_asm env;
+	t_asm			env;
 
 	detect_errors(argc, argv[1], &env);
 	ft_init(&env);
@@ -92,5 +95,5 @@ int			main(int argc, char **argv)
 	size_all(&env);
 	write_out(&env);
 	ft_printf("Writing output program to %s\n", env.champ_name);
-	return(0);
+	return (0);
 }

@@ -6,18 +6,18 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 22:25:42 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/24 19:23:01 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/25 02:53:51 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static unsigned int	write_octetcodage(t_op actual, char *arg)
+static unsigned int		write_octetcodage(t_op actual, char *arg)
 {
-	char **splited;
-	unsigned int param1;
-	unsigned int param2;
-	unsigned int param3;
+	char			**splited;
+	unsigned int	param1;
+	unsigned int	param2;
+	unsigned int	param3;
 
 	param1 = 0;
 	param2 = 0;
@@ -33,28 +33,44 @@ static unsigned int	write_octetcodage(t_op actual, char *arg)
 			param2 = check_param(splited[1]) << 4;
 		if (actual.nb_arg == 3)
 			param3 = check_param(splited[2]) << 2;
-		ft_printf("testing\n");
 	}
-    return(param1 + param2 + param3);
+	return (param1 + param2 + param3);
 }
 
-t_op		find_opcode(char *name)
+t_op					find_opcode(char *name)
 {
-	t_op *tab_op;
-	int i;
+	t_op	*tab_op;
+	int		i;
 
 	i = -1;
 	tab_op = get_ops();
-	while (ft_strcmp(tab_op[++i].name, name) != 0);
+	while (ft_strcmp(tab_op[++i].name, name) != 0)
+		;
 	return (tab_op[i]);
 }
-static void    write_body(t_asm *env)
+
+static void				write_body2(t_asm *env, char **splited,
+									int i, t_parsing *tmp)
 {
-	char	**split;
-	int		i;
-	t_op	actual;
-	unsigned int to_write;
-	t_parsing *tmp;
+	t_op			actual;
+	unsigned int	to_write;
+
+	if (splited[i])
+	{
+		actual = find_opcode(splited[i++]);
+		write(env->fd, &actual.opcode, sizeof(int) / 4);
+		to_write = write_octetcodage(actual, splited[i]);
+		if (to_write != 0)
+			write(env->fd, &to_write, sizeof(int) / 4);
+		write_params(env, splited[i], actual, tmp->size_to_here);
+	}
+}
+
+static void				write_body(t_asm *env)
+{
+	char			**splited;
+	int				i;
+	t_parsing		*tmp;
 
 	tmp = env->buff;
 	while (tmp)
@@ -62,26 +78,19 @@ static void    write_body(t_asm *env)
 		while (tmp->label == 1 && tmp->next)
 			tmp = tmp->next;
 		i = 0;
-		split = ft_strsplit(tmp->content, ' ');
-		clear_split(split);
-		if (split[i][ft_strlen(split[i]) - 1] == LABEL_CHAR)
+		splited = ft_strsplit(tmp->content, ' ');
+		clear_split(splited);
+		if (splited[i][ft_strlen(splited[i]) - 1] == LABEL_CHAR)
 			i++;
-		if (split[i])
-		{
-			actual = find_opcode(split[i++]);
-			write(env->fd, &actual.opcode, sizeof(int) / 4);
-			to_write = write_octetcodage(actual, split[i]);
-			if (to_write != 0)
-				write(env->fd, &to_write, sizeof(int) / 4);
-			write_params(env, split[i], actual, tmp->size_to_here);
-		}
+		write_body2(env, splited, i, tmp);
 		tmp = tmp->next;
 	}
 }
 
-void			write_out(t_asm *env)
+void					write_out(t_asm *env)
 {
 	env->fd = open(env->champ_name, O_CREAT | O_RDWR | O_TRUNC, 0644);
+	ft_printf("progsize : %d\n", env->header->prog_size);
 	env->header->prog_size = reverse_bits(env->header->prog_size) << 24;
 	write(env->fd, env->header, sizeof(t_header));
 	write_body(env);

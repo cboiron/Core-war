@@ -6,14 +6,16 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 19:42:16 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/24 12:35:43 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/25 01:52:51 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
 /*
 ** Supprime les commentaires
 */
+
 char	*rm_comment(char *line)
 {
 	int		i;
@@ -22,15 +24,17 @@ char	*rm_comment(char *line)
 
 	i = search_char(line, '#');
 	if (i < 0)
-		return(line);
+		return (line);
 	tmp = ft_strsub(line, 0, i);
 	ret = ft_epur_str(tmp);
 	free(tmp);
 	return (ret);
 }
+
 /*
 ** fonction servant à supprimer les commentaires dans le header
 */
+
 char	*rm_comment_header(char *line)
 {
 	char	*tmp;
@@ -41,7 +45,7 @@ char	*rm_comment_header(char *line)
 	len = search_char(line, '"') + 1;
 	tmp = ft_strsub(line, len, ft_strlen(line));
 	i = search_char(tmp, '"');
-	if (tmp [i + 1] && tmp[i + 1] != '#' && tmp[i + 1] != ' ')
+	if (tmp[i + 1] && tmp[i + 1] != '#' && tmp[i + 1] != ' ')
 		return (NULL);
 	if (tmp[i + 1] && tmp[i + 1] == ' ')
 	{
@@ -56,6 +60,7 @@ char	*rm_comment_header(char *line)
 /*
 ** fonction traitant le header (name + comment)
 */
+
 int		is_header(char *line, char *macro)
 {
 	char	*tmp;
