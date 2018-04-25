@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 14:36:46 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/25 03:02:15 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/25 03:12:08 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,15 @@ unsigned int	size_instru(t_parsing *tmp)
 void			verif_size(t_asm *env)
 {
 	t_parsing		*tmp;
+	unsigned int	size;
 
 	env->header->prog_size = 0;
 	tmp = env->buff;
+	size = tmp->size;
 	while (tmp->next)
+	{
 		tmp = tmp->next;
-	env->header->prog_size = tmp->size_to_here;
+		size += tmp->size;
+	}
+	env->header->prog_size = size;
 }
