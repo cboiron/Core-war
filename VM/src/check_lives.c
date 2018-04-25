@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/19 03:50:15 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/25 04:56:06 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	check_lives(t_vm *vm, t_proc **list)
 			kill_process(tmp, list);
 		else
 			tmp->live_period = 0;
-			//reset_process_counter(tmp);
+		//reset_process_counter(tmp);
 		tmp = tmp->next;
 	}
 	if (!(*list))
