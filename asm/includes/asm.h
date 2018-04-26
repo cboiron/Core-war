@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/25 01:48:08 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/26 18:03:25 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct			s_parsing
 typedef struct			s_asm
 {
 	char				*champ_name;
-	t_parsing  			*buff;
+	t_parsing			*buff;
 	t_header			*header;
 	int					verif_name;
 	int					verif_com;
@@ -81,7 +81,8 @@ int						isindir(char *line);
 /*
 ** dump_header.c
 */
-void					dump_header(char *line, t_asm *env, char *macro, int index);
+void					dump_header(char *line, t_asm *env, char *macro,
+									int index);
 /*
 ** check_op.c
 */
@@ -130,7 +131,8 @@ uint64_t				reverse_bits(uint64_t val);
 */
 t_op					find_opcode(char *name);
 void					write_out(t_asm *env);
-void					write_params(t_asm *env, char *split, t_op actual, unsigned int size_to_here);
+void					write_params(t_asm *env, char *split,
+									t_op actual, unsigned int size_to_here);
 void					ft_putint_fd(int n, int fd);
 void					ft_putshort_fd(short n, int fd);
 #endif
