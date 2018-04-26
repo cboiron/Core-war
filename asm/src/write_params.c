@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 16:46:23 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/26 01:51:14 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/26 02:49:42 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static unsigned int		write_label2(t_parsing *tmp, char *to_search,
 		while (tmp->label != 1 && tmp)
 			tmp = tmp->next;
 		content = ft_strsub(tmp->content, 0, ft_strlen(tmp->content) - 1);
+		ft_printf("content : %s| to_search : %s\n", tmp->content, to_search);
 		if (ft_strcmp(content, to_search) == 0)
 			break ;
 		tmp = tmp->next;
@@ -84,6 +85,8 @@ void					write_params(t_asm *env, char *split, t_op actual,
 	char			**splited;
 	int				i;
 	int				to_write;
+	t_parsing		*tmp;
+	char			*to_search;
 
 	splited = ft_strsplit(split, SEPARATOR_CHAR);
 	clear_split(splited);
@@ -99,8 +102,15 @@ void					write_params(t_asm *env, char *split, t_op actual,
 		}
 		else if (check_param(splited[i]) == IND_CODE)
 		{
+			if (splited[i][0] != ':')
 			to_write = ft_atoi(ft_strsub(splited[i], 0,
 										ft_strlen(splited[i])));
+			else
+			{
+				tmp = env->buff;
+				to_search = ft_strsub(splited[i], 1, ft_strlen(splited[i]) - 1);
+				to_write = write_label2(tmp, to_search, size_to_here, env);
+			}
 			ft_putshort_fd(to_write, env->fd);
 		}
 		else
