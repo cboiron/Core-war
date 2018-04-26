@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:23:15 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/26 02:10:12 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/26 03:02:17 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int			check_instruction(char *line, int index)
 	get_in_tab(tab);
 	while (++i < 16)
 	{
-		if (search_char(line, ' ') == - 1)
+		if (search_char(line, ' ') == -1)
 			return (0);
 		if (tab[i](line, index) == 1)
 			return (1);
