@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 00:17:52 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/25 02:01:55 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/04/26 02:04:30 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,22 @@ static void	checking_op(char *line, t_asm *env, int index)
 	if (env->verif_com == 0)
 		msg_error(ERR_COM, index);
 	tmp = rm_comment(line);
+	ft_printf("before\n");
 	if (is_label_only(tmp) == 1)
+	{
+	ft_printf("label\n");
 		add_label(tmp, &env->buff);
+	}
 	else if (check_instruction(tmp, index) == 1)
+	{
+	ft_printf("instru\n");
 		add_instru(tmp, &env->buff);
+	}
 	else if (check_lab_and_instru(tmp, index) == 1)
+	{
+	ft_printf("both\n");
 		add_lab_and_instru(tmp, &env->buff);
+	}
 	else
 		msg_error("", index);
 }
