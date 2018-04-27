@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/27 07:06:10 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/27 07:32:47 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	check_lives(t_vm *vm, t_proc **list)
 	{
 		vm->cycle_to_die -= CYCLE_DELTA;
 		vm->last_check = 0;
+		vm->total_lives_period = 0;
 	}
 	else
 		vm->last_check++;

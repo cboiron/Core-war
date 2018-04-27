@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 01:41:15 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/27 04:46:57 by ardurand         ###   ########.fr       */
+/*   Updated: 2018/04/27 07:33:33 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	live(t_vm *vm, t_proc *proc)
 	//printf("apres get %x\n",vm->arena[proc->pc]);
 //	proc->pc += 5;
 	proc->live_period++;
+	vm->total_lives_period++;
 	ft_printf("un processus dit que le joueur %d est en vie\n", proc->id);
 }
