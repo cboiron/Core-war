@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:27:37 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/27 03:47:08 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/27 04:46:34 by ardurand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	zjmp(t_vm *vm, t_proc *proc)
 	if (proc->carry == 1)
 	{
 		proc->pc += (dir);
+		proc->pc %= MEM_SIZE;
 	}
 	//ft_putendl("je fais un zjmp");
-	//printf("pc final= %d\n", proc->pc);
 	//si carry == 1
 	//ALORS
 	//la prochaine instruction sera a l'adresse de vm->arena[*i + 2]

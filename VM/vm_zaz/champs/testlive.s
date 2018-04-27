@@ -1,0 +1,45 @@
+.name "testlive"
+.comment "test all live"
+
+a:
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
