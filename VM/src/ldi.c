@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:36:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/25 05:24:24 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/27 01:01:16 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int	check_reg(t_proc *proc, int arg1, int arg2)
 	{
 		arg1 %= IDX_MOD;
 		arg2 %= IDX_MOD;
-		ft_putendl("je fait un ldi");
+		//ft_putendl("je fait un ldi");
 	}
 	else if (proc->instruction == 14)
 	{
-		ft_putendl("je fait un lldi");
+	//	ft_putendl("je fait un lldi");
 	}
 	return (arg1 + arg2 % MEM_SIZE);
 }

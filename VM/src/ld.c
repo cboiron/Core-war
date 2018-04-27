@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 01:57:02 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/25 04:54:43 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/27 01:01:09 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ void	ld(t_vm *vm, t_proc *proc)
 		else
 			proc->carry = 0;
 	}
-	ft_putendl("je fais un ld");
+	//ft_putendl("je fais un ld");
 }

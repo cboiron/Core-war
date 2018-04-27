@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/25 04:56:06 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/27 02:03:36 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	kill_process(t_proc *proc, t_proc **list)
 	{
 		if ((*list)->next != NULL)
 		{
-			printf("id %d\n", proc->id);
-			ft_putendl("proc killed");
+			//printf("id %d\n", proc->id);
+			//ft_putendl("proc killed");
 			tmp = *list;
 			*list = (*list)->next;
 			ft_memdel((void**)&tmp);
@@ -43,7 +43,8 @@ void	kill_process(t_proc *proc, t_proc **list)
 				printf("id %d\n", proc->id);
 				ft_putendl("proc killed");
 				tmp->next = proc->next;
-				free(proc);
+				if (proc)
+					free(proc);
 			}
 			if (tmp->next)
 				tmp = tmp->next;

@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 04:45:35 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/21 04:08:09 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/27 01:02:46 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	or(t_vm *vm, t_proc *proc)
 	arg[1] = 0;
 	arg[2] = 0;
 	param_op(vm, proc, arg);
-	ft_putendl("je fais un or");
+	//ft_putendl("je fais un or");
 }

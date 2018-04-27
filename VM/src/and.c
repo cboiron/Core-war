@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:26:44 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/21 04:09:14 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/27 00:59:42 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	and(t_vm *vm, t_proc *proc)
 	arg[1] = 0;
 	arg[2] = 0;
 	param_op(vm, proc, arg);
-	ft_putendl("je fais un and");
+	//ft_putendl("je fais un and");
 }
