@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 08:32:19 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/27 04:07:01 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/27 06:07:27 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	aff(t_vm *vm, t_proc *proc)
 {
 	//(*i)++;
+	ft_putendl("je fais un aff");
 	int	arg1;
 
 	arg1 = get_reg(vm, &(proc->pc));
@@ -25,5 +26,4 @@ void	aff(t_vm *vm, t_proc *proc)
 		proc->carry = 1;
 	else
 		proc->carry = 0;
-	//ft_putendl("je fais un aff");
 }

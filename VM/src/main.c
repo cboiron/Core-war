@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/14 20:07:57 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/27 07:17:03 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init(t_vm *vm)
 	vm->nbr_next = 0;
 	vm->cycle = 0;
 	vm->last_check = 0;
+	vm->total_lives_period = 0;
 	vm->cycle_to_die = CYCLE_TO_DIE;
 	vm->cycle_before_checking = CYCLE_TO_DIE;
 }
@@ -54,6 +55,8 @@ int			main(int argc, char **argv)
 	if (argc < 2)
 		usage();
 	init_vm(&vm);
+	vm.last_check = 0;
+	vm.cycle_to_die = CYCLE_TO_DIE;
 	init(&vm);
 	create_arena(&vm);
 	if (get_param(argv, &vm, argc) == 0)

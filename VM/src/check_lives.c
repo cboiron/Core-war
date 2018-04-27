@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/27 05:29:53 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/27 07:06:10 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	kill_process(t_proc *proc, t_proc **list)
 {
 	t_proc	*tmp;
-	t_proc	*next;
 
+	tmp = NULL;
 	tmp = *list;
 	if (proc == *list)
 	{
@@ -57,6 +57,7 @@ void	check_lives(t_vm *vm, t_proc **list)
 {
 	t_proc	*tmp;
 
+	tmp = NULL;
 	tmp = *list;
 	while (tmp)
 	{

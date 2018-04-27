@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 04:45:35 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/27 01:02:31 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/27 06:10:36 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	lld(t_vm *vm, t_proc *proc)
 {
+	ft_putendl("je fais un lld");
 	int		arg1;
 	int		arg2;
 
@@ -31,5 +32,4 @@ void	lld(t_vm *vm, t_proc *proc)
 		else
 			proc->carry = 0;
 	}
-	//ft_putendl("je fais un lld");
 }

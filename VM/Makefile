@@ -6,13 +6,13 @@
 #    By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 18:10:12 by abrichar          #+#    #+#              #
-#    Updated: 2018/04/21 04:10:44 by cboiron          ###   ########.fr        #
+#    Updated: 2018/04/27 07:10:42 by cboiron          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = corewar
 
-CFLAG = -Wall -Wextra
+CFLAG = -Wall -Wextra -g3
 CPPFLAGS = -Iincludes
 
 SRC_NAME = main.c create_arena.c param.c read_champ.c load_champs.c play.c \

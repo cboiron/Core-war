@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:13:50 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/27 01:03:52 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/27 06:07:11 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	add(t_vm *vm, t_proc *proc)
 {
+	ft_putendl("je fais un add ");
 	int	r1;
 	int	r2;
 	int	r3;
@@ -29,5 +30,4 @@ void	add(t_vm *vm, t_proc *proc)
 		else
 			proc->carry = 0;
 	}
-	//ft_putendl("je fais un add ");
 }

@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 05:17:20 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/27 05:17:24 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/27 06:11:08 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	st(t_vm *vm, t_proc *proc)
 	int	arg2;
 	int	pc_debut;
 
-	printf("pc = %d\n", proc->pc);
+	//printf("pc = %d\n", proc->pc);
 	pc_debut = proc->pc;
 	arg1 = get_reg(vm, &(proc->pc));
 	if (proc->parametres_types[1] == REG)

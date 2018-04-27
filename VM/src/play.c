@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/27 04:13:26 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/27 06:45:24 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,10 +163,9 @@ void	play(t_vm *vm)
 	t_proc	*list;
 
 	list = NULL;
-	init_proc(&list, vm);
-	parse_list(&list, vm);
 	cycle = 0;
-
+	init_proc(&list, vm);
+//	parse_list(&list, vm);
 	while (42)
 	{
 		parse_list(&list, vm);
