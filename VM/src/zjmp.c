@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:27:37 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/27 03:47:08 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/27 04:48:27 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ void	zjmp(t_vm *vm, t_proc *proc)
 	if (dir < 0)
 	{
 		dir %= -IDX_MOD;
-	//printf("adress after mod = %d\n", dir);
-	//printf("idx mod = %d\n", IDX_MOD);
 		dir += MEM_SIZE;
 	}
+	else
+		dir %= IDX_MOD;
 	//printf("adress after check = %d\n", dir);
 	if (proc->carry == 1)
 	{
 		proc->pc += (dir);
+		proc->pc %= MEM_SIZE;
 	}
 	//ft_putendl("je fais un zjmp");
 	//printf("pc final= %d\n", proc->pc);

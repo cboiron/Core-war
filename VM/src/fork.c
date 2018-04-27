@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 04:45:35 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/27 01:00:58 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/27 04:39:15 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void	forkk(t_vm *vm, t_proc *proc, t_proc **list)
 
 	proc->pc++;
 	adress = get_dir(vm, &(proc->pc), 12);
-	adress -= 3;
+	//adress -= 3;
+	printf("adress %d\n", adress);
 	if (proc->instruction == 12)
 	{
 		//ft_putendl("je fais un fork");
