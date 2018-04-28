@@ -6,18 +6,19 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 01:57:02 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/28 13:34:05 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/28 14:26:10 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-long long int	get_value(t_vm *vm, int index)
+int	get_value(t_vm *vm, int index)
 {
-	long long int	value;
+	int	value;
 
 	value = 0;
 	printf("index = %d\n", index);
+	printf("index modulo  = %d\n", index % MEM_SIZE);
 	value = vm->arena[index % MEM_SIZE];
 	value <<= 8;
 	value += vm->arena[(index + 1)% MEM_SIZE];
@@ -25,10 +26,10 @@ long long int	get_value(t_vm *vm, int index)
 	value += vm->arena[(index + 2)% MEM_SIZE];
 	value <<= 8;
 	value += vm->arena[(index + 3)% MEM_SIZE];
-	printf("value = %lld\n", value);
+	printf("value = %d\n", value);
 	//if (value >> 31)
 	//	value -= 0x100000000;
-	printf("value after = %lld\n", value);
+	printf("value after = %d\n", value);
 	return (value);
 }
 
@@ -42,7 +43,19 @@ void	ld(t_vm *vm, t_proc *proc)
 	proc->pc++;
 	pc_count = proc->pc + 1;
 	if (proc->parametres_types[0] == DIRECT)
+	{
 		arg1 = get_dir(vm, &pc_count, proc->instruction);
+		printf("direct =  %d\n", arg1);
+		if (arg1 < 0)
+		{
+			arg1 = arg1 % -IDX_MOD;
+			arg1 += MEM_SIZE;
+		}
+		else
+			arg1 %= IDX_MOD;
+		arg1 = get_value(vm, pc_count + (arg1));
+		pc_count += 4;
+	}
 	else if (proc->parametres_types[0] == INDIRECT)
 		arg1 = get_ind(vm, &pc_count);
 	arg2 = get_reg(vm, &pc_count);

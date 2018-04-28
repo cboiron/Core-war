@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 04:04:22 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/25 04:56:16 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/28 14:31:14 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	param_op(t_vm *vm, t_proc *proc, int *arg)
 	else if (proc->parametres_types[0] == INDIRECT)
 		arg[0] = get_ind(vm, &(proc->pc));
 	else if (proc->parametres_types[0] == DIRECT)
-		arg[0] = get_ind(vm, &(proc->pc));
+		arg[0] = get_dir(vm, &(proc->pc), proc->instruction);
 	if (proc->parametres_types[1] == REG)
 	{
 		arg[1] = get_reg(vm, &(proc->pc));
@@ -45,7 +45,7 @@ void	param_op(t_vm *vm, t_proc *proc, int *arg)
 	else if (proc->parametres_types[1] == INDIRECT)
 		arg[1] = get_ind(vm, &(proc->pc));
 	else if (proc->parametres_types[1] == DIRECT)
-		arg[1] = get_ind(vm, &(proc->pc));
+		arg[1] = get_dir(vm, &(proc->pc), proc->instruction);
 	arg[2] = get_reg(vm, &(proc->pc));
 	if ((proc->parametres_types[0] == REG && !is_reg(arg[0])) ||
 			(proc->parametres_types[1] == REG && !is_reg(arg[1])) ||
