@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:27:37 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/27 05:17:56 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/28 09:06:34 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	zjmp(t_vm *vm, t_proc *proc)
 	//printf("pc = %d\n", proc->pc);
 	//dir %= IDX_MOD;
 	if (dir >> 15)
-		dir -= 65536;
+		dir -= 0XFFFF;
 	//printf("adress neg = %d\n", dir);
 	if (dir < 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 04:45:35 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/27 07:03:28 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/28 09:14:53 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,28 @@ void	add_to_list(t_proc **list, t_proc *new_proc)
 void	forkk(t_vm *vm, t_proc *proc, t_proc **list)
 {
 	int	adress;
+	int	pc_debut;
 
+	pc_debut = proc->pc;
 	adress = 0;
 	proc->pc++;
 	adress = get_dir(vm, &(proc->pc), 12);
 	//adress -= 3;
-//	printf("adress %d\n", adress);
+	printf("pc =  %d\n", proc->pc);
+	printf("adress = %d\n", adress);
+	if (adress >> 15)
+		adress -= 0XFFFF;
+	if (adress < 0)
+		adress += MEM_SIZE;
+	printf("adress after = %d\n", adress);
 	if (proc->instruction == 12)
 	{
 		ft_putendl("je fais un fork");
-		add_to_list(list, (fork_proc(proc, adress % IDX_MOD)));
+		add_to_list(list, (fork_proc(proc, pc_debut + (adress % IDX_MOD))));
 	}
 	else if (proc->instruction == 15)
 	{
 		ft_putendl("je fais un lfork");
-		add_to_list(list, (fork_proc(proc, adress)));
+		add_to_list(list, (fork_proc(proc, pc_debut + adress)));
 	}
 }
