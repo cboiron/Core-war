@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 16:32:14 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/21 01:15:54 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/28 18:06:04 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,6 @@ int get_param(char **av, t_vm *vm, int ac)
 			}
 			if (ft_strcmp(av[i], "-n") == 0)
 				vm->tab_champ[vm->nbr_next].id = param_n(vm, av, &i, ac);
-			else
-				vm->tab_champ[vm->nbr_next].id = vm->nbr_next;
 		}
 		champs(vm, av[i]);
 		i++;

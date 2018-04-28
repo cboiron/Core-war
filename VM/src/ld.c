@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 01:57:02 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/28 16:12:47 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/28 17:16:30 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ int	get_value(t_vm *vm, int index)
 	value += (unsigned char)vm->arena[mod(index + 3, MEM_SIZE)];
 //	value += vm->arena[(index + 3)% MEM_SIZE];
 	printf("value = %d\n", value);
-	//if (value >> 31)
-	//	value -= 0x100000000;
-	printf("value after = %d\n", value);
 	return (value);
 }
 

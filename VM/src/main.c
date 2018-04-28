@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/27 07:17:03 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/28 18:00:51 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	init(t_vm *vm)
 	i = 0;
 	while (i < MAX_PLAYERS)
 	{
-	vm->tab_champ[i].weight = 0;
-	vm->tab_champ[i].id = -1;
-	i++;
+		vm->tab_champ[i].weight = 0;
+		vm->tab_champ[i].id = -1;
+		i++;
 	}
 	vm->fd = 0;
 	vm->dump_cycle = -1;
@@ -43,7 +43,7 @@ void	init(t_vm *vm)
 int			usage(void)
 {
 	ft_putendl("usage : ./corewar [-dump nbr_cycles] [[-n number] \
-champion1.cor] ...");
+			champion1.cor] ...");
 	exit(EXIT_FAILURE);
 	return (0);
 }
@@ -63,10 +63,7 @@ int			main(int argc, char **argv)
 		usage();
 	load_champs(&vm);
 	play(&vm);
-//	sleep(10);
-	//dump_arena(&vm);
-	//dump_arena(&vm);
-	//ft_printf("%s\n", argv[0]);
-	//exit(EXIT_SUCCESS);
+	//	sleep(10);
+	//	free vm et son contenu
 	return (0);
 }
