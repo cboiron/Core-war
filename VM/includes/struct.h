@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 00:38:28 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/19 01:31:46 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/28 11:10:48 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct		s_proc
 	int				live_period;
 	int				id;
 	int				parametres_types[3];
+	int				save_pc;
 	struct s_proc	*next;
 }					t_proc;
 

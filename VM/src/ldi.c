@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:36:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/27 06:41:02 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/28 10:00:43 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ void	ldi(t_vm *vm, t_proc *proc)
 	else if (proc->parametres_types[0] == INDIRECT)
 		arg1 = get_ind(vm, &(proc->pc));
 	else if (proc->parametres_types[0] == DIRECT)
-		arg1 = get_ind(vm, &(proc->pc));
+		arg1 = get_dir(vm, &(proc->pc), proc->instruction);
 	//printf("pc arg1  = %d\n", proc->pc);
 	//printf("case apres  = %d\n", vm->arena[proc->pc]);
 	if (proc->parametres_types[1] == REG)
 		arg2 = get_reg(vm, &(proc->pc));
 	else if (proc->parametres_types[1] == DIRECT)
-		arg2 = get_ind(vm, &(proc->pc));
+		arg2 = get_dir(vm, &(proc->pc), proc->instruction);
 //	printf("pc arg2  = %d\n", proc->pc);
 	arg3 = get_reg(vm, &(proc->pc));
 	//printf("arg3  = %d\n", arg3);
@@ -85,6 +85,7 @@ void	ldi(t_vm *vm, t_proc *proc)
 	//printf(" value %d\n", pc_debut + ldi_2(vm, check_reg(proc, arg1, arg2), proc));
 	proc->reg[arg3 - 1] = pc_debut + ldi_2(vm, check_reg(proc, arg1, arg2), proc);
 	//printf("slt\n");
+	printf("cc\n");
 	if (proc->reg[arg3 - 1] == 0)
 		proc->carry = 1;
 	else

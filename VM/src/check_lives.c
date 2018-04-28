@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/27 07:32:47 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/28 09:52:14 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	kill_process(t_proc *proc, t_proc **list)
 				printf("id2 %d\n", proc->id);
 				ft_putendl("proc killed2");
 				tmp->next = proc->next;
-				ft_memdel((void**)&proc);
+				//ft_memdel((void**)proc);
+				ft_putendl("proc killed2");
 			}
 			if (tmp->next != NULL)
 				tmp = tmp->next;
@@ -57,7 +58,6 @@ void	check_lives(t_vm *vm, t_proc **list)
 {
 	t_proc	*tmp;
 
-	tmp = NULL;
 	tmp = *list;
 	while (tmp)
 	{
