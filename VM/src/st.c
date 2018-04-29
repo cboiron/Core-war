@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 05:17:20 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/29 06:10:01 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/29 08:14:28 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ void	st(t_vm *vm, t_proc *proc)
 	{
 		write_in_memory(vm, proc->reg[arg1 - 1], pc_debut + mod(arg2, MEM_SIZE));
 	}
-	int	i;
+}
+
+/*
+ * int	i;
 
 	i = 0;
 	while (i < 16)
@@ -48,4 +51,4 @@ void	st(t_vm *vm, t_proc *proc)
 		printf("Le registre %d contient la valeur : %d    \n", i + 1, proc->reg[i]);
 	i++;
 	}
-}
+}*/

@@ -1,9 +1,9 @@
 .name	"testld"
 .comment	"many test for ld"
 
-ld 101, r1
-ld 102, r2
-ld 103, r3
+ld %1, r1
+ld 3, r2
+ld 5, r3
 ld 104, r4
 ld 105, r5
 ld 106, r6

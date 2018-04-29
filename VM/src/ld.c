@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 01:57:02 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/29 02:25:10 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/29 08:14:52 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,14 @@ void	ld(t_vm *vm, t_proc *proc)
 		proc->carry = 0;
 	proc->pc = pc_count;
 	printf("pc fin =  %d\n", proc->pc);
+	int	i;
+
+	i = 0;
+	while (i < 16)
+	{
+		printf("Le registre %d contient la valeur : %d    \n", i + 1, proc->reg[i]);
+	i++;
+	}
 }
 
 /*
