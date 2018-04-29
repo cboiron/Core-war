@@ -78,6 +78,7 @@ part2:
 	zjmp %:def
 
 def:
+	ld %10, r1
 	st r1, -1200
 	st r2, -600
 	st r3, -2000
