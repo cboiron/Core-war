@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 01:57:02 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/28 17:16:30 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/29 02:25:10 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ld(t_vm *vm, t_proc *proc)
 		arg1 = get_value(vm, pc_count + (arg1));
 	}
 	else if (proc->parametres_types[0] == INDIRECT)
-		arg1 = get_ind(vm, &pc_count);
+		arg1 = (short)get_ind(vm, &pc_count);
 	arg2 = get_reg(vm, &pc_count);
 	if (!is_reg(arg2))
 		return ;

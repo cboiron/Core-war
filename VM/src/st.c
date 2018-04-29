@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 05:17:20 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/28 18:13:40 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/29 02:21:40 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 void	st(t_vm *vm, t_proc *proc)
 {
 	ft_putendl("je fais un st");
-	/*
-	printf("type du param : %d  .\n", proc->parametres_types[0]);
-	printf("type du param : %d  .\n", proc->parametres_types[1]);
-	printf("type du param : %d  .\n", proc->parametres_types[2]);
-	*/
 	int	arg1;
 	int	arg2;
 	int	pc_debut;
