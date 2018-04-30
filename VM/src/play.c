@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/28 11:10:51 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/04/30 11:25:45 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,19 @@
 void	reverse_params(t_proc *proc)
 {
 	int	tmp1;
+	int	i;
+
+	i = -1;
+	while (++i < 3)
+	printf("before parametre %d type = %d\n",i,proc->parametres_types[i]);
 
 	tmp1 = proc->parametres_types[2];
 	proc->parametres_types[2] = proc->parametres_types[0];
 	proc->parametres_types[0] = tmp1;
+
+	i = -1;
+	while (++i < 3)
+	printf("after parametre %d type = %d\n",i,proc->parametres_types[i]);
 }
 
 void	get_param_type(t_vm *vm, int i, t_proc *proc)
@@ -28,15 +37,16 @@ void	get_param_type(t_vm *vm, int i, t_proc *proc)
 
 	i++;
 	index_param = 0;
-	//printf(" i   = %d  \n", (*i) % MEM_SIZE);
+	//printf(" i   = %d  \n", (*i) % MEM_SIZE)
 	//printf(" op code   = %d  \n", op_code);
 	octet = vm->arena[i % MEM_SIZE];
+	printf(" opc   = %d  \n", octet);
 	octet = octet >> 2;
 	while (octet)
 	{
 		if ((octet & 1) && !(octet & 2))
 			proc->parametres_types[index_param] = REG;
-		else if (octet & 2)
+		else if ((octet & 2) == 2)
 			proc->parametres_types[index_param] = DIRECT;
 		else if (octet & 3)
 			proc->parametres_types[index_param] = INDIRECT;
@@ -76,7 +86,8 @@ void	read_op_code(t_vm *vm, t_proc *proc, int instruction, t_proc **list)
 			if (j == 2 || j == 3 || j == 4 || j == 5 || j == 6 || j == 7
 					|| j == 8 || j == 10 || j == 11 || j == 13 || j == 14 ||
 					j == 16)
-				get_param_type(vm, proc->pc, proc);
+				//get_param_type(vm, proc->pc, proc);
+				get_types((unsigned char)vm->arena[(proc->pc + 1) % MEM_SIZE], proc);
 			//printf(" i avant   = %d  \n", proc->pc);
 			//printf(" op code   = %d  \n", vm->arena[proc->pc]);
 			opc[j](vm, proc);
