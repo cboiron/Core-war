@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:27:37 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/29 08:04:04 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/01 22:27:15 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	zjmp(t_vm *vm, t_proc *proc)
 	pc = proc->pc;
 	proc->pc++;
 	printf("pc = %d\n", pc);
-	dir = (short)get_dir(vm, &(proc->pc), 9);
+	dir = (short)get_dir(vm, &pc, 9);
 	printf("adress = %d\n", dir);
 	if (dir < 0)
 		dir %= -IDX_MOD;
@@ -37,6 +37,8 @@ void	zjmp(t_vm *vm, t_proc *proc)
 		printf("pc final = %d\n", proc->pc);
 		return ;
 	}
+	else
+		proc->pc = pc;
 	//ft_putendl("je fais un zjmp");
 	//si carry == 1
 	//ALORS
