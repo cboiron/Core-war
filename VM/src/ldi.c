@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:36:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/01 22:43:58 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/01 23:20:23 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_reg(t_proc *proc, int arg1, int arg2)
 	{
 		ft_putendl("je fait un lldi");
 	}
-	return ((arg1 + arg2) % MEM_SIZE);
+	return (mod(arg1 + arg2, MEM_SIZE));
 }
 
 int	ldi_2(t_vm *vm, int adress, t_proc *proc)
