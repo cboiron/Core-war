@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/30 11:25:45 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/01 21:25:52 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	reverse_params(t_proc *proc)
 
 	i = -1;
 	while (++i < 3)
-	printf("before parametre %d type = %d\n",i,proc->parametres_types[i]);
+		printf("before parametre %d type = %d\n",i,proc->parametres_types[i]);
 
 	tmp1 = proc->parametres_types[2];
 	proc->parametres_types[2] = proc->parametres_types[0];
@@ -27,7 +27,7 @@ void	reverse_params(t_proc *proc)
 
 	i = -1;
 	while (++i < 3)
-	printf("after parametre %d type = %d\n",i,proc->parametres_types[i]);
+		printf("after parametre %d type = %d\n",i,proc->parametres_types[i]);
 }
 
 void	get_param_type(t_vm *vm, int i, t_proc *proc)
@@ -57,6 +57,15 @@ void	get_param_type(t_vm *vm, int i, t_proc *proc)
 	i++;
 }
 
+int		has_ocp(int j)
+{
+	if (j == 2 || j == 3 || j == 4 || j == 5 || j == 6 || j == 7
+			|| j == 8 || j == 10 || j == 11 || j == 13 || j == 14 ||
+			j == 16)
+		return (1);
+	return (0);
+}
+
 void	read_op_code(t_vm *vm, t_proc *proc, int instruction, t_proc **list)
 {
 	static void (*opc[17])(t_vm *vm, t_proc *proc) = {NULL, &live, &ld, &st, &add,
@@ -72,26 +81,23 @@ void	read_op_code(t_vm *vm, t_proc *proc, int instruction, t_proc **list)
 	{
 		if (instruction == j)
 		{
-		//	printf(" i   = %d  \n", *i);
-		//	ft_putendl("op code");
-		//	ft_putnbr(j);
-		//	ft_putendl("-------------------")
-			//printf("op code  = %d  \n", j);
 			proc->save_pc = proc->pc;
 			if (j == 12 || j == 15)
 			{
 				forkk(vm, proc, list);
 				return ;
 			}
-			if (j == 2 || j == 3 || j == 4 || j == 5 || j == 6 || j == 7
-					|| j == 8 || j == 10 || j == 11 || j == 13 || j == 14 ||
-					j == 16)
-				//get_param_type(vm, proc->pc, proc);
-				get_types((unsigned char)vm->arena[(proc->pc + 1) % MEM_SIZE], proc);
-			//printf(" i avant   = %d  \n", proc->pc);
-			//printf(" op code   = %d  \n", vm->arena[proc->pc]);
+			if (has_ocp(j))
+			{
+				if (get_types((unsigned char)vm->arena[(proc->pc + 1)
+							% MEM_SIZE], proc) == 0)
+				{
+					ft_putendl("OCP incorrect");
+					proc->pc +=2;
+					return ;
+				}
+			}
 			opc[j](vm, proc);
-			//printf(" i apres  = %d  \n", proc->pc);
 		}
 		j++;
 	}
@@ -123,7 +129,7 @@ void	parse_list(t_proc **list, t_vm *vm)
 		if (tmp->cycle_to_wait == 0)
 		{
 			read_op_code(vm, tmp, tmp->instruction, list);
-		//printf("pc sortie de la liste de read_op_code =  %d\n", tmp->pc);
+			//printf("pc sortie de la liste de read_op_code =  %d\n", tmp->pc);
 			tmp->instruction = 0;
 			tmp->cycle_to_wait = -1;
 		}
@@ -132,15 +138,15 @@ void	parse_list(t_proc **list, t_vm *vm)
 		else if (tmp->instruction == 0)
 			get_instruction(vm, tmp);
 		/*
-		ft_putendl("id = ");
-		ft_putnbr(tmp->id);
-		ft_putendl("");
-		ft_putendl("pc = ");
-		ft_putnbr(tmp->pc);
-		ft_putendl("");
-		*/
+		   ft_putendl("id = ");
+		   ft_putnbr(tmp->id);
+		   ft_putendl("");
+		   ft_putendl("pc = ");
+		   ft_putnbr(tmp->pc);
+		   ft_putendl("");
+		   */
 		//ft_putnbr(tmp->cycle_to_wait);
-			tmp = tmp->next;
+		tmp = tmp->next;
 		i++;
 	}
 }
@@ -153,7 +159,7 @@ void	play(t_vm *vm)
 	list = NULL;
 	cycle = 0;
 	init_proc(&list, vm);
-//	parse_list(&list, vm);
+	//	parse_list(&list, vm);
 	while (42)
 	{
 		parse_list(&list, vm);
