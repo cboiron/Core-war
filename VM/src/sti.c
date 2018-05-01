@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:55:45 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/27 06:11:13 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/01 22:53:39 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,29 @@ void	sti(t_vm *vm, t_proc *proc)
 	int	arg1;
 	int	arg2;
 	int	arg3;
-	int	pc_debut;
+	int	pc;
 
-	pc_debut = proc->pc;
-	arg1 = get_reg(vm, &(proc->pc));
-	if (proc->parametres_types[1] == REG)
-		arg2 = get_reg(vm, &(proc->pc));
-	else if (proc->parametres_types[1] == DIRECT)
-		arg2 = get_dir(vm, &(proc->pc), proc->instruction);
-	else if (proc->parametres_types[1] == INDIRECT)
-		arg2 = get_ind(vm, &(proc->pc));
-	if (proc->parametres_types[2] == REG)
-		arg3 = get_reg(vm, &(proc->pc));
-	else if (proc->parametres_types[1] == DIRECT)
-		arg3 = get_dir(vm, &(proc->pc), proc->instruction);
-	if ((proc->parametres_types[0] == REG && !is_reg(arg1)) ||
-			(proc->parametres_types[1] == REG && !is_reg(arg2)) ||
-			(proc->parametres_types[2] == REG && !is_reg(arg3)))
+	proc->pc++;
+	pc = proc->pc + 1;
+	arg1 = get_reg(vm, &pc);
+	if (PARAM2 == REG)
+		arg2 = get_reg(vm, &pc);
+	else if (PARAM2 == DIRECT)
+		arg2 = get_dir(vm, &pc, proc->instruction);
+	else if (PARAM2 == INDIRECT)
+		arg2 = get_ind(vm, &pc);
+	if (PARAM3 == REG)
+		arg3 = get_reg(vm, &pc);
+	else if (PARAM3 == DIRECT)
+		arg3 = get_dir(vm, &pc, proc->instruction);
+	if ((PARAM1 == REG && !is_reg(arg1)) ||
+			(PARAM2 == REG && !is_reg(arg2)) ||
+			(PARAM3 == REG && !is_reg(arg3)))
 		return ;
-	if (proc->parametres_types[1] == REG)
+	if (PARAM2 == REG)
 		arg2 = proc->reg[arg2 - 1];
-	if (proc->parametres_types[2] == REG)
+	if (PARAM3 == REG)
 		arg3 = proc->reg[arg3 - 1];
-	write_in_memory(vm, arg1, pc_debut - 2 + (arg2 + arg3) % IDX_MOD);
+	write_in_memory(vm, arg1, proc->save_pc + (arg2 + arg3) % IDX_MOD);
+	proc->pc = pc;
 }
