@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 16:46:23 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/30 15:30:07 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/05/01 23:49:19 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,17 @@ static unsigned int		write_label2(t_parsing *tmp, char *to_search,
 	pos = 0;
 	while (tmp)
 	{
-		while (tmp->label != 1 && tmp)
+		while (tmp->label != 1 && tmp->next != NULL)
 			tmp = tmp->next;
+		if (tmp->next == NULL)
+			msg_error(NO_LABEL, 0);
 		content = ft_strsub(tmp->content, 0, ft_strlen(tmp->content) - 1);
 		if (ft_strcmp(content, to_search) == 0)
 			break ;
+		if (tmp->next == NULL)
+			msg_error(NO_LABEL, 0);
 		tmp = tmp->next;
+
 	}
 	pos = (tmp->size_to_here - size_to_here);
 	tmp = env->buff;
@@ -34,6 +39,8 @@ static unsigned int		write_label2(t_parsing *tmp, char *to_search,
 	{
 		if (tmp->size_to_here == size_to_here)
 			break ;
+		if (tmp->next == NULL)
+			msg_error(NO_LABEL, 0);
 		tmp = tmp->next;
 	}
 	pos += tmp->size;
@@ -54,12 +61,9 @@ static void				write_label(char *dir, t_op actual, t_asm *env,
 	max = -1;
 	if ((sign = search_char(dir, '+') <= 0) || ((sign = search_char(dir, '-')) <= 0))
 		sign = ft_strlen(dir);
-	ft_printf("dir: %s\n", dir);
 	to_search = ft_strsub(dir, 2, sign);
 	tmp = env->buff;
-	ft_printf("to_search : %s\n", to_search);
 	pos = write_label2(tmp, to_search, size_to_here, env);
-	ft_printf("cc\n");
 	if (pos == max)
 		pos = 0;
 	if (sign != (int)ft_strlen(dir))
