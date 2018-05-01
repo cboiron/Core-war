@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 01:41:15 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/27 07:33:33 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/02 01:01:11 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	live(t_vm *vm, t_proc *proc)
 	//printf("avant get %x\n",vm->arena[proc->pc]);
 	proc->pc++;
 	dir = get_dir(vm, &(proc->pc), 1);
-	//printf("apres get %x\n",vm->arena[proc->pc]);
+	printf("apres get %d\n", dir);
 //	proc->pc += 5;
 	proc->live_period++;
 	vm->total_lives_period++;

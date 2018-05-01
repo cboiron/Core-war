@@ -6,16 +6,16 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 01:57:02 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/30 11:43:24 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/02 01:41:18 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 
-int	get_value(t_vm *vm, int index)
+long int	get_value(t_vm *vm, int index)
 {
-	int	value;
+	long int	value;
 
 	value = 0;
 	printf("index = %d\n", index);
@@ -30,14 +30,14 @@ int	get_value(t_vm *vm, int index)
 	value <<= 8;
 	value += (unsigned char)vm->arena[mod(index + 3, MEM_SIZE)];
 //	value += vm->arena[(index + 3)% MEM_SIZE];
-	printf("value = %d\n", value);
+	printf("value = %ld\n", value);
 	return (value);
 }
 
 void	ld(t_vm *vm, t_proc *proc)
 {
-	int	arg1;
-	int	arg2;
+	long int	arg1;
+	long int	arg2;
 	int	pc_count;
 
 	ft_putendl("je fais un ld");
@@ -45,17 +45,17 @@ void	ld(t_vm *vm, t_proc *proc)
 	printf("type first param = %d  \n", proc->parametres_types[0]);
 	proc->pc++;
 	pc_count = proc->pc + 1;
-	if (proc->parametres_types[0] == DIRECT)
+	if (PARAM1 == DIRECT)
 	{
 		arg1 = get_dir(vm, &pc_count, proc->instruction);
-		printf("direct =  %d\n", arg1);
+		printf("direct =  %ld\n", arg1);
 	}
-	else if (proc->parametres_types[0] == INDIRECT)
+	else if (PARAM1 == INDIRECT)
 	{
 		arg1 = (short)get_ind(vm, &pc_count);
-		printf("indirect =  %d\n", arg1);
+		printf("indirect =  %ld \n", arg1);
 		arg1 = arg1 % IDX_MOD;
-		arg1 = get_value(vm, pc_count + (arg1));
+		arg1 = get_value(vm, mod(proc->save_pc + (arg1), MEM_SIZE));
 	}
 	else
 		return ;
