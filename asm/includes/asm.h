@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/26 18:03:25 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/01 23:35:32 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define ERR_SIZE "Erreur 06 : champion trop grand."
 # define ERR_ARG "Erreur 07 : Argument non valide."
 # define ERR_NBR_ARG "Erreur 08 : Pas assez d'argument."
+# define NO_LABEL "Erreur 09 : label inexistant "
 
 typedef struct			s_parsing
 {
