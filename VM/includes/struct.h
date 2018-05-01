@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 00:38:28 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/28 11:10:48 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/01 20:58:18 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 # define REG 1
 # define DIRECT 2
 # define INDIRECT 3
+# define OP proc->instruction
+# define PARAM1 proc->parametres_types[0]
+# define PARAM2 proc->parametres_types[1]
+# define PARAM3 proc->parametres_types[2]
 
 # include "op.h"
 typedef struct		s_proc
