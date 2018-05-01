@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 04:45:35 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/01 23:22:13 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/01 23:47:46 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_proc	*fork_proc(t_proc *father, int adress)
 	son->instruction = 0;
 	son->next = NULL;
 	son->pc = mod(adress, MEM_SIZE);
+	printf("son pc =  %d\n", son->pc);
 	return (son);
 }
 
@@ -53,10 +54,10 @@ void	forkk(t_vm *vm, t_proc *proc, t_proc **list)
 	adress = (short)get_dir(vm, &pc, 12);
 	printf("pc =  %d\n", pc);
 	printf("adress = %d\n", adress);
-	if (adress >> 15)
-		adress -= 0XFFFF;
-	if (adress < 0)
-		adress += MEM_SIZE;
+	//if (adress >> 15)
+	//	adress -= 0XFFFF;
+	//if (adress < 0)
+	//	adress += MEM_SIZE;
 	printf("adress after = %d\n", adress);
 	if (proc->instruction == 12)
 	{
