@@ -2,6 +2,7 @@
 .comment "xelophoniquement ordonné résultat"
 
 xor1:	xor r11,r12,r13
+xor %5, %2, r5
 xor2:	xor r11,%420,r12
 		xor r11,%:xor1,r13
 xor3:	xor r11,420,r12

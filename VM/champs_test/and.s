@@ -1,6 +1,7 @@
 .name "and"
 .comment "and the demon dies."
 
+and5:	and %2, %2, r12
 and1:	and r11,r12,r13
 and2:	and r11,%420,r12
 		and r11,%:and1,r13

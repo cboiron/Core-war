@@ -1,7 +1,7 @@
 .name "or"
 .comment "or you die"
 
-or1:	or r11,r12,r13
+or1:	or %5,%5,r13
 or2:	or r11,%420,r12
 		or r11,%:or1,r13
 or3:	or r11,420,r12

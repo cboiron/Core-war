@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 07:43:36 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/30 08:15:55 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/02 03:20:24 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ int	get_dir(t_vm *vm, int *i, int op_code)
 
 	j = 0;
 	dir = 0;
-	if (op_code == 6 || op_code == 7 || op_code == 8 ||
-			op_code == 9 || op_code == 10 || op_code == 11 || op_code == 12 ||
+	if (op_code == 9 || op_code == 10 || op_code == 11 || op_code == 12 ||
 			op_code == 14 || op_code == 15)
 	{
 		dir += (unsigned char)vm->arena[(*i) % MEM_SIZE];

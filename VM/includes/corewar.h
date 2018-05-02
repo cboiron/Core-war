@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:11:25 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/01 20:32:35 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/02 03:29:05 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ void	write_in_memory(t_vm *vm, int value, int adress);
 void	param_op(t_vm *vm, t_proc *proc, int *arg);
 
 int		get_types(unsigned char octet, t_proc *proc);
+
+long int	get_value(t_vm *vm, int index);
 
 
 #endif
