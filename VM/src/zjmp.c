@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:27:37 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/01 22:27:15 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/02 04:58:58 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	zjmp(t_vm *vm, t_proc *proc)
 	int	pc;
 
 	ft_putendl("je fais un zjmp");
-	pc = proc->pc;
 	proc->pc++;
+	pc = proc->pc;
 	printf("pc = %d\n", pc);
 	dir = (short)get_dir(vm, &pc, 9);
 	printf("adress = %d\n", dir);

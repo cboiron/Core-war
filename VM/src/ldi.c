@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:36:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/01 23:20:23 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/02 05:57:39 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	check_reg(t_proc *proc, int arg1, int arg2)
 	{
 		ft_putendl("je fait un lldi");
 	}
+	printf("arg 1 = %d\n", arg1);
+	printf("arg 2 = %d\n", arg2);
 	return (mod(arg1 + arg2, MEM_SIZE));
 }
 
@@ -64,7 +66,9 @@ void	ldi(t_vm *vm, t_proc *proc)
 	if (PARAM1 == REG)
 		arg1 = get_reg(vm, &pc);
 	else if (PARAM1 == INDIRECT)
-		arg1 = get_ind(vm, &pc);
+	{
+		arg1 = (short)get_ind(vm, &pc);
+	}
 	else if (PARAM1 == DIRECT)
 		arg1 = get_dir(vm, &pc, proc->instruction);
 	//printf("pc arg1  = %d\n", proc->pc);
@@ -85,6 +89,8 @@ void	ldi(t_vm *vm, t_proc *proc)
 	//printf(" reg%d\n", proc->reg[arg3 - 1]);
 	//printf(" value %d\n", pc_debut + ldi_2(vm, check_reg(proc, arg1, arg2), proc));
 	proc->reg[arg3 - 1] = proc->save_pc + ldi_2(vm, check_reg(proc, arg1, arg2), proc);
+	printf("numero de registre  = %d\n", arg3);
+	printf("resultat  = %d\n", proc->reg[arg3 - 1]);
 	//printf("slt\n");
 	if (proc->reg[arg3 - 1] == 0)
 		proc->carry = 1;
