@@ -6,56 +6,11 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/01 21:25:52 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/01 23:52:00 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
-void	reverse_params(t_proc *proc)
-{
-	int	tmp1;
-	int	i;
-
-	i = -1;
-	while (++i < 3)
-		printf("before parametre %d type = %d\n",i,proc->parametres_types[i]);
-
-	tmp1 = proc->parametres_types[2];
-	proc->parametres_types[2] = proc->parametres_types[0];
-	proc->parametres_types[0] = tmp1;
-
-	i = -1;
-	while (++i < 3)
-		printf("after parametre %d type = %d\n",i,proc->parametres_types[i]);
-}
-
-void	get_param_type(t_vm *vm, int i, t_proc *proc)
-{
-	int	octet;
-	int	index_param;
-
-	i++;
-	index_param = 0;
-	//printf(" i   = %d  \n", (*i) % MEM_SIZE)
-	//printf(" op code   = %d  \n", op_code);
-	octet = vm->arena[i % MEM_SIZE];
-	printf(" opc   = %d  \n", octet);
-	octet = octet >> 2;
-	while (octet)
-	{
-		if ((octet & 1) && !(octet & 2))
-			proc->parametres_types[index_param] = REG;
-		else if ((octet & 2) == 2)
-			proc->parametres_types[index_param] = DIRECT;
-		else if (octet & 3)
-			proc->parametres_types[index_param] = INDIRECT;
-		index_param++;
-		octet = octet >> 2;
-	}
-	reverse_params(proc);
-	i++;
-}
 
 int		has_ocp(int j)
 {
@@ -77,6 +32,7 @@ void	read_op_code(t_vm *vm, t_proc *proc, int instruction, t_proc **list)
 	proc->parametres_types[1] = 0;
 	proc->parametres_types[2] = 0;
 	j = 1;
+	printf("pc = %d \n", proc->pc);
 	while (j <= 16)
 	{
 		if (instruction == j)
@@ -89,8 +45,8 @@ void	read_op_code(t_vm *vm, t_proc *proc, int instruction, t_proc **list)
 			}
 			if (has_ocp(j))
 			{
-				if (get_types((unsigned char)vm->arena[(proc->pc + 1)
-							% MEM_SIZE], proc) == 0)
+				if (get_types((unsigned char)vm->arena[mod(proc->pc + 1,
+							MEM_SIZE)], proc) == 0)
 				{
 					ft_putendl("OCP incorrect");
 					proc->pc +=2;

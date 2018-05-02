@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 04:04:22 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/01 22:24:23 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/02 03:40:25 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	choose_op(int *arg, t_proc *proc)
 {
+	printf(" arg 1 =  %d\n", arg[0]);
+	printf(" arg 2 =  %d\n", arg[1]);
+	printf(" arg 3 =  %d\n", arg[2]);
 	if (proc->instruction == 6)
 		proc->reg[arg[2] - 1] = arg[0] & arg[1];
 	else if (proc->instruction == 7)
@@ -25,6 +28,14 @@ void	choose_op(int *arg, t_proc *proc)
 	else
 		proc->carry = 0;
 	printf("resultat = %d \n", proc->reg[arg[2] - 1]);
+  int	i;
+
+	i = 0;
+	while (i < 16)
+	{
+		printf("Le registre %d contient la valeur : %d    \n", i + 1, proc->reg[i]);
+	i++;
+	}
 }
 
 void	param_op(t_vm *vm, t_proc *proc, int *arg)
@@ -33,8 +44,6 @@ void	param_op(t_vm *vm, t_proc *proc, int *arg)
 
 	proc->pc++;
 	pc = proc->pc + 1;
-	printf("case = %d\n", vm->arena[pc]);
-	printf("pc = %d\n", pc);
 	if (PARAM1 == REG)
 	{
 		arg[0] = get_reg(vm, &pc);
@@ -43,10 +52,13 @@ void	param_op(t_vm *vm, t_proc *proc, int *arg)
 		arg[0] = proc->reg[arg[0] - 1];
 	}
 	else if (PARAM1 == INDIRECT)
-		arg[0] = get_ind(vm, &pc);
+	{
+		arg[0] = (short)get_ind(vm, &pc);
+		arg[0] %= IDX_MOD;
+		arg[0] = get_value(vm, mod(proc->save_pc + arg[0], MEM_SIZE));
+	}
 	else if (PARAM1 == DIRECT)
 		arg[0] = get_dir(vm, &pc, proc->instruction);
-	printf("pc arg 1 =  %d\n", pc);
 	if (PARAM2 == REG)
 	{
 		arg[1] = get_reg(vm, &pc);
@@ -55,14 +67,16 @@ void	param_op(t_vm *vm, t_proc *proc, int *arg)
 		arg[1] = proc->reg[arg[1] - 1];
 	}
 	else if (PARAM2 == INDIRECT)
-		arg[1] = get_ind(vm, &pc);
+	{
+		arg[1] = (short)get_ind(vm, &pc);
+		arg[1] %= IDX_MOD;
+		arg[1] = get_value(vm, mod(proc->save_pc + arg[1], MEM_SIZE));
+	}
 	else if (PARAM2 == DIRECT)
 		arg[1] = get_dir(vm, &pc, proc->instruction);
-	printf("pc arg 2 =  %d\n", pc);
 	arg[2] = get_reg(vm, &pc);
 	if (!is_reg(arg[2]))
 		return ;
 	choose_op(arg, proc);
 	proc->pc = pc;
-	printf("pc fin = %d\n", pc);
 }

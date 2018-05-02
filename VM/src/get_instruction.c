@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 06:32:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/28 10:55:45 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/01 23:51:39 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,8 @@ void	get_instruction(t_vm *vm, t_proc *proc)
 			proc->cycle_to_wait = 2;
 	}
 	else
+	{
 		proc->pc++;
+		proc->pc %= MEM_SIZE;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 10:01:26 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/01 21:12:06 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/02 01:04:56 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	check_types(t_proc *proc)
 {
 	if (OP == 2 && ((PARAM1 != DIRECT && PARAM1 != INDIRECT) ||
-				PARAM1 != REG ))
+				PARAM2 != REG ))
 		return (0);
 	if (OP == 3 && ((PARAM1 != REG) || (PARAM2 != INDIRECT && PARAM2 != REG)))
 		return (0);
