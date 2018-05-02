@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 00:17:45 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/25 02:10:52 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/02 04:01:57 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	isreg(char *line)
 		return (0);
 	if (ft_strlen(tmp) == 3)
 	{
+		if (!ft_is_number(tmp, 1))
+			return (0);
 		i = ft_atoi(ft_strsub(tmp, 1, 2));
 		if (i > REG_NUMBER)
 			return (0);
