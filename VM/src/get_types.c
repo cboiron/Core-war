@@ -6,12 +6,11 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 10:01:26 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/02 01:04:56 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 01:32:27 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
 
 int	check_types(t_proc *proc)
 {
