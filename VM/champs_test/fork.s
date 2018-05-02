@@ -1,6 +1,6 @@
 .name "fourchette"
 .comment "manque le couteau..."
 
-fork1:	fork %42
+fork1:	fork %-4235
 		fork %:fork1
 	

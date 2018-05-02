@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 01:57:02 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/02 01:41:18 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/02 20:50:31 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ld(t_vm *vm, t_proc *proc)
 		arg1 = (short)get_ind(vm, &pc_count);
 		printf("indirect =  %ld \n", arg1);
 		arg1 = arg1 % IDX_MOD;
-		arg1 = get_value(vm, mod(proc->save_pc + (arg1), MEM_SIZE));
+		arg1 = get_value(vm, mod(proc->save_pc + arg1, MEM_SIZE));
 	}
 	else
 		return ;

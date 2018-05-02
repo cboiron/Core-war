@@ -6,27 +6,41 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 04:45:35 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/01 23:01:35 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/02 22:49:12 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
+long int	get_value_2(t_vm *vm, int index)
+{
+	long int	value;
+
+	value = 0;
+	value = (unsigned char)vm->arena[mod(index , MEM_SIZE)];
+	value <<= 8;
+	value += (unsigned char)vm->arena[mod(index + 1, MEM_SIZE)];
+	return (value);
+}
+
 void	lld(t_vm *vm, t_proc *proc)
 {
-	ft_putendl("je fais un lld");
 	int		arg1;
 	int		arg2;
 	int		pc;
 
 	proc->pc++;
+	arg1 = 0;
 	pc = proc->pc + 1;
-	arg1 = get_dir(vm, &pc, 2);
-	if (PARAM2 == REG)
-		arg2 = get_reg(vm, &pc);
-	else
-		arg2 = get_ind(vm, &pc);
-	if ((PARAM2 == REG && is_reg(arg2)) || PARAM2 == INDIRECT)
+	if (PARAM1 == DIRECT)
+		arg1 = get_dir(vm, &pc, proc->instruction);
+	else if (PARAM1 == INDIRECT)
+	{
+		arg1 = (short)get_ind(vm, &pc);
+		arg1 = get_value_2(vm, mod(proc->save_pc + arg1, MEM_SIZE));
+	}
+	arg2 = get_reg(vm, &pc);
+	if (is_reg(arg2))
 	{
 		proc->reg[arg2 - 1] = arg1;
 		if (arg1 == 0)

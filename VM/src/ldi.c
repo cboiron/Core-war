@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:36:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/02 05:57:39 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/02 21:49:52 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	ldi_2(t_vm *vm, int adress, t_proc *proc)
 	int	value;
 
 	adress = mod(adress, MEM_SIZE);
+	printf("adresse = %d  \n", adress);
 	value = 0;
 	value = vm->arena[adress];
 	value <<= 8;
@@ -68,6 +69,8 @@ void	ldi(t_vm *vm, t_proc *proc)
 	else if (PARAM1 == INDIRECT)
 	{
 		arg1 = (short)get_ind(vm, &pc);
+		arg1 %= IDX_MOD;
+		arg1 = get_value(vm, mod(proc->save_pc + arg1, MEM_SIZE));
 	}
 	else if (PARAM1 == DIRECT)
 		arg1 = get_dir(vm, &pc, proc->instruction);
