@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 16:32:14 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 23:01:17 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 23:16:40 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int			ft_isnumber(char *str)
 	return (1);
 }
 
-void		champs(t_vm *vm, char *arg)
+static void	champs(t_vm *vm, char *arg)
 {
 	if ((vm->fd = open(arg, O_RDONLY)) >= 0 && vm->nbr_next <= 3)
 	{

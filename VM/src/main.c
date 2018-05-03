@@ -6,14 +6,14 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 21:58:19 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 23:16:19 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 #include "../includes/struct.h"
 
-void		free_vm(t_vm *vm)
+static void	free_vm(t_vm *vm)
 {
 	int	i;
 
@@ -34,7 +34,7 @@ void		init_vm(t_vm *vm)
 	vm = ft_memalloc(sizeof(t_vm));
 }
 
-void		init(t_vm *vm)
+static void	init(t_vm *vm)
 {
 	int		i;
 

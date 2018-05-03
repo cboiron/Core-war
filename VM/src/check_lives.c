@@ -6,28 +6,13 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 23:52:13 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/04 00:05:50 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void			kill_process(t_proc *proc, t_proc **list)
-{
-	t_proc	*tmp;
-
-	tmp = *list;
-	if (tmp == proc)
-		tmp->alive = -1;
-	else
-	{
-		while (proc->next != proc && tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->alive = -1;
-	}
-}
-
-int				someone_is_alive(t_proc *list)
+static int	someone_is_alive(t_proc *list)
 {
 	t_proc	*tmp;
 
@@ -41,8 +26,11 @@ int				someone_is_alive(t_proc *list)
 	return (0);
 }
 
-static int		check_lives2(t_vm *vm, t_proc **list, int last_player)
+static int	check_lives2(t_vm *vm, t_proc **list, int last_player)
 {
+	int	i;
+
+	i = 0;
 	if (someone_is_alive(*list) == 0 && last_player == 0)
 	{
 		free_list(list);
@@ -51,8 +39,9 @@ static int		check_lives2(t_vm *vm, t_proc **list, int last_player)
 	}
 	else if (last_player != 0)
 	{
-		//ft_printf("Le vainqueur est : %s !! \n",
-		//		vm->tab_champ[last_player - 1].name);
+	while (last_player != vm->tab_champ[i].id)
+		i++;
+	ft_printf("Le vainqueur est : %s !! \n",vm->tab_champ[i].name);
 		return (0);
 	}
 	if (vm->total_lives_period > NBR_LIVE ||
@@ -68,7 +57,7 @@ static int		check_lives2(t_vm *vm, t_proc **list, int last_player)
 	return (1);
 }
 
-int				check_lives(t_vm *vm, t_proc **list)
+int			check_lives(t_vm *vm, t_proc **list)
 {
 	t_proc	*tmp;
 	int		last_player;

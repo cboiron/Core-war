@@ -6,12 +6,15 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 00:38:28 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 23:02:00 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 23:58:16 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
+# include "op.h"
+
 # define REG 1
 # define DIRECT 2
 # define INDIRECT 3
