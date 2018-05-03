@@ -6,6 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
+/*   Updated: 2018/05/03 15:41:06 by abrichar         ###   ########.fr       */
 /*   Updated: 2018/05/03 14:57:45 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -52,27 +53,33 @@ int		someone_is_alive(t_proc *list)
 void	check_lives(t_vm *vm, t_proc **list)
 {
 	t_proc	*tmp;
+	int		last_player;
 
 	tmp = *list;
+	last_player = 0;
 	while (tmp != NULL)
 	{
-		//ft_printf("boucle\n");
 		if (tmp->live_period == 0 && tmp->alive >= 0)
 		{
 			tmp->alive = -1;
+			if (tmp->instruction == 1)
+				last_player = tmp->id;
 		}
 		else
 			tmp->live_period = 0;
 		tmp = tmp->next;
 	}
-	if (someone_is_alive(*list) == 0)
+	ft_printf("Num Id : %d\n", last_player);
+	if (someone_is_alive(*list) == 0 && last_player == 0)
 	{
 		ft_putendl("Tous les joueurs sont morts");
 		exit(1);
 	}
-	ft_printf("CHECKING| total_lives %d | last_check %d\n", vm->total_lives_period, vm->last_check);
-	ft_printf("cycle to die  %d\n", vm->cycle_to_die);
-	//sleep(4);
+	else if (last_player != 0 && tmp == NULL)
+	{
+		ft_printf("dernier player : %s\n", vm->tab_champ[last_player - 1].name);
+		exit(1);
+	}
 	if (vm->total_lives_period > NBR_LIVE ||
 			vm->last_check == MAX_CHECKS)
 	{
