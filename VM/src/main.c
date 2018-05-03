@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/04 00:19:50 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/04 00:38:23 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ static void	free_vm(t_vm *vm)
 	i = 0;
 	while (i < vm->nbr_next)
 	{
+		printf("i = %d\n", i);
 		//free(vm->tab_champ[i].name);
 		//free(vm->tab_champ[i].prog);
 		//free(&vm->tab_champ[i]);
 		i++;
 	}
+	//free(vm);
 	vm = NULL;
 }
 
@@ -78,7 +80,6 @@ int			main(int argc, char **argv)
 	load_champs(&vm);
 	play(&vm);
 	free_vm(&vm);
-	//free(&vm);
-	sleep(10);
+	//sleep(10);
 	return (0);
 }
