@@ -6,19 +6,11 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:55:45 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 06:31:44 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 14:55:44 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-/*
-sti r2,%4,%5 sti copie REG_SIZE octet de r2 a l’adresse (4 + 5) 
-	Les paramètres 2 et 3 sont des index. Si les paramètres 2 ou 3 
-	sont des registres, on utilisera leur contenu comme un index.
-	REG
-	REG INDIRECT DIRECT
-	REG DIRECT
-*/
 
 void	sti(t_vm *vm, t_proc *proc)
 {
@@ -29,7 +21,6 @@ void	sti(t_vm *vm, t_proc *proc)
 	int	adress;
 
 	adress = 0;
-
 	proc->pc++;
 	pc = proc->pc + 1;
 	registre = get_reg(vm, &pc);

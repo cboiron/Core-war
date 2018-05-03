@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 04:45:35 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 13:47:27 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 14:47:27 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_proc	*fork_proc(t_proc *father, int adress)
 {
 	t_proc	*son;
 	int		i;
-	
+
 	son = NULL;
 	i = 0;
 	son = (t_proc*)ft_memalloc(sizeof(t_proc));
@@ -52,12 +52,8 @@ void	forkk(t_vm *vm, t_proc *proc, t_proc **list)
 	adress = 0;
 	adress = (short)get_dir(vm, &pc, 12);
 	if (proc->instruction == 12)
-	{
 		add_to_list(list, (fork_proc(proc, proc->save_pc + (adress % IDX_MOD))));
-	}
 	else if (proc->instruction == 15)
-	{
 		add_to_list(list, (fork_proc(proc, proc->save_pc + adress)));
-	}
 	proc->pc = pc;
 }

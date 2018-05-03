@@ -6,7 +6,11 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/05/03 15:28:01 by abrichar         ###   ########.fr       */
+=======
+/*   Updated: 2018/05/03 14:57:45 by cboiron          ###   ########.fr       */
+>>>>>>> 405a037630d60cf01b85389a4f36b3ac22b2d998
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +62,10 @@ void	check_lives(t_vm *vm, t_proc **list)
 	last_player = 0;
 	while (tmp != NULL)
 	{
+<<<<<<< HEAD
+=======
+		//ft_printf("boucle\n");
+>>>>>>> 405a037630d60cf01b85389a4f36b3ac22b2d998
 		if (tmp->live_period == 0 && tmp->alive >= 0)
 		{
 			tmp->alive = -1;
