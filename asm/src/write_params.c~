@@ -6,13 +6,13 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 06:31:50 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/04 00:01:23 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 23:59:46 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static unsigned int	write_label3(t_parsing *tmp, unsigned int size_to_here,
+static unsigned intwrite_label3(t_parsing *tmp, unsigned int size_to_here,
 		unsigned int pos)
 {
 	while (tmp)
@@ -27,11 +27,11 @@ static unsigned int	write_label3(t_parsing *tmp, unsigned int size_to_here,
 	return (pos);
 }
 
-unsigned int		write_label2(t_parsing *tmp, char *to_search,
+unsigned intwrite_label2(t_parsing *tmp, char *to_search,
 		unsigned int size_to_here, t_asm *env)
 {
-	unsigned	intpos;
-	char		*content;
+	unsigned intpos;
+	char*content;
 
 	while (tmp)
 	{
@@ -49,16 +49,17 @@ unsigned int		write_label2(t_parsing *tmp, char *to_search,
 	pos = (tmp->size_to_here - size_to_here);
 	tmp = env->buff;
 	pos = write_label3(tmp, size_to_here, pos);
+	//free(content);
 	return (pos);
 }
 
-void				write_label(char *dir, t_op actual, t_asm *env,
+voidwrite_label(char *dir, t_op actual, t_asm *env,
 		unsigned int size_to_here)
 {
-	unsigned int	pos;
-	t_parsing		*tmp;
-	char			*to_search;
-	unsigned int	max;
+	unsigned intpos;
+	t_parsing*tmp;
+	char*to_search;
+	unsigned intmax;
 
 	max = -1;
 	to_search = ft_strsub(dir, 2, ft_strlen(dir));
