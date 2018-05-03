@@ -6,28 +6,11 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 06:32:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 07:17:54 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/01 23:51:39 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
-void	suite(t_vm *vm, t_proc *proc, int instruction)
-{
-	if (instruction == 12)
-		proc->cycle_to_wait = 800;
-	else if (instruction == 14)
-		proc->cycle_to_wait = 50;
-	else if (instruction == 15)
-		proc->cycle_to_wait = 1000;
-	else if (instruction == 16)
-		proc->cycle_to_wait = 2;
-	else
-	{
-	proc->pc++;
-	proc->pc %= MEM_SIZE;
-	}
-}
 
 void	get_instruction(t_vm *vm, t_proc *proc)
 {
@@ -48,7 +31,18 @@ void	get_instruction(t_vm *vm, t_proc *proc)
 			proc->cycle_to_wait = 20;
 		else if (instruction == 10 || instruction == 11)
 			proc->cycle_to_wait = 25;
-		else
-			suite(vm, proc, instruction);
+		else if (instruction == 12)
+			proc->cycle_to_wait = 800;
+		else if (instruction == 14)
+			proc->cycle_to_wait = 50;
+		else if (instruction == 15)
+			proc->cycle_to_wait = 1000;
+		else if (instruction == 16)
+			proc->cycle_to_wait = 2;
+	}
+	else
+	{
+		proc->pc++;
+		proc->pc %= MEM_SIZE;
 	}
 }
