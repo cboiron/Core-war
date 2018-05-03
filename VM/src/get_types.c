@@ -6,12 +6,11 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 10:01:26 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/02 01:04:56 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 03:41:05 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
 
 int	check_types(t_proc *proc)
 {
@@ -46,7 +45,6 @@ int	get_types(unsigned char octet, t_proc *proc)
 	unsigned char	param2;
 	unsigned char	param3;
 
-	printf("octet = %d\n", octet);
 	param1 = octet >> 6;
 	param2 = octet << 2;
 	param2 = param2 >> 6;
@@ -55,9 +53,9 @@ int	get_types(unsigned char octet, t_proc *proc)
 	proc->parametres_types[0] = param1;
 	proc->parametres_types[1] = param2;
 	proc->parametres_types[2] = param3;
-	printf("param1 = %d\n", param1);
-	printf("param2 = %d\n", param2);
-	printf("param3 = %d\n", param3);
+	printf("param1 type = %d\n", param1);
+	printf("param2 type = %d\n", param2);
+	printf("param3 type = %d\n", param3);
 
 	return (check_types(proc));
 }
