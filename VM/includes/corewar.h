@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:11:25 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 20:58:23 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 21:37:08 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ void	get_instruction(t_vm *vm, t_proc *proc);
 /*
 ** check_lives.c
 */
-void	check_lives(t_vm *vm, t_proc **list);
+int	check_lives(t_vm *vm, t_proc **list);
 /*
  ** (Instructions).c
- */
+*/
 void	live(t_vm *vm, t_proc *proc);
 void	ld(t_vm *vm, t_proc *proc);
 void	st(t_vm *vm, t_proc *proc);

@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 21:28:40 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 22:10:13 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,12 @@ void		init_proc(t_proc **list, t_vm *vm)
 	int		i;
 
 	i = 0;
+	ft_putendl("Introduction des champions : ");
 	while (i < vm->nbr_next)
 	{
+		ft_printf("Joueur %d, avec un poids de %d bytes, %s  %s\n", i + 1,
+				(vm->tab_champ[i]).weight, vm->tab_champ[i].name, 
+				vm->tab_champ[i].comment);
 		add_process(list, new_process(vm->tab_champ[i], i, vm));
 		i++;
 	}
@@ -105,7 +109,8 @@ void		play(t_vm *vm)
 	{
 		parse_list(&list, vm);
 		if (vm->cycle_before_checking == 0)
-			check_lives(vm, &list);
+			if (check_lives(vm, &list) == 0)
+				return ;
 		vm->cycle_before_checking--;
 		if (cycle == vm->dump_cycle)
 		{
@@ -113,7 +118,7 @@ void		play(t_vm *vm)
 			free_list(&list);
 			break ;
 		}
-		printf("c'est le %d eme cycle\n", cycle);
+		//printf("c'est le %d eme cycle\n", cycle);
 		cycle++;
 	}
 }
