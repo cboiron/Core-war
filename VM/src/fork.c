@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 04:45:35 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 08:54:06 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 13:47:27 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_proc	*fork_proc(t_proc *father, int adress)
 	son->id = father->id;
 	son->cycle_to_wait = 0;
 	son->instruction = 0;
+	son->alive = 1;
 	son->next = NULL;
 	son->pc = mod(adress, MEM_SIZE);
 	return (son);

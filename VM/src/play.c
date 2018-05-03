@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 09:58:13 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 13:21:34 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	parse_list(t_proc **list, t_vm *vm)
 	while (tmp)
 	{
 		//printf("pc debut de la liste de process =  %d\n", tmp->pc);
-		if (tmp->cycle_to_wait == 0)
+		if (tmp->cycle_to_wait == 0 && tmp->alive >= 0)
 		{
 			read_op_code(vm, tmp, tmp->instruction, list);
 			//printf("pc sortie de la liste de read_op_code =  %d\n", tmp->pc);
