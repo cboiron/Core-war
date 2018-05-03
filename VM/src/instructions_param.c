@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 07:43:36 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/02 22:59:04 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 07:58:25 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	get_reg(t_vm *vm, int *i)
 	reg = (unsigned char)vm->arena[(*i) % MEM_SIZE];
 	(*i)++;
 	return (reg);
-	//ft_putendl(" + 1");
 }
 
 int	get_ind(t_vm *vm, int *i)
@@ -34,7 +33,6 @@ int	get_ind(t_vm *vm, int *i)
 	ind += (unsigned char)vm->arena[((*i) + 1) % MEM_SIZE];
 	{
 		(*i) += 2;
-		//	ft_putendl(" + 2");
 	}
 	return (ind);
 }
@@ -53,20 +51,17 @@ int	get_dir(t_vm *vm, int *i, int op_code)
 		dir <<= 8;
 		dir += (unsigned char)vm->arena[((*i) + 1) % MEM_SIZE];
 		(*i) += 2;
-		//		ft_putendl(" + 2");
 	}
 	else
 	{
 		while (j < 4)
 		{
 			dir += (unsigned char)vm->arena[(j + (*i)) % MEM_SIZE];
-			//		ft_printf("dir = %d\n", dir);
 			if (j != 3)
 				dir <<= 8;
 			j++;
 		}
 		(*i) += 4;
 	}
-	//ft_printf("dir final = %d\n", dir);
 	return (dir);
 }

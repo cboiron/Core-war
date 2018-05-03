@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 04:04:22 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 00:33:06 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 07:55:46 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	choose_op(int *arg, t_proc *proc)
 {
-	printf(" arg 1 =  %d\n", arg[0]);
-	printf(" arg 2 =  %d\n", arg[1]);
-	printf(" arg 3 =  %d\n", arg[2]);
 	if (proc->instruction == 6)
 		proc->reg[arg[2] - 1] = arg[0] & arg[1];
 	else if (proc->instruction == 7)
@@ -27,15 +24,6 @@ void	choose_op(int *arg, t_proc *proc)
 		proc->carry = 1;
 	else
 		proc->carry = 0;
-	printf("resultat = %d \n", proc->reg[arg[2] - 1]);
-  int	i;
-
-	i = 0;
-	while (i < 16)
-	{
-		printf("Le registre %d contient la valeur : %d    \n", i + 1, proc->reg[i]);
-	i++;
-	}
 }
 
 void	param_op(t_vm *vm, t_proc *proc, int *arg)
