@@ -6,7 +6,7 @@
 #    By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/13 18:10:12 by abrichar          #+#    #+#              #
-#    Updated: 2018/04/25 02:39:58 by abrichar         ###   ########.fr        #
+#    Updated: 2018/05/03 06:39:16 by abrichar         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -17,7 +17,8 @@ CPPFLAGS = -Iincludes
 
 SRC_NAME = main.c line.c parsing.c utilities.c dump_header.c \
 			add_op.c check_op.c op1.c op2.c op3.c op4.c utilities2.c \
-			writend.c op.c prog_size.c write_params.c utilities3.c
+			writend.c op.c prog_size.c write_params.c utilities3.c \
+			write_label.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 SRC_PATH = src
@@ -54,5 +55,4 @@ fclean: clean
 re: fclean all
 
 norme:
-	norminette $(SRC)
-	norminette ./includes/asm.h
+	norminette */*.[ch]
