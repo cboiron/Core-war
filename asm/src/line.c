@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 19:42:16 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/03 09:08:36 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/04 01:28:28 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ int		is_header(char *line, char *macro)
 	free(rm_comment);
 	if (tmp[0] != '"' || tmp[ft_strlen(tmp) - 1] != '"')
 		return (0);
+	free(tmp);
 	return (1);
 }
