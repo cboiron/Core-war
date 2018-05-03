@@ -6,25 +6,12 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:36:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 08:00:13 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 08:54:23 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-/*
-Cette opération modifie le carry. ldi 3,%4,r1 lit IND_SIZE octets a l’adresse
-: (PC + (3 % IDX_MOD)) ajoute 4 à cette valeur. On nommera S cette somme.
-On lit REG_SIZE octet à l’adresse (PC + (S
-	% IDX_MOD)) que l’on copie dans r1.
 
-Les paramètres 1 et 2 sont des index.
-
-T_REG | T_DIR | T_IND,
-T_DIR | T_REG,
-T_REG
-
-
-*/
 int	check_reg(t_proc *proc, int arg1, int arg2)
 {
 	if (proc->instruction == 10)

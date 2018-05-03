@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 12:28:32 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 11:09:36 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,67 +18,92 @@ void	kill_process(t_proc *proc, t_proc **list)
 	t_proc *previous;
 	t_proc *nextone;
 
+	printf("debut kill process\n");
 	tmp = NULL;
+	tmp = *list;
 	if (proc == *list)
 	{
+		printf("debut if1\n");
 		if ((*list)->next != NULL)
 		{
+			printf("debut if2\n");
 			tmp = *list;
 			*list = (*list)->next;
-			ft_strdel((char**)&tmp);
+			ft_memdel((void**)&tmp);
 		}
 		else
 		{
 			printf("le vainqueur est le joueur numero : %d\n", proc->id);
-			ft_strdel((char**)list);
+			ft_memdel((void**)list);
 		}
 	}
 	else
 	{
-		tmp = *list;
 		printf("debut_else\n");
-		while (tmp != proc && tmp->next)
+		while (tmp != proc && tmp)
 		{
-			previous = tmp;
-			tmp = tmp->next;
-			nextone = tmp->next;
+				//tmp->next = proc->next;
+				//ft_memdel((void**)&tmp);
+			//if (tmp->next != NULL)
+				tmp = tmp->next;
+			//else
+			//	break ;
 		}
 		printf("before\n");
-		if (tmp != NULL && tmp == proc)
+		previous = tmp;
+		if (tmp->next)
 		{
-			free(tmp);
-			tmp = NULL;
-			previous->next = nextone;
+			tmp = tmp->next;
+			if (tmp->next)
+				nextone = tmp->next;
+			else
+				nextone = NULL;
+		previous->next = nextone;
 		}
 		else 
-		{
-			ft_printf("ceci n'est pas un message.\n");
-			exit(EXIT_FAILURE);
-		}
+			return ;
+		free(tmp);
+		printf("after\n");
 	}
 }
+
 void	check_lives(t_vm *vm, t_proc **list)
 {
 	t_proc	*tmp;
 
 	tmp = *list;
-	while (tmp)
+	while (tmp->next)
 	{
-		ft_printf("boucle\n");
+		printf("begin_While | id : %d\n", tmp->id);
+		if (tmp == NULL)
+		{
+			printf("fykdxfyugcihj\n");
+			break;
+		}
+		printf("tmp_existing| live period");
 		if (tmp->live_period == 0)
+		{
+			printf("before calling to kill process\n");
 			kill_process(tmp, list);
+		}
 		else
+		{
+			printf("before live_period => 0\n");
 			tmp->live_period = 0;
+		}
+		printf("cctoi\n");
+		if (tmp->next == NULL)
+			break;
 		tmp = tmp->next;
+		printf("asfdgdhfjgk\n");
 	}
+	printf("before checking list existance\n");
 	if (!(*list))
 	{
 		ft_putendl("Tous les joueurs sont morts");
 		exit(1);
 	}
-	ft_printf("CHECKING| total_lives %d | last_check %d\n", vm->total_lives_period, vm->last_check);
-	ft_printf("cycle to die  %d\n", vm->cycle_to_die);
-	//sleep(4);
+	printf("after checking list existance\n");
 	if (vm->total_lives_period > NBR_LIVE ||
 			vm->last_check == MAX_CHECKS)
 	{
@@ -89,4 +114,5 @@ void	check_lives(t_vm *vm, t_proc **list)
 	else
 		vm->last_check++;
 	vm->cycle_before_checking = vm->cycle_to_die;
+	printf("end of check lives\n");
 }

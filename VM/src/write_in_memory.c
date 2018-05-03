@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 23:41:45 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 01:10:23 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 08:02:06 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 void	write_in_memory(t_vm *vm, int value, int adress)
 {
-	printf("val %d\n",value);
-	printf("                   adress %d\n", adress);
-	/*
-	printf("adress after %d\n", adress);
-	*/
 	vm->arena[mod(adress, MEM_SIZE)] = value >> 24;
 	vm->arena[mod(adress + 1, MEM_SIZE)] = value >> 16 & 255;
 	vm->arena[mod(adress + 2, MEM_SIZE)] = value >> 8 & 255;

@@ -6,7 +6,11 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2018/05/01 23:35:32 by abrichar         ###   ########.fr       */
+=======
 /*   Updated: 2018/05/03 09:03:03 by abrichar         ###   ########.fr       */
+>>>>>>> 6f75c6eee74e38bf4753a74326636c765ab79fca
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,11 +141,4 @@ void					write_params(t_asm *env, char *split,
 									t_op actual, unsigned int size_to_here);
 void					ft_putint_fd(int n, int fd);
 void					ft_putshort_fd(short n, int fd);
-/*
-** write_label.c
-*/
-void					write_label(char *dir, t_op actual, t_asm *env,
-									unsigned int size_to_here);
-unsigned int			write_label2(t_parsing *tmp, char *to_search,
-									unsigned int size_to_here, t_asm *env);
 #endif

@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 07:43:36 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 07:58:25 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 08:03:30 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	get_ind(t_vm *vm, int *i)
 {
 	int	ind;
 
-	ft_putendl("coucou");
 	ind = 0;
 	ind += (unsigned char)vm->arena[(*i) % MEM_SIZE];
 	ind <<= 8;
