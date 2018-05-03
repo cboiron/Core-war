@@ -6,13 +6,13 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 10:01:26 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 15:07:13 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 23:29:43 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int	check_types(t_proc *proc)
+static int	check_types(t_proc *proc)
 {
 	if (OP == 2 && ((PARAM1 != DIRECT && PARAM1 != INDIRECT) ||
 				PARAM2 != REG))
@@ -39,7 +39,7 @@ int	check_types(t_proc *proc)
 	return (1);
 }
 
-int	get_types(unsigned char octet, t_proc *proc)
+int			get_types(unsigned char octet, t_proc *proc)
 {
 	unsigned char	param1;
 	unsigned char	param2;

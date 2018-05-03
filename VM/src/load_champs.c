@@ -6,13 +6,13 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:11 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 15:10:33 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 23:17:33 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	load_champ_to(t_vm *vm, t_champ champ, int memory_index)
+static void	load_champ_to(t_vm *vm, t_champ champ, int memory_index)
 {
 	int	index;
 
@@ -24,7 +24,7 @@ void	load_champ_to(t_vm *vm, t_champ champ, int memory_index)
 	}
 }
 
-void	load_champs(t_vm *vm)
+void		load_champs(t_vm *vm)
 {
 	int	space_bt_champs;
 	int	num_players;

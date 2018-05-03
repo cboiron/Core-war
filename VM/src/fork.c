@@ -6,13 +6,13 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 04:45:35 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 21:26:57 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 23:34:16 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-t_proc	*fork_proc(t_proc *father, int adress)
+static t_proc	*fork_proc(t_proc *father, int adress)
 {
 	t_proc	*son;
 	int		i;
@@ -36,13 +36,13 @@ t_proc	*fork_proc(t_proc *father, int adress)
 	return (son);
 }
 
-void	add_to_list(t_proc **list, t_proc *new_proc)
+static void		add_to_list(t_proc **list, t_proc *new_proc)
 {
 	new_proc->next = (*list);
 	(*list) = new_proc;
 }
 
-void	forkk(t_vm *vm, t_proc *proc, t_proc **list)
+void			forkk(t_vm *vm, t_proc *proc, t_proc **list)
 {
 	int	adress;
 	int	pc;
@@ -58,5 +58,4 @@ void	forkk(t_vm *vm, t_proc *proc, t_proc **list)
 	else if (proc->instruction == 15)
 		add_to_list(list, (fork_proc(proc, proc->save_pc + adress)));
 	proc->pc = pc;
-	ft_putendl("coucou");
 }

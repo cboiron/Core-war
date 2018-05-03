@@ -6,13 +6,13 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 04:04:22 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 21:08:00 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 23:32:10 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	choose_op(int *arg, t_proc *proc)
+static void	choose_op(int *arg, t_proc *proc)
 {
 	if (proc->instruction == 6)
 		proc->reg[arg[2] - 1] = arg[0] & arg[1];
@@ -26,7 +26,7 @@ void	choose_op(int *arg, t_proc *proc)
 		proc->carry = 0;
 }
 
-void	param_op_2(t_vm *vm, t_proc *proc, int *arg, int *pc)
+static void	param_op_2(t_vm *vm, t_proc *proc, int *arg, int *pc)
 {
 	if (PARAM2 == REG)
 	{
@@ -50,7 +50,7 @@ void	param_op_2(t_vm *vm, t_proc *proc, int *arg, int *pc)
 	proc->pc = *pc;
 }
 
-void	param_op(t_vm *vm, t_proc *proc, int *arg)
+void		param_op(t_vm *vm, t_proc *proc, int *arg)
 {
 	int	pc;
 

@@ -6,13 +6,13 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:33 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 22:57:39 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 23:28:26 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void				check_magic(const char *str)
+static void			check_magic(const char *str)
 {
 	int				magic[4];
 
@@ -27,7 +27,7 @@ void				check_magic(const char *str)
 	}
 }
 
-void				check_size(t_vm *vm, int size, int nb_player, char *str)
+static void			check_size(t_vm *vm, int size, int nb_player, char *str)
 {
 	unsigned int	size_bit;
 	int				real_size;
@@ -48,7 +48,7 @@ void				check_size(t_vm *vm, int size, int nb_player, char *str)
 	vm->tab_champ[nb_player].weight = real_size;
 }
 
-void				cpy_prog(t_vm *vm, unsigned char *prog, int num_player)
+static void			cpy_prog(t_vm *vm, unsigned char *prog, int num_player)
 {
 	int				index;
 
