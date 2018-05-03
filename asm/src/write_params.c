@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 16:46:23 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 06:33:14 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 09:26:53 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static void				write_ind(char *ind, t_asm *env,
 	t_parsing	*tmp;
 
 	to_write = 0;
+	to_search = NULL;
+	tmp = NULL;
 	if (ind[0] != ':')
 		to_write = ft_atoi(ft_strsub(ind, 0,
 									ft_strlen(ind)));
@@ -48,6 +50,8 @@ static void				write_ind(char *ind, t_asm *env,
 		to_write = write_label2(tmp, to_search, size_to_here, env);
 	}
 	ft_putshort_fd(to_write, env->fd);
+	free(to_search);
+	free(tmp);
 }
 
 void					write_params(t_asm *env, char *split, t_op actual,
@@ -76,4 +80,5 @@ void					write_params(t_asm *env, char *split, t_op actual,
 		else
 			write_dir(splited[i], env, actual, size_to_here);
 	}
+	free(splited);
 }

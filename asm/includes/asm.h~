@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/03 09:03:03 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 06:38:04 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 # define ERR_ARG "Erreur 07 : Argument non valide."
 # define ERR_NBR_ARG "Erreur 08 : Pas assez d'argument."
 # define NO_LABEL "Erreur 09 : label inexistant "
-# define ERR_MALLOC "Erreur 10 : Problème d'allocation mémoire"
 
 typedef struct			s_parsing
 {

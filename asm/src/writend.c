@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 22:25:42 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/26 01:50:15 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 09:28:32 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static unsigned int		write_octetcodage(t_op actual, char *arg)
 		if (actual.nb_arg == 3)
 			param3 = check_param(splited[2]) << 2;
 	}
+	free(splited);
 	return (param1 + param2 + param3);
 }
 
@@ -85,6 +86,8 @@ static void				write_body(t_asm *env)
 		write_body2(env, splited, i, tmp);
 		tmp = tmp->next;
 	}
+	free(tmp);
+	free(splited);
 }
 
 void					write_out(t_asm *env)
