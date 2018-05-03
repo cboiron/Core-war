@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/04 00:38:23 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/04 01:29:08 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int			main(int argc, char **argv)
 		usage();
 	load_champs(&vm);
 	play(&vm);
+	//ft_memdel((void**)&vm);
 	free_vm(&vm);
-	//sleep(10);
+	sleep(10);
 	return (0);
 }

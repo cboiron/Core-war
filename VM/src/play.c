@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/04 00:32:54 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/04 01:25:44 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,10 @@ void			play(t_vm *vm)
 		parse_list(&list, vm);
 		if (vm->cycle_before_checking == 0)
 			if (check_lives(vm, &list) == 0)
+			{
+				free_list(&list);
 				return ;
+			}
 		vm->cycle_before_checking--;
 		if (cycle == vm->dump_cycle)
 		{
