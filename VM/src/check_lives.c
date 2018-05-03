@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 21:49:25 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 22:56:29 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int		check_lives2(t_vm *vm, t_proc **list, int last_player)
 	return (1);
 }
 
-int			check_lives(t_vm *vm, t_proc **list)
+int				check_lives(t_vm *vm, t_proc **list)
 {
 	t_proc	*tmp;
 	int		last_player;
@@ -86,7 +86,5 @@ int			check_lives(t_vm *vm, t_proc **list)
 			tmp->live_period = 0;
 		tmp = tmp->next;
 	}
-	return(check_lives2(vm, list, last_player));
+	return (check_lives2(vm, list, last_player));
 }
-
-

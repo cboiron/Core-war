@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 22:10:13 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 23:03:41 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,22 @@ void			read_op_code(t_vm *vm, t_proc *proc, int instruction,
 	static void	(*opc[17])(t_vm *vm, t_proc *proc) = {NULL, &live, &ld, &st,
 		&add, &sub, &and, &or, &xor, &zjmp, &ldi, &sti, NULL, &lld, &ldi, NULL,
 		&aff};
-	int		j;
+	int			j;
 
 	j = 0;
 	while (++j <= 16)
 	{
 		if (instruction == j)
 		{
-			if (has_ocp(j, vm, proc, list) == -1)
+			if ((has_ocp(j, vm, proc, list)) == -1)
 				return ;
-			else opc[j](vm, proc);
+			else
+				opc[j](vm, proc);
 		}
 	}
 }
 
-void		init_proc(t_proc **list, t_vm *vm)
+void			init_proc(t_proc **list, t_vm *vm)
 {
 	int		i;
 
@@ -63,14 +64,14 @@ void		init_proc(t_proc **list, t_vm *vm)
 	while (i < vm->nbr_next)
 	{
 		ft_printf("Joueur %d, avec un poids de %d bytes, %s  %s\n", i + 1,
-				(vm->tab_champ[i]).weight, vm->tab_champ[i].name, 
+				(vm->tab_champ[i]).weight, vm->tab_champ[i].name,
 				vm->tab_champ[i].comment);
 		add_process(list, new_process(vm->tab_champ[i], i, vm));
 		i++;
 	}
 }
 
-void		parse_list(t_proc **list, t_vm *vm)
+void			parse_list(t_proc **list, t_vm *vm)
 {
 	t_proc	*tmp;
 	int		i;
@@ -92,12 +93,12 @@ void		parse_list(t_proc **list, t_vm *vm)
 			tmp->cycle_to_wait--;
 		else if (tmp->instruction == 0)
 			get_instruction(vm, tmp);
-			tmp = tmp->next;
+		tmp = tmp->next;
 		i++;
 	}
 }
 
-void		play(t_vm *vm)
+void			play(t_vm *vm)
 {
 	int		cycle;
 	t_proc	*list;
@@ -118,7 +119,6 @@ void		play(t_vm *vm)
 			free_list(&list);
 			break ;
 		}
-		//printf("c'est le %d eme cycle\n", cycle);
 		cycle++;
 	}
 }
