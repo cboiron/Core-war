@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:27:37 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/02 04:58:58 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 07:19:01 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@ void	zjmp(t_vm *vm, t_proc *proc)
 	int	dir;
 	int	pc;
 
-	ft_putendl("je fais un zjmp");
+	//ft_putendl("je fais un zjmp");
 	proc->pc++;
 	pc = proc->pc;
-	printf("pc = %d\n", pc);
+	//printf("pc = %d\n", pc);
 	dir = (short)get_dir(vm, &pc, 9);
-	printf("adress = %d\n", dir);
+	//printf("adress = %d\n", dir);
 	if (dir < 0)
 		dir %= -IDX_MOD;
 	else
 		dir %= IDX_MOD;
-	printf("adress modulee = %d\n", dir);
-	printf("pc = %d\n", pc);
+	//printf("adress modulee = %d\n", dir);
+	//printf("pc = %d\n", pc);
 	//printf("pc = %d\n", proc->pc);
 	//printf("adress after check = %d\n", dir);
 	if (proc->carry == 1)
 	{
 		proc->pc = mod(dir + pc, MEM_SIZE);
-		printf("pc final = %d\n", proc->pc);
+	//	printf("pc final = %d\n", proc->pc);
 		return ;
 	}
 	else
