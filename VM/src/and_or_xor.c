@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 04:04:22 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 15:36:16 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 21:08:00 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	choose_op(int *arg, t_proc *proc)
 	else
 		proc->carry = 0;
 }
-
 
 void	param_op_2(t_vm *vm, t_proc *proc, int *arg, int *pc)
 {
