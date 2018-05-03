@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 01:41:15 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/04 00:02:27 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/04 00:21:57 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void	live(t_vm *vm, t_proc *proc)
 	vm->total_lives_period++;
 	while (proc->id != vm->tab_champ[i].id)
 		i++;
-	ft_printf("Un processus dit que le joueur %d(%s) est en vie\n", proc->id,
+	ft_printf("Un processus dit que le joueur %d (%s) est en vie\n", proc->id,
 			vm->tab_champ[i].name);
 }
