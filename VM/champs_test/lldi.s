@@ -6,12 +6,16 @@ lldi1:
 		lldi r5,r2,r3
 		lldi r5,%420,r3
 		lldi r5, %:lldi1,r2
-		st r2, -500
-lldi2:	lldi %420,r2,r3
+		st r2, -400
+lldi2:	lldi %:lldi1, %464, r2 
+		lldi %420,r2,r3
+		st r2, -300
 		lldi %420, %464, r3
 		lldi %420, %:lldi1, r3
 		lldi %:lldi1,r5,r3
-		lldi %:lldi1, %464, r2
+		st r2, -100
+		lldi %:lldi1, %464, r2 ##NTM remet a 0 le r2
+		st r2, -200
 		lldi %:lldi1, %:lldi2, r3
 lldi3:	lldi 420, %464, r5
 		lldi 420, %:lldi2, r5
