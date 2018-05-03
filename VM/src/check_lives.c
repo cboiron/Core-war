@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 22:56:29 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 23:52:13 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ static int		check_lives2(t_vm *vm, t_proc **list, int last_player)
 	}
 	else if (last_player != 0)
 	{
-		ft_printf("dernier player : %s\n", vm->tab_champ[last_player - 1].name);
+		//ft_printf("Le vainqueur est : %s !! \n",
+		//		vm->tab_champ[last_player - 1].name);
 		return (0);
 	}
 	if (vm->total_lives_period > NBR_LIVE ||

@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 00:38:28 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 20:59:29 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 23:02:00 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define PARAM3 proc->parametres_types[2]
 
 # include "op.h"
+
 typedef struct		s_proc
 {
 	int				carry;
