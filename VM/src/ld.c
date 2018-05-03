@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 01:57:02 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 08:48:32 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 14:48:00 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ void			ld(t_vm *vm, t_proc *proc)
 	proc->pc++;
 	pc_count = proc->pc + 1;
 	if (PARAM1 == DIRECT)
-	{
 		arg1 = get_dir(vm, &pc_count, proc->instruction);
-	}
 	else if (PARAM1 == INDIRECT)
 	{
 		arg1 = (short)get_ind(vm, &pc_count);

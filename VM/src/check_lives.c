@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 13:47:02 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 14:41:11 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	check_lives(t_vm *vm, t_proc **list)
 	}
 	ft_printf("CHECKING| total_lives %d | last_check %d\n", vm->total_lives_period, vm->last_check);
 	ft_printf("cycle to die  %d\n", vm->cycle_to_die);
-	//sleep(4);
+	sleep(4);
 	if (vm->total_lives_period > NBR_LIVE ||
 			vm->last_check == MAX_CHECKS)
 	{

@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 07:28:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/25 04:55:54 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 14:47:08 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	dump_arena(t_vm *vm)
 {
-	int				i;
-	int				mem;
+	int	i;
+	int	mem;
 
 	mem = 64;
 	i = 0;
@@ -40,10 +40,9 @@ void	dump_arena(t_vm *vm)
 	printf("\n");
 }
 
-
-void	create_arena(t_vm *vm)
+void		create_arena(t_vm *vm)
 {
-	int				i;
+	int	i;
 
 	i = 0;
 	while (i < MEM_SIZE)

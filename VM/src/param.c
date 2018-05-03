@@ -6,13 +6,13 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 16:32:14 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/28 18:06:04 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 14:53:12 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int	param_n(t_vm *vm, char **av, int *i, int ac)
+int			param_n(t_vm *vm, char **av, int *i, int ac)
 {
 	int		id;
 
@@ -39,9 +39,9 @@ int	param_n(t_vm *vm, char **av, int *i, int ac)
 	return (vm->nbr_next);
 }
 
-int ft_isnumber(char *str)
+int			ft_isnumber(char *str)
 {
-	int i;
+	int		i;
 
 	i = -1;
 	while (str[++i])
@@ -52,28 +52,28 @@ int ft_isnumber(char *str)
 	return (1);
 }
 
-void	champs(t_vm *vm, char *arg)
+void		champs(t_vm *vm, char *arg)
 {
-		if ((vm->fd = open(arg, O_RDONLY)) >= 0 && vm->nbr_next <= 3)
-		{
-			read_champ(vm, vm->nbr_next);
-			close(vm->fd);
-		}
-		else if (vm->nbr_next >= 4)
-		{
-			ft_putendl("Nombre de champion trop eleve");
-			exit(1);
-		}
-		else
-		{
-			ft_putendl("lol");
-			usage();
-		}
+	if ((vm->fd = open(arg, O_RDONLY)) >= 0 && vm->nbr_next <= 3)
+	{
+		read_champ(vm, vm->nbr_next);
+		close(vm->fd);
+	}
+	else if (vm->nbr_next >= 4)
+	{
+		ft_putendl("Nombre de champion trop eleve");
+		exit(1);
+	}
+	else
+	{
+		ft_putendl("lol");
+		usage();
+	}
 }
 
-int get_param(char **av, t_vm *vm, int ac)
+int			get_param(char **av, t_vm *vm, int ac)
 {
-	int i;
+	int		i;
 
 	i = 1;
 	while (i < ac)

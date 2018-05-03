@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 05:17:20 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 08:01:52 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 14:53:30 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	st(t_vm *vm, t_proc *proc)
 	int	arg2;
 	int	pc;
 
-	//printf("pc = %d\n", proc->pc);
 	proc->pc++;
 	pc = proc->pc + 1;
 	arg1 = get_reg(vm, &pc);
@@ -33,18 +32,8 @@ void	st(t_vm *vm, t_proc *proc)
 	else
 	{
 		arg2 %= IDX_MOD;
-		write_in_memory(vm, proc->reg[arg1 - 1], proc->save_pc + mod(arg2, MEM_SIZE));
+		write_in_memory(vm, proc->reg[arg1 - 1], proc->save_pc +
+				mod(arg2, MEM_SIZE));
 	}
 	proc->pc = pc;
 }
-
-/*
- * int	i;
-
-	i = 0;
-	while (i < 16)
-	{
-		printf("Le registre %d contient la valeur : %d    \n", i + 1, proc->reg[i]);
-	i++;
-	}
-}*/
