@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:33 by cboiron           #+#    #+#             */
-/*   Updated: 2018/04/28 17:57:43 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 08:01:42 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void		read_champ(t_vm *vm, int nbr_player)
 	cpy_prog(vm, (unsigned char*)comment, nbr_player);
 	if (vm->tab_champ[nbr_player].id == -1)
 		vm->tab_champ[nbr_player].id = vm->nbr_next + 1;
-	printf("nbr next %d \n",vm->nbr_next + 1);
 
 	vm->nbr_next++;
 }

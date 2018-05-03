@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:13:50 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/02 02:49:05 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 08:53:31 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	sub(t_vm *vm, t_proc *proc)
 			proc->carry = 1;
 		else
 			proc->carry = 0;
-		proc->pc= pc;
+		proc->pc = pc;
 	}
 }

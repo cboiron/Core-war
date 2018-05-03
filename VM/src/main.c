@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/04/28 18:00:51 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 08:55:06 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 void		init_vm(t_vm *vm)
 {
 	vm = ft_memalloc(sizeof(t_vm));
-	//vm->tab_champ[0] = ft_memalloc(sizeof(t_champ));
 }
 
 void	init(t_vm *vm)
@@ -63,7 +62,6 @@ int			main(int argc, char **argv)
 		usage();
 	load_champs(&vm);
 	play(&vm);
-	//	sleep(10);
 	//	free vm et son contenu
 	return (0);
 }

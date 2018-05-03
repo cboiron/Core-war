@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 04:45:35 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 07:57:57 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 08:54:06 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_proc	*fork_proc(t_proc *father, int adress)
 	int		i;
 	
 	son = NULL;
-	//ft_putendl("je fait un fork");
 	i = 0;
 	son = (t_proc*)ft_memalloc(sizeof(t_proc));
 	son->carry = father->carry;
