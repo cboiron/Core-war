@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/01 23:52:00 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 09:58:13 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	read_op_code(t_vm *vm, t_proc *proc, int instruction, t_proc **list)
 	proc->parametres_types[1] = 0;
 	proc->parametres_types[2] = 0;
 	j = 1;
-	printf("pc = %d \n", proc->pc);
 	while (j <= 16)
 	{
 		if (instruction == j)
@@ -48,7 +47,6 @@ void	read_op_code(t_vm *vm, t_proc *proc, int instruction, t_proc **list)
 				if (get_types((unsigned char)vm->arena[mod(proc->pc + 1,
 							MEM_SIZE)], proc) == 0)
 				{
-					ft_putendl("OCP incorrect");
 					proc->pc +=2;
 					return ;
 				}
@@ -121,13 +119,14 @@ void	play(t_vm *vm)
 		parse_list(&list, vm);
 		if (vm->cycle_before_checking == 0)
 			check_lives(vm, &list);
+		printf("cctoi\n");
 		vm->cycle_before_checking--;
 		if (cycle == vm->dump_cycle)
 		{
 			dump_arena(vm);
 			break ;
 		}
-		//printf("c'est le %d eme cycle\n", cycle);
+		printf("c'est le %d eme cycle\n", cycle);
 		cycle++;
 	}
 	//dump_arena(vm);

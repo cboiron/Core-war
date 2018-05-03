@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 19:42:16 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/25 01:52:51 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 09:08:36 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int		is_header(char *line, char *macro)
 		return (0);
 	tmp = ft_strsub(rm_comment, ft_strlen(macro), ft_strlen(rm_comment));
 	tmp = ft_epur_str(tmp);
+	free(rm_comment);
 	if (tmp[0] != '"' || tmp[ft_strlen(tmp) - 1] != '"')
 		return (0);
 	return (1);

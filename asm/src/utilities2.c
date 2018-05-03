@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 16:24:50 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/25 02:12:00 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 09:23:37 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int			is_label(char *param)
 	while (tmp[++i])
 		if (!(ft_strchr(LABEL_CHARS, tmp[i])))
 			return (0);
+	free(tmp);
 	return (1);
 }
 
