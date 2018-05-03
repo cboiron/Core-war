@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 19:31:08 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/05/03 21:13:18 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,19 @@
 
 void		free_vm(t_vm *vm)
 {
-		printf("nombre de joueurs %d", vm->nbr_next);
-		int	i;
-		i = 0;
-		while (i < vm->nbr_next) // = ou - 1 ?
-		{
-			free(vm->tab_champ[i].name);
-			free(vm->tab_champ[i].prog);
-			free(&vm->tab_champ[i]);
-			i++;
-		}
-		free(vm);
-		vm = NULL;
+	int	i;
+
+	printf("nombre de joueurs %d", vm->nbr_next);
+	i = 0;
+	while (i < vm->nbr_next)
+	{
+		free(vm->tab_champ[i].name);
+		free(vm->tab_champ[i].prog);
+		free(&vm->tab_champ[i]);
+		i++;
+	}
+	free(vm);
+	vm = NULL;
 }
 
 void		init_vm(t_vm *vm)
@@ -78,7 +79,6 @@ int			main(int argc, char **argv)
 		usage();
 	load_champs(&vm);
 	play(&vm);
-	//	free vm et son contenu
 	free_vm(&vm);
 	return (0);
 }
