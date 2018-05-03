@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 07:28:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 14:47:08 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 15:05:50 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	dump_arena(t_vm *vm)
 	printf("\n");
 }
 
-void		create_arena(t_vm *vm)
+void	create_arena(t_vm *vm)
 {
 	int	i;
 

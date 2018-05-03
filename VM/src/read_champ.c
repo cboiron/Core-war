@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:33 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 14:55:17 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 15:13:12 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,9 @@ void				cpy_prog(t_vm *vm, unsigned char *prog, int num_player)
 	while (index < vm->tab_champ[num_player].weight)
 	{
 		vm->tab_champ[num_player].prog[index] = prog[index];
-		 index++;
+		index++;
 	}
 }
-
-/*
- * Verfier magic number et size du champion
- * */
 
 void				read_champ(t_vm *vm, int nbr_player)
 {
@@ -93,6 +89,5 @@ void				read_champ(t_vm *vm, int nbr_player)
 	cpy_prog(vm, (unsigned char*)comment, nbr_player);
 	if (vm->tab_champ[nbr_player].id == -1)
 		vm->tab_champ[nbr_player].id = vm->nbr_next + 1;
-
 	vm->nbr_next++;
 }

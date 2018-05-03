@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 10:01:26 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 14:47:38 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 15:07:13 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	check_types(t_proc *proc)
 {
 	if (OP == 2 && ((PARAM1 != DIRECT && PARAM1 != INDIRECT) ||
-				PARAM2 != REG ))
+				PARAM2 != REG))
 		return (0);
 	if (OP == 3 && ((PARAM1 != REG) || (PARAM2 != INDIRECT && PARAM2 != REG)))
 		return (0);
@@ -27,7 +27,7 @@ int	check_types(t_proc *proc)
 			return (0);
 	if ((OP == 10 || OP == 14) &&
 			((PARAM1 == 0) || (PARAM2 != DIRECT && PARAM2 != REG)
-			 || PARAM3 != REG))
+			|| PARAM3 != REG))
 		return (0);
 	if (OP == 11 && (PARAM1 != REG || PARAM2 == 0 ||
 				(PARAM3 != DIRECT && PARAM3 != REG)))
@@ -53,6 +53,5 @@ int	get_types(unsigned char octet, t_proc *proc)
 	proc->parametres_types[0] = param1;
 	proc->parametres_types[1] = param2;
 	proc->parametres_types[2] = param3;
-
 	return (check_types(proc));
 }

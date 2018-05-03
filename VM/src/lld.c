@@ -6,28 +6,28 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 04:45:35 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 14:48:27 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 15:09:08 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-long int	get_value_2(t_vm *vm, int index)
+long int		get_value_2(t_vm *vm, int index)
 {
 	long int	value;
 
 	value = 0;
-	value = (unsigned char)vm->arena[mod(index , MEM_SIZE)];
+	value = (unsigned char)vm->arena[mod(index, MEM_SIZE)];
 	value <<= 8;
 	value += (unsigned char)vm->arena[mod(index + 1, MEM_SIZE)];
 	return (value);
 }
 
-void	lld(t_vm *vm, t_proc *proc)
+void			lld(t_vm *vm, t_proc *proc)
 {
-	int		arg1;
-	int		arg2;
-	int		pc;
+	int			arg1;
+	int			arg2;
+	int			pc;
 
 	proc->pc++;
 	arg1 = 0;

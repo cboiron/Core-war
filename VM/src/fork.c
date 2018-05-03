@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 04:45:35 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 14:47:27 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 15:05:36 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ void	forkk(t_vm *vm, t_proc *proc, t_proc **list)
 	adress = 0;
 	adress = (short)get_dir(vm, &pc, 12);
 	if (proc->instruction == 12)
-		add_to_list(list, (fork_proc(proc, proc->save_pc + (adress % IDX_MOD))));
+		add_to_list(list, (fork_proc(proc, proc->save_pc +
+						(adress % IDX_MOD))));
 	else if (proc->instruction == 15)
 		add_to_list(list, (fork_proc(proc, proc->save_pc + adress)));
 	proc->pc = pc;

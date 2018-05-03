@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:36:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 14:48:16 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 15:16:37 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ldi_2(t_vm *vm, int adress)
 	value = 0;
 	value = vm->arena[mod(adress, MEM_SIZE)];
 	value <<= 8;
-	value = vm->arena[mod((adress + 1),MEM_SIZE)];
+	value = vm->arena[mod((adress + 1), MEM_SIZE)];
 	value <<= 8;
 	value = vm->arena[mod((adress + 2), MEM_SIZE)];
 	value <<= 8;
@@ -48,7 +48,6 @@ void	ldi(t_vm *vm, t_proc *proc)
 	arg3 = 0;
 	proc->pc++;
 	pc = proc->pc + 1;
-
 	if (PARAM1 == REG)
 	{
 		arg1 = get_reg(vm, &pc);

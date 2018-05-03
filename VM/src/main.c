@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 13:23:36 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 15:17:38 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		init_vm(t_vm *vm)
 	vm = ft_memalloc(sizeof(t_vm));
 }
 
-void	init(t_vm *vm)
+void		init(t_vm *vm)
 {
 	int		i;
 
