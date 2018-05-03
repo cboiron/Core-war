@@ -6,13 +6,13 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 06:32:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 22:59:23 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 23:10:14 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static void	get_instruction2(t_vm *vm, t_proc *proc, int instruction)
+static void	get_instruction2(t_proc *proc, int instruction)
 {
 	proc->instruction = instruction;
 	if (instruction == 1 || instruction == 4 || instruction == 5 ||
@@ -42,7 +42,7 @@ void		get_instruction(t_vm *vm, t_proc *proc)
 
 	instruction = vm->arena[proc->pc];
 	if (instruction > 0 && instruction < 17)
-		get_instruction2(vm, proc, instruction);
+		get_instruction2(proc, instruction);
 	else
 	{
 		proc->pc++;

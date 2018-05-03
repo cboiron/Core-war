@@ -6,28 +6,13 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 22:56:29 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 23:12:50 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void			kill_process(t_proc *proc, t_proc **list)
-{
-	t_proc	*tmp;
-
-	tmp = *list;
-	if (tmp == proc)
-		tmp->alive = -1;
-	else
-	{
-		while (proc->next != proc && tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->alive = -1;
-	}
-}
-
-int				someone_is_alive(t_proc *list)
+static int	someone_is_alive(t_proc *list)
 {
 	t_proc	*tmp;
 
@@ -41,7 +26,7 @@ int				someone_is_alive(t_proc *list)
 	return (0);
 }
 
-static int		check_lives2(t_vm *vm, t_proc **list, int last_player)
+static int	check_lives2(t_vm *vm, t_proc **list, int last_player)
 {
 	if (someone_is_alive(*list) == 0 && last_player == 0)
 	{
@@ -67,7 +52,7 @@ static int		check_lives2(t_vm *vm, t_proc **list, int last_player)
 	return (1);
 }
 
-int				check_lives(t_vm *vm, t_proc **list)
+int			check_lives(t_vm *vm, t_proc **list)
 {
 	t_proc	*tmp;
 	int		last_player;
