@@ -6,11 +6,45 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:36:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 15:16:37 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 18:37:32 by eliajin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+static int	param1(t_vm *vm, t_proc *proc, int *arg1, int *pc)
+{
+	if (PARAM1 == REG)
+	{
+		*arg1 = get_reg(vm, pc);
+		if (!is_reg(*arg1))
+			return (-1);
+		*arg1 = proc->reg[*arg1 - 1];
+	}
+	else if (PARAM1 == INDIRECT)
+	{
+		*arg1 = (short)get_ind(vm, pc);
+		*arg1 %= IDX_MOD;
+		*arg1 = get_value(vm, mod(proc->save_pc + *arg1, MEM_SIZE));
+	}
+	else if (PARAM1 == DIRECT)
+		*arg1 = (short)get_dir(vm, pc, proc->instruction);
+	return (1);
+}
+
+static int	param2(t_vm *vm, t_proc *proc, int *arg2, int *pc)
+{
+	if (PARAM2 == REG)
+	{
+		*arg2 = get_reg(vm, pc);
+		if (!is_reg(*arg2))
+			return (-1);
+		*arg2 = proc->reg[*arg2 - 1];
+	}
+	else if (PARAM2 == DIRECT)
+		*arg2 = (short)get_dir(vm, pc, proc->instruction);
+	return (1);
+}
 
 int	check_reg(t_proc *proc, int arg1, int arg2)
 {
@@ -48,30 +82,10 @@ void	ldi(t_vm *vm, t_proc *proc)
 	arg3 = 0;
 	proc->pc++;
 	pc = proc->pc + 1;
-	if (PARAM1 == REG)
-	{
-		arg1 = get_reg(vm, &pc);
-		if (!is_reg(arg1))
-			return ;
-		arg1 = proc->reg[arg1 - 1];
-	}
-	else if (PARAM1 == INDIRECT)
-	{
-		arg1 = (short)get_ind(vm, &pc);
-		arg1 %= IDX_MOD;
-		arg1 = get_value(vm, mod(proc->save_pc + arg1, MEM_SIZE));
-	}
-	else if (PARAM1 == DIRECT)
-		arg1 = (short)get_dir(vm, &pc, proc->instruction);
-	if (PARAM2 == REG)
-	{
-		arg2 = get_reg(vm, &pc);
-		if (!is_reg(arg2))
-			return ;
-		arg2 = proc->reg[arg2 - 1];
-	}
-	else if (PARAM2 == DIRECT)
-		arg2 = (short)get_dir(vm, &pc, proc->instruction);
+	if (param1(vm, proc, &arg1, &pc) == -1)
+		return ;
+	if (param2(vm, proc, &arg1, &pc) == -1)
+		return ;
 	arg3 = get_reg(vm, &pc);
 	if (!is_reg(arg3))
 		return ;

@@ -6,27 +6,28 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 19:31:08 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/05/03 15:17:38 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 #include "../includes/struct.h"
 
-void		free_vm(t_vm *vm)
+void		free_vm(&vm)
 {
-		printf("nombre de joueurs %d", vm->nbr_next);
+		printf("nombre de joueurs %d", *vm->nbr_next);
 		int	i;
 		i = 0;
-		while (i < vm->nbr_next) // = ou - 1 ?
-		{
-			free(vm->tab_champ[i].name);
-			free(vm->tab_champ[i].prog);
-			free(&vm->tab_champ[i]);
+		while (i < vm->nbr_next) \\ = ou - 1 ?
+		{	
+			free(tab_champ[i]->name);
+			free(tab_champ[i]->prog);
+			tab_champ[i] = NULL;
 			i++;
 		}
 		free(vm);
 		vm = NULL;
+
 }
 
 void		init_vm(t_vm *vm)

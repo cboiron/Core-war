@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 04:45:35 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 15:09:08 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 18:46:31 by eliajin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,10 @@ void			lld(t_vm *vm, t_proc *proc)
 	int			pc;
 
 	proc->pc++;
-	arg1 = 0;
 	pc = proc->pc + 1;
 	if (PARAM1 == DIRECT)
 		arg1 = get_dir(vm, &pc, proc->instruction);
-	else if (PARAM1 == INDIRECT)
+	else
 	{
 		arg1 = (short)get_ind(vm, &pc);
 		arg1 = get_value_2(vm, mod(proc->save_pc + arg1, MEM_SIZE));
