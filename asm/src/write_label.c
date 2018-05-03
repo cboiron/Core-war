@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 06:31:50 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 09:24:44 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 12:49:08 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ unsigned int			write_label2(t_parsing *tmp, char *to_search,
 	pos = (tmp->size_to_here - size_to_here);
 	tmp = env->buff;
 	pos = write_label3(tmp, size_to_here, pos);
-//	free(content);
+	free(content);
 	return (pos);
 }
 
