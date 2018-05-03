@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 15:28:01 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 15:27:04 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	check_lives(t_vm *vm, t_proc **list)
 	}
 	else if (last_player != 0 && tmp == NULL)
 	{
-		ft_printf("dernier player : %s\n", vm->tab_champ[last_player - 1].name);
+		ft_printf("dernier player : %s\n", vm->tab_champ[last_player].name);
 		exit(1);
 	}
 	if (vm->total_lives_period > NBR_LIVE ||
