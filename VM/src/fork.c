@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 04:45:35 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 15:05:36 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 21:26:57 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	forkk(t_vm *vm, t_proc *proc, t_proc **list)
 	int	adress;
 	int	pc;
 
+	ft_putendl("coucou");
 	proc->pc++;
 	pc = proc->pc;
 	adress = 0;
@@ -57,4 +58,5 @@ void	forkk(t_vm *vm, t_proc *proc, t_proc **list)
 	else if (proc->instruction == 15)
 		add_to_list(list, (fork_proc(proc, proc->save_pc + adress)));
 	proc->pc = pc;
+	ft_putendl("coucou");
 }

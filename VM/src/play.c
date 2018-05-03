@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 21:15:22 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 21:28:40 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int		has_ocp(int j, t_vm *vm, t_proc *proc, t_proc **list)
 	if (j == 12 || j == 15)
 	{
 		forkk(vm, proc, list);
-		return (1);
+		return (-1);
 	}
 	if (j == 2 || j == 3 || j == 4 || j == 5 || j == 6 || j == 7
 		|| j == 8 || j == 10 || j == 11 || j == 13 || j == 14 ||
