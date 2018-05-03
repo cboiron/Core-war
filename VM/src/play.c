@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 15:14:37 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:43:41 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,8 @@ void			read_op_code(t_vm *vm, t_proc *proc, int instruction,
 		&aff};
 	int		j;
 
-	PARAM1 = 0;
-	PARAM2 = 0;
-	PARAM3 = 0;
-	j = 1;
-	while (j <= 16)
+	j = 0;
+	while (++j <= 16)
 	{
 		if (instruction == j)
 		{
@@ -54,7 +51,6 @@ void			read_op_code(t_vm *vm, t_proc *proc, int instruction,
 			}
 			opc[j](vm, proc);
 		}
-		j++;
 	}
 }
 
@@ -81,6 +77,9 @@ void		parse_list(t_proc **list, t_vm *vm)
 	{
 		if (tmp->cycle_to_wait == 0 && tmp->alive >= 0)
 		{
+			tmp->parametres_types[0] = 0;
+			tmp->parametres_types[1] = 0;
+			tmp->parametres_types[2] = 0;
 			read_op_code(vm, tmp, tmp->instruction, list);
 			tmp->instruction = 0;
 			tmp->cycle_to_wait = -1;
