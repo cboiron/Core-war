@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 15:00:24 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/25 02:00:43 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 09:17:12 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int	ft_aff(char *line, int index)
 	tmp = ft_strsub(line, 3, ft_strlen(line));
 	if (isreg(tmp) == 0)
 		msg_error(ERR_ARG, index);
+	free(tmp);
 	return (1);
 }

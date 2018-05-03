@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 16:10:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/26 01:49:36 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 09:06:45 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void				add_label(char *line, t_parsing **buff)
 	t_parsing		*tmp;
 	t_parsing		*tmp2;
 
+	tmp2 = NULL;
+	tmp = NULL;
 	if ((tmp = (t_parsing*)malloc(sizeof(t_parsing) * 1)))
 	{
 		tmp->content = ft_strdup(line);
@@ -37,6 +39,8 @@ void				add_label(char *line, t_parsing **buff)
 		else
 			*buff = tmp;
 	}
+	else
+		msg_error(ERR_MALLOC, 0);
 }
 
 /*
@@ -73,6 +77,8 @@ void				add_instru(char *line, t_parsing **buff)
 	t_parsing		*tmp2;
 	char			*name;
 
+	tmp = NULL;
+	name = NULL;
 	if ((tmp = (t_parsing*)malloc(sizeof(t_parsing) * 1)))
 	{
 		tmp->content = re_write(ft_epur_str(ft_strdup(line)));
@@ -93,6 +99,9 @@ void				add_instru(char *line, t_parsing **buff)
 			tmp->next = NULL;
 		}
 	}
+	else
+		msg_error(ERR_MALLOC, 0);
+	free(name);
 }
 
 /*

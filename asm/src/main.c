@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:58:03 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/26 01:51:00 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 09:00:32 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void			size_all(t_asm *env)
 		tmp->size_to_here = size_max;
 		tmp = tmp->next;
 	}
+	free(tmp);
 }
 
 /*
@@ -81,6 +82,7 @@ static int			detect_errors(int argc, char *champ, t_asm *env)
 		msg_error(ERR_OPEN, 0);
 	if (close(fd) == -1)
 		msg_error(ERR_CLOSE, 0);
+	free(tmp);
 	return (1);
 }
 
