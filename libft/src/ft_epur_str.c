@@ -6,13 +6,13 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 17:40:58 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/11 00:38:51 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/05/04 00:21:01 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_epur_str(char *str)
+char	*ft_epur_str(char *str)
 {
 	char	*dest;
 	int		i;
@@ -21,7 +21,7 @@ char *ft_epur_str(char *str)
 	i = 0;
 	j = 0;
 	if ((dest = (char*)malloc(sizeof(char*) * ft_strlen(str))) == NULL)
-		 return (NULL);
+		return (NULL);
 	while (str[i] != '\0')
 	{
 		if (str[i] == ' ' || str[i] == '\t')
