@@ -6,14 +6,14 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 06:31:50 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 12:49:08 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/04 00:23:04 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static unsigned int		write_label3(t_parsing *tmp, unsigned int size_to_here,
-									unsigned int pos)
+static unsigned int	write_label3(t_parsing *tmp, unsigned int size_to_here,
+		unsigned int pos)
 {
 	while (tmp)
 	{
@@ -27,8 +27,8 @@ static unsigned int		write_label3(t_parsing *tmp, unsigned int size_to_here,
 	return (pos);
 }
 
-unsigned int			write_label2(t_parsing *tmp, char *to_search,
-									unsigned int size_to_here, t_asm *env)
+unsigned int		write_label2(t_parsing *tmp, char *to_search,
+		unsigned int size_to_here, t_asm *env)
 {
 	unsigned int	pos;
 	char			*content;
@@ -49,12 +49,11 @@ unsigned int			write_label2(t_parsing *tmp, char *to_search,
 	pos = (tmp->size_to_here - size_to_here);
 	tmp = env->buff;
 	pos = write_label3(tmp, size_to_here, pos);
-	free(content);
 	return (pos);
 }
 
-void					write_label(char *dir, t_op actual, t_asm *env,
-							unsigned int size_to_here)
+void				write_label(char *dir, t_op actual, t_asm *env,
+		unsigned int size_to_here)
 {
 	unsigned int	pos;
 	t_parsing		*tmp;
