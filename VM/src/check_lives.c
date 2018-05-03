@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 15:41:06 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/03 21:05:53 by cboiron          ###   ########.fr       */
 /*   Updated: 2018/05/03 14:57:45 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -72,7 +72,9 @@ void	check_lives(t_vm *vm, t_proc **list)
 	ft_printf("Num Id : %d\n", last_player);
 	if (someone_is_alive(*list) == 0 && last_player == 0)
 	{
+		free_list(list);
 		ft_putendl("Tous les joueurs sont morts");
+		sleep(30);
 		exit(1);
 	}
 	else if (last_player != 0 && tmp == NULL)

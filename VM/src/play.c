@@ -6,23 +6,23 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 19:35:45 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/05/03 21:15:22 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static int		has_ocp(int *j, t_vm *vm, t_proc *proc, t_proc **list)
+static int		has_ocp(int j, t_vm *vm, t_proc *proc, t_proc **list)
 {
 	proc->save_pc = proc->pc;
-	if (*j == 12 || *j == 15)
+	if (j == 12 || j == 15)
 	{
 		forkk(vm, proc, list);
 		return (1);
 	}
-	if (*j == 2 || *j == 3 || *j == 4 || *j == 5 || *j == 6 || *j == 7
-		|| *j == 8 || *j == 10 || *j == 11 || *j == 13 || *j == 14 ||
-		*j == 16)
+	if (j == 2 || j == 3 || j == 4 || j == 5 || j == 6 || j == 7
+		|| j == 8 || j == 10 || j == 11 || j == 13 || j == 14 ||
+		j == 16)
 	{
 		if (get_types((unsigned char)vm->arena[mod(proc->pc + 1,
 												MEM_SIZE)], proc) == 0)
@@ -47,7 +47,7 @@ void			read_op_code(t_vm *vm, t_proc *proc, int instruction,
 	{
 		if (instruction == j)
 		{
-			if (has_ocp(&j, vm, proc, list) == -1)
+			if (has_ocp(j, vm, proc, list) == -1)
 				return ;
 			else opc[j](vm, proc);
 		}
