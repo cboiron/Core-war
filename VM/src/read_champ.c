@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 05:52:33 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 15:13:12 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 22:57:39 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void				check_magic(const char *str)
 	magic[3] = str[0];
 	if (magic[0] != -13 || magic[1] != -125 || magic[2] != -22 || magic[3] != 0)
 	{
-		ft_putendl("Le numero magique d'un joueur est incorrect.");
+		ft_putendl("Le header d'un joueur est incorrect.");
 		exit(1);
 	}
 }
@@ -81,7 +81,6 @@ void				read_champ(t_vm *vm, int nbr_player)
 	read(vm->fd, str, 4);
 	read(vm->fd, str, 4);
 	check_size(vm, size, nbr_player, str);
-	read(vm->fd, str, 4);
 	read(vm->fd, comment, COMMENT_LENGTH);
 	ft_strcpy(vm->tab_champ[nbr_player].comment, comment);
 	ft_bzero(comment, COMMENT_LENGTH);

@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 23:41:06 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 22:10:13 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 22:56:20 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void		init_proc(t_proc **list, t_vm *vm)
 		ft_printf("Joueur %d, avec un poids de %d bytes, %s  %s\n", i + 1,
 				(vm->tab_champ[i]).weight, vm->tab_champ[i].name, 
 				vm->tab_champ[i].comment);
+				ft_putendl(vm->tab_champ[i].comment);
 		add_process(list, new_process(vm->tab_champ[i], i, vm));
 		i++;
 	}
