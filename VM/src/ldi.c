@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:36:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 18:37:32 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/05/03 21:09:40 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	param2(t_vm *vm, t_proc *proc, int *arg2, int *pc)
 	return (1);
 }
 
-int	check_reg(t_proc *proc, int arg1, int arg2)
+int			check_reg(t_proc *proc, int arg1, int arg2)
 {
 	if (proc->instruction == 10)
 	{
@@ -55,7 +55,7 @@ int	check_reg(t_proc *proc, int arg1, int arg2)
 	return (arg1 + arg2);
 }
 
-int	ldi_2(t_vm *vm, int adress)
+int			ldi_2(t_vm *vm, int adress)
 {
 	int	value;
 
@@ -70,7 +70,7 @@ int	ldi_2(t_vm *vm, int adress)
 	return (value);
 }
 
-void	ldi(t_vm *vm, t_proc *proc)
+void		ldi(t_vm *vm, t_proc *proc)
 {
 	int	arg1;
 	int	arg2;
@@ -89,7 +89,8 @@ void	ldi(t_vm *vm, t_proc *proc)
 	arg3 = get_reg(vm, &pc);
 	if (!is_reg(arg3))
 		return ;
-	proc->reg[arg3 - 1] = ldi_2(vm, (proc->save_pc + check_reg(proc, arg1, arg2)));
+	proc->reg[arg3 - 1] = ldi_2(vm, (proc->save_pc +
+									check_reg(proc, arg1, arg2)));
 	if (proc->reg[arg3 - 1] == 0)
 		proc->carry = 1;
 	else

@@ -6,13 +6,13 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 03:55:45 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 18:44:32 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/05/03 21:14:12 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static int param2(t_vm *vm, t_proc *proc, int *arg2, int *pc)
+static int	param2(t_vm *vm, t_proc *proc, int *arg2, int *pc)
 {
 	if (PARAM2 == REG)
 	{
@@ -31,7 +31,7 @@ static int param2(t_vm *vm, t_proc *proc, int *arg2, int *pc)
 	return (1);
 }
 
-static int param3(t_vm *vm, t_proc *proc, int *arg3, int *pc)
+static int	param3(t_vm *vm, t_proc *proc, int *arg3, int *pc)
 {
 	if (PARAM3 == REG)
 	{
@@ -45,7 +45,7 @@ static int param3(t_vm *vm, t_proc *proc, int *arg3, int *pc)
 	return (1);
 }
 
-void	sti(t_vm *vm, t_proc *proc)
+void		sti(t_vm *vm, t_proc *proc)
 {
 	int	registre;
 	int	pc;

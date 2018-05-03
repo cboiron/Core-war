@@ -6,37 +6,33 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/05/03 21:05:53 by cboiron          ###   ########.fr       */
 /*   Updated: 2018/05/03 14:57:45 by cboiron          ###   ########.fr       */
+=======
+/*   Updated: 2018/05/03 21:05:32 by abrichar         ###   ########.fr       */
+>>>>>>> fb012664dff125891f3e2440430bc9df9a79c1d0
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	kill_process(t_proc *proc, t_proc **list)
+void			kill_process(t_proc *proc, t_proc **list)
 {
 	t_proc	*tmp;
 
 	tmp = *list;
 	if (tmp == proc)
-	{
 		tmp->alive = -1;
-		//*list = tmp->next;
-		//free(proc);
-		//proc = NULL;
-	}
 	else
 	{
 		while (proc->next != proc && tmp->next != NULL)
 			tmp = tmp->next;
 		tmp->alive = -1;
-		//tmp->next = proc->next;
-		//free(proc);
-		//proc = NULL;
 	}
 }
 
-int		someone_is_alive(t_proc *list)
+int				someone_is_alive(t_proc *list)
 {
 	t_proc	*tmp;
 
@@ -44,13 +40,13 @@ int		someone_is_alive(t_proc *list)
 	while (tmp)
 	{
 		if (tmp->alive == 1)
-				return (1);
+			return (1);
 		tmp = tmp->next;
 	}
 	return (0);
 }
 
-void	check_lives(t_vm *vm, t_proc **list)
+void			check_lives(t_vm *vm, t_proc **list)
 {
 	t_proc	*tmp;
 	int		last_player;
@@ -69,7 +65,11 @@ void	check_lives(t_vm *vm, t_proc **list)
 			tmp->live_period = 0;
 		tmp = tmp->next;
 	}
-	ft_printf("Num Id : %d\n", last_player);
+	check_lives2(vm, list, last_player);
+}
+
+static void		check_lives2(t_vm *vm, t_proc **list, int last_player)
+{
 	if (someone_is_alive(*list) == 0 && last_player == 0)
 	{
 		free_list(list);
