@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 16:10:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/03 23:49:18 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/04 01:23:10 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void				add_label(char *line, t_parsing **buff)
 	t_parsing		*tmp2;
 
 	tmp2 = NULL;
-	tmp = NULL;
 	if ((tmp = (t_parsing*)malloc(sizeof(t_parsing) * 1)))
 	{
 		tmp->content = ft_strdup(line);
