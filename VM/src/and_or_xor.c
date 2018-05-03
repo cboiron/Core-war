@@ -6,7 +6,7 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 04:04:22 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/03 14:46:19 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/03 15:36:16 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,31 @@ void	choose_op(int *arg, t_proc *proc)
 		proc->carry = 1;
 	else
 		proc->carry = 0;
+}
+
+
+void	param_op_2(t_vm *vm, t_proc *proc, int *arg, int *pc)
+{
+	if (PARAM2 == REG)
+	{
+		arg[1] = get_reg(vm, pc);
+		if (!(is_reg(arg[1])))
+			return ;
+		arg[1] = proc->reg[arg[1] - 1];
+	}
+	else if (PARAM2 == INDIRECT)
+	{
+		arg[1] = (short)get_ind(vm, pc);
+		arg[1] %= IDX_MOD;
+		arg[1] = get_value(vm, mod(proc->save_pc + arg[1], MEM_SIZE));
+	}
+	else if (PARAM2 == DIRECT)
+		arg[1] = get_dir(vm, pc, proc->instruction);
+	arg[2] = get_reg(vm, pc);
+	if (!is_reg(arg[2]))
+		return ;
+	choose_op(arg, proc);
+	proc->pc = *pc;
 }
 
 void	param_op(t_vm *vm, t_proc *proc, int *arg)
@@ -47,24 +72,5 @@ void	param_op(t_vm *vm, t_proc *proc, int *arg)
 	}
 	else if (PARAM1 == DIRECT)
 		arg[0] = get_dir(vm, &pc, proc->instruction);
-	if (PARAM2 == REG)
-	{
-		arg[1] = get_reg(vm, &pc);
-		if (!(is_reg(arg[1])))
-			return ;
-		arg[1] = proc->reg[arg[1] - 1];
-	}
-	else if (PARAM2 == INDIRECT)
-	{
-		arg[1] = (short)get_ind(vm, &pc);
-		arg[1] %= IDX_MOD;
-		arg[1] = get_value(vm, mod(proc->save_pc + arg[1], MEM_SIZE));
-	}
-	else if (PARAM2 == DIRECT)
-		arg[1] = get_dir(vm, &pc, proc->instruction);
-	arg[2] = get_reg(vm, &pc);
-	if (!is_reg(arg[2]))
-		return ;
-	choose_op(arg, proc);
-	proc->pc = pc;
+	param_op_2(vm, proc, arg, &pc);
 }
