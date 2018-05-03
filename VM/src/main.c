@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/03 23:16:19 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/04 00:19:50 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void	free_vm(t_vm *vm)
 {
 	int	i;
 
-	printf("nombre de joueurs %d", vm->nbr_next);
 	i = 0;
 	while (i < vm->nbr_next)
 	{

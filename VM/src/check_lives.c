@@ -6,11 +6,23 @@
 /*   By: cboiron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:45:05 by cboiron           #+#    #+#             */
-/*   Updated: 2018/05/04 00:05:50 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/04 00:18:15 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+static int	print_winner(t_vm *vm, int id_player)
+{
+	int	i;
+
+	i = 0;
+	while (id_player != vm->tab_champ[i].id)
+		i++;
+	ft_printf("Le vainqueur est le joueur %d: %s !! \n", id_player,
+			vm->tab_champ[i].name);
+	return (0);
+}
 
 static int	someone_is_alive(t_proc *list)
 {
@@ -28,9 +40,6 @@ static int	someone_is_alive(t_proc *list)
 
 static int	check_lives2(t_vm *vm, t_proc **list, int last_player)
 {
-	int	i;
-
-	i = 0;
 	if (someone_is_alive(*list) == 0 && last_player == 0)
 	{
 		free_list(list);
@@ -38,12 +47,7 @@ static int	check_lives2(t_vm *vm, t_proc **list, int last_player)
 		return (0);
 	}
 	else if (last_player != 0)
-	{
-	while (last_player != vm->tab_champ[i].id)
-		i++;
-	ft_printf("Le vainqueur est : %s !! \n",vm->tab_champ[i].name);
-		return (0);
-	}
+		return (print_winner(vm, last_player));
 	if (vm->total_lives_period > NBR_LIVE ||
 			vm->last_check == MAX_CHECKS)
 	{
