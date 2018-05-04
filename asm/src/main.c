@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:58:03 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/04 01:25:04 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/04 01:56:32 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ int					main(int argc, char **argv)
 	size_all(&env);
 	write_out(&env);
 	ft_printf("Writing output program to %s\n", env.champ_name);
-//	free_all(&env);
-//  sleep(5);
+	free_all(&env);
+	sleep(5);
 	exit(EXIT_SUCCESS);
 	return (0);
 }

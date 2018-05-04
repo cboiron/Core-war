@@ -48,7 +48,7 @@ int	ft_ld(char *line, int index)
 	if (isreg(splited[1]) == 0)
 		msg_error(ERR_ARG, index);
 	free(tmp);
-	free(splited);
+	free_split(splited);
 	return (1);
 }
 
@@ -70,7 +70,7 @@ int	ft_st(char *line, int index)
 	if (isreg(splited[1]) == 0 && isindir(splited[1]) == 0)
 		msg_error(ERR_ARG, index);
 	free(tmp);
-	free(splited);
+	free_split(splited);
 	return (1);
 }
 
@@ -91,7 +91,7 @@ int	ft_add(char *line, int index)
 		isreg(splited[2]) == 0)
 		msg_error(ERR_ARG, index);
 	free(tmp);
-	free(splited);
+	free_split(splited);
 	return (1);
 }
 
@@ -112,6 +112,6 @@ int	ft_sub(char *line, int index)
 		isreg(splited[2]) == 0)
 		msg_error(ERR_ARG, index);
 	free(tmp);
-	free(splited);
+	free_split(splited);
 	return (1);
 }
