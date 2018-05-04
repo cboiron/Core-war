@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/04 00:34:31 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/04 02:40:24 by abrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,10 @@ void					ft_putshort_fd(short n, int fd);
 void					write_label(char *dir, t_op actual, t_asm *env,
 									unsigned int size_to_here);
 unsigned int			write_label2(t_parsing *tmp, char *to_search, unsigned
-									 int size_to_here, t_asm *env);
+									int size_to_here, t_asm *env);
+/*
+** free_all.c
+*/
+void					free_all(t_asm *env);
+void					free_split(char **split);
 #endif

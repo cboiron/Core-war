@@ -32,7 +32,7 @@ int	ft_sti(char *line, int index)
 	if (isreg(splited[2]) == 0 && isdir(splited[2]) == 0)
 		msg_error(ERR_ARG, index);
 	free(tmp);
-	free(splited);
+	free_split(splited);
 	return (1);
 }
 
@@ -67,7 +67,7 @@ int	ft_lld(char *line, int index)
 	if (isreg(splited[1]) == 0)
 		msg_error(ERR_ARG, index);
 	free(tmp);
-	free(splited);
+	free_split(splited);
 	return (1);
 }
 
@@ -91,7 +91,7 @@ int	ft_lldi(char *line, int index)
 	if (isreg(splited[2]) == 0)
 		msg_error(ERR_ARG, index);
 	free(tmp);
-	free(splited);
+	free_split(splited);
 	return (1);
 }
 

@@ -34,7 +34,7 @@ int	ft_and(char *line, int index)
 	if (isreg(splited[2]) == 0)
 		msg_error(ERR_ARG, index);
 	free(tmp);
-	free(splited);
+	free_split(splited);
 	return (1);
 }
 
@@ -60,7 +60,7 @@ int	ft_or(char *line, int index)
 	if (isreg(splited[2]) == 0)
 		msg_error(ERR_ARG, index);
 	free(tmp);
-	free(splited);
+	free_split(splited);
 	return (1);
 }
 
@@ -85,7 +85,7 @@ int	ft_xor(char *line, int index)
 	if (isreg(splited[2]) == 0)
 		msg_error(ERR_ARG, index);
 	free(tmp);
-	free(splited);
+	free_split(splited);
 	return (1);
 }
 
@@ -123,6 +123,6 @@ int	ft_ldi(char *line, int index)
 	if (isreg(splited[2]) == 0)
 		msg_error(ERR_ARG, index);
 	free(tmp);
-	free(splited);
+	free_split(splited);
 	return (1);
 }
