@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:18:51 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/04 01:29:08 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/04 02:15:47 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,12 @@ static void	free_vm(t_vm *vm)
 	i = 0;
 	while (i < vm->nbr_next)
 	{
-		printf("i = %d\n", i);
-		//free(vm->tab_champ[i].name);
-		//free(vm->tab_champ[i].prog);
-		//free(&vm->tab_champ[i]);
+		free(vm->tab_champ[i].name);
+		free(vm->tab_champ[i].prog);
 		i++;
 	}
-	//free(vm);
+	free(vm);
 	vm = NULL;
-}
-
-void		init_vm(t_vm *vm)
-{
-	vm = ft_memalloc(sizeof(t_vm));
 }
 
 static void	init(t_vm *vm)
@@ -66,21 +59,19 @@ int			usage(void)
 
 int			main(int argc, char **argv)
 {
-	t_vm	vm;
+	t_vm	*vm;
 
 	if (argc < 2)
 		usage();
-	init_vm(&vm);
-	vm.last_check = 0;
-	vm.cycle_to_die = CYCLE_TO_DIE;
-	init(&vm);
-	create_arena(&vm);
-	if (get_param(argv, &vm, argc) == 0)
+	vm = ft_memalloc(sizeof(t_vm));
+	vm->last_check = 0;
+	vm->cycle_to_die = CYCLE_TO_DIE;
+	init(vm);
+	create_arena(vm);
+	if (get_param(argv, vm, argc) == 0)
 		usage();
-	load_champs(&vm);
-	play(&vm);
-	//ft_memdel((void**)&vm);
-	free_vm(&vm);
-	sleep(10);
+	load_champs(vm);
+	play(vm);
+	free_vm(vm);
 	return (0);
 }
