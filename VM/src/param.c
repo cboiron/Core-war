@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 16:32:14 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/04 02:11:23 by cboiron          ###   ########.fr       */
+/*   Updated: 2018/05/04 02:36:16 by cboiron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,7 @@ static void	champs(t_vm *vm, char *arg)
 		exit(1);
 	}
 	else
-	{
-		//ft_putendl("lol");
 		usage();
-	}
 }
 
 int			get_param(char **av, t_vm *vm, int ac)
