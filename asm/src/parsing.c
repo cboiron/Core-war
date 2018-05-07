@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 00:17:52 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/04 01:29:05 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/07 12:31:25 by eliajin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ static void	checking_op(char *line, t_asm *env, int index)
 	else if (check_lab_and_instru(tmp, index) == 1)
 		add_lab_and_instru(tmp, &env->buff);
 	else
+	{
+		ft_strdel(&tmp);
 		msg_error("", index);
+	}
+	ft_strdel(&tmp);
 }
 
 /*
@@ -65,20 +69,23 @@ static void	check_line(char *line, char *tmp, t_asm *env, int index)
 void		parsing(char *file, t_asm *env)
 {
 	char	*line;
+	int		ret;
 	int		index;
 	char	*tmp;
 
 	index = 1;
 	if (!(env->fd = open(file, O_RDONLY)))
 		msg_error(ERR_OPEN, 0);
-	while (get_next_line(env->fd, &line) > 0)
+	while ((ret = get_next_line(env->fd, &line)) > 0)
 	{
 		tmp = ft_epur_str(line);
 		check_line(tmp, line, env, index);
-		free(line);
-		free(tmp);
+		ft_strdel(&line);
+		ft_strdel(&tmp);
 		index++;
 	}
+	if (ret == -1)
+		msg_error(ERR_NOFILE, 0);
 	if (close(env->fd) == -1)
 		msg_error(ERR_CLOSE, 0);
 }

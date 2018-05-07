@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 15:23:15 by eliajin           #+#    #+#             */
-/*   Updated: 2018/04/26 03:02:17 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/07 10:26:15 by eliajin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,17 @@ int			check_lab_and_instru(char *line, int index)
 	i = search_char(line, LABEL_CHAR);
 	if (i == -1 || i == 0)
 		return (0);
-	sub = ft_strsub(line, 0, i + 1);
+	if (!(sub = ft_strsub(line, 0, i + 1)))
+		msg_error(ERR_MALLOC, 0);
 	if (is_label_only(sub) == 0)
 		return (0);
-	free(sub);
-	sub = ft_strsub(line, i + 1, ft_strlen(line) - i);
+	ft_strdel(&sub);
+	if (!(sub = ft_strsub(line, i + 1, ft_strlen(line) - i)))
+		msg_error(ERR_MALLOC, 0);
 	clean = ft_epur_str(sub);
-	free(sub);
+	ft_strdel(&sub);
 	if (check_instruction(clean, index) == 0)
 		return (0);
-	free(clean);
+	ft_strdel(&clean);
 	return (1);
 }

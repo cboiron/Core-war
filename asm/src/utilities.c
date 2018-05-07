@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 00:17:45 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/04 01:33:57 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/07 12:42:10 by eliajin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	isreg(char *line)
 		if (ft_isdigit(tmp[1]) == 0)
 			return (0);
 	}
-	free(tmp);
+	ft_strdel(&tmp);
 	return (1);
 }
 
@@ -95,7 +95,7 @@ int	isdir(char *line)
 			i++;
 		}
 	}
-	free(tmp);
+	ft_strdel(&tmp);
 	return (1);
 }
 
@@ -117,8 +117,9 @@ int	isindir(char *line)
 			if (!(ptr = ft_strchr(LABEL_CHARS, tmp[i])))
 				return (0);
 			i++;
+			ft_strdel(&ptr);
 		}
-	free(tmp);
-	free(ptr);
+	ft_strdel(&tmp);
+	ft_strdel(&ptr);
 	return (1);
 }

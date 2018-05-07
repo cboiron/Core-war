@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 06:31:50 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/04 01:35:53 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/07 12:44:29 by eliajin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ unsigned int		write_label2(t_parsing *tmp, char *to_search,
 			tmp = tmp->next;
 		if (tmp->next == NULL)
 			msg_error(NO_LABEL, 0);
-		content = ft_strsub(tmp->content, 0, ft_strlen(tmp->content) - 1);
+		if (!(content = ft_strsub(tmp->content, 0,
+								  ft_strlen(tmp->content) - 1)))
+			msg_error(ERR_MALLOC, 0);
 		if (ft_strcmp(content, to_search) == 0)
 			break ;
 		if (tmp->next == NULL)
@@ -49,7 +51,7 @@ unsigned int		write_label2(t_parsing *tmp, char *to_search,
 	pos = (tmp->size_to_here - size_to_here);
 	tmp = env->buff;
 	pos = write_label3(tmp, size_to_here, pos);
-	free(content);
+	ft_strdel(&content);
 	return (pos);
 }
 
@@ -73,5 +75,5 @@ void				write_label(char *dir, t_op actual, t_asm *env,
 	else
 		ft_putint_fd(pos, env->fd);
 	tmp = NULL;
-	free(to_search);
+	ft_strdel(&to_search);
 }

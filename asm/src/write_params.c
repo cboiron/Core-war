@@ -6,7 +6,7 @@
 /*   By: abrichar <abrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 16:46:23 by abrichar          #+#    #+#             */
-/*   Updated: 2018/05/04 00:26:12 by ardurand         ###   ########.fr       */
+/*   Updated: 2018/05/07 13:07:03 by eliajin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void				write_ind(char *ind, t_asm *env,
 		to_write = write_label2(tmp, to_search, size_to_here, env);
 	}
 	ft_putshort_fd(to_write, env->fd);
-	free(to_search);
+	ft_strdel(&to_search);
 	free(tmp);
 }
 
@@ -80,5 +80,5 @@ void					write_params(t_asm *env, char *split, t_op actual,
 		else
 			write_dir(splited[i], env, actual, size_to_here);
 	}
-	free(splited);
+	free_split(splited);
 }

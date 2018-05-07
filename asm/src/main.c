@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:58:03 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/04 01:56:32 by abrichar         ###   ########.fr       */
+/*   Updated: 2018/05/07 11:05:06 by eliajin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,14 @@ static int			detect_errors(int argc, char *champ, t_asm *env)
 	x = ft_strlen(champ) - 1;
 	if (champ[x] != 's' || champ[x - 1] != '.')
 		msg_error(USAGE, 0);
-	tmp = ft_strsub(champ, 0, x - 1);
+	if (!(tmp = ft_strsub(champ, 0, x - 1)))
+		msg_error(ERR_MALLOC, 0);
 	env->champ_name = ft_strjoin(tmp, ".cor");
 	if ((fd = open(champ, O_RDONLY)) == -1)
 		msg_error(ERR_OPEN, 0);
 	if (close(fd) == -1)
 		msg_error(ERR_CLOSE, 0);
-	free(tmp);
+	ft_strdel(&tmp);
 	return (1);
 }
 
@@ -95,7 +96,6 @@ int					main(int argc, char **argv)
 	write_out(&env);
 	ft_printf("Writing output program to %s\n", env.champ_name);
 	free_all(&env);
-	sleep(5);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
