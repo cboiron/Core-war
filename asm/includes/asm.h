@@ -6,7 +6,7 @@
 /*   By: eliajin <abrichar@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 23:11:01 by eliajin           #+#    #+#             */
-/*   Updated: 2018/05/07 12:33:35 by eliajin          ###   ########.fr       */
+/*   Updated: 2018/05/08 23:54:03 by eliajin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define NO_LABEL "Erreur 09 : label inexistant "
 # define ERR_MALLOC "Erreur 10 : Problème d'allocation mémoire"
 # define ERR_NOFILE "Erreur 11 : le parametre n'est pas un fichier."
+# define ERR_NOCODE "Erreur 12 : le champion n'a pas de code."
 
 typedef struct			s_parsing
 {
